@@ -1,0 +1,53 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name EkycSdk
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
+@_exported import EkycSdk
+import EnterpriseOnboardingSDK
+import Foundation
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class EKYCSDKContainerVC : UIKit.UIViewController {
+  @_Concurrency.MainActor @preconcurrency public var myNavigationController: UIKit.UINavigationController {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor @preconcurrency public func push(_ vc: UIKit.UIViewController, animated: Swift.Bool = true)
+  @_Concurrency.MainActor @preconcurrency public func resetTo(_ vc: UIKit.UIViewController)
+  @_Concurrency.MainActor @preconcurrency public func pop()
+  @_Concurrency.MainActor @preconcurrency public func popToRoot()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol EkycSdkManagerDelegate {
+  func onSuccess()
+  func onClose()
+}
+public class EkycSdkManager : EnterpriseOnboardingSDK.EnterpriseOnboardingManagerDelegate {
+  public func setChannel(_ channel: Swift.String)
+  public func setDomainEIDCloud(_ domain: Swift.String)
+  public func setDomainEnterpriseCloud(_ domain: Swift.String)
+  public func setDkkd(_ dkkd: Swift.String)
+  public func setByPassCheckBusiness()
+  public func setSkipFirstScreen()
+  public func registerSuccess()
+  public func didLogout()
+  public static let shared: EkycSdk.EkycSdkManager
+  public func getConnect() -> [Foundation.Notification.Name]
+  public init()
+  public func setNavigationController(_ navigationController: UIKit.UINavigationController?)
+  public func startService()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class SDKNavigator {
+  weak public static var container: EkycSdk.EKYCSDKContainerVC?
+  public static func push(_ vc: UIKit.UIViewController)
+  public static func reset(to vc: UIKit.UIViewController)
+  public static func pop()
+  public static func popToRoot()
+  @objc deinit
+}

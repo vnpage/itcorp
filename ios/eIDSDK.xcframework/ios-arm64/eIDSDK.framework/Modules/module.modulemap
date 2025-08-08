@@ -1,0 +1,6 @@
+framework module eIDSDK {
+  umbrella header "eIDSDK.h"
+  export *
+
+  module * { export * }
+}

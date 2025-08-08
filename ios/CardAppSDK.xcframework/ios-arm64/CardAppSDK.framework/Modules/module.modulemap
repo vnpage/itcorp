@@ -1,0 +1,11 @@
+framework module CardAppSDK {
+  umbrella header "CardAppSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module CardAppSDK.Swift {
+  header "CardAppSDK-Swift.h"
+  requires objc
+}

@@ -1,0 +1,3543 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-module-flags: -target arm64-apple-ios13.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name CardAppSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
+import AVFoundation
+import AudioToolbox
+@_exported import CardAppSDK
+import CommonCrypto
+import CoreGraphics
+import CoreText
+import Foundation
+import MobileCoreServices
+import ObjectiveC
+import OpenSSL
+import Photos
+import PhotosUI
+import QuartzCore
+import Swift
+import UIKit
+import UniformTypeIdentifiers
+import Vision
+import WebKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import eIDSDK
+public class AddressDetail : Foundation.NSCoding {
+  public var district: Swift.String?
+  public var street: Swift.String?
+  public var provinceCode: Swift.String?
+  public var ward: Swift.String?
+  public var province: Swift.String?
+  public var country: Swift.String?
+  convenience public init(object: Any)
+  public init(json: CardAppSDK.JSON)
+  public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc required public init(coder aDecoder: Foundation.NSCoder)
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc deinit
+}
+public func AESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+public func AESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+public func AESECBEncrypt(key: [Swift.UInt8], message: [Swift.UInt8]) -> [Swift.UInt8]
+public func tripleDESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+public func tripleDESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func DESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8], options: Swift.UInt32 = 0) -> [Swift.UInt8]
+public func DESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8], options: Swift.UInt32 = 0) -> [Swift.UInt8]
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class AnimatedButton : CardAppSDK.AnimatedControl {
+  @_Concurrency.MainActor @preconcurrency override public init(animation: CardAppSDK.Animation, configuration: CardAppSDK.LottieConfiguration = .shared)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init()
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func beginTracking(_ touch: UIKit.UITouch, with event: UIKit.UIEvent?) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func endTracking(_ touch: UIKit.UITouch?, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var accessibilityTraits: UIKit.UIAccessibilityTraits {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency public func setPlayRange(fromProgress: CardAppSDK.AnimationProgressTime, toProgress: CardAppSDK.AnimationProgressTime, event: UIKit.UIControl.Event)
+  @_Concurrency.MainActor @preconcurrency public func setPlayRange(fromMarker fromName: Swift.String, toMarker toName: Swift.String, event: UIKit.UIControl.Event)
+  @objc deinit
+}
+@objc @_Concurrency.MainActor @preconcurrency open class AnimatedControl : UIKit.UIControl {
+  @_Concurrency.MainActor @preconcurrency public init(animation: CardAppSDK.Animation, configuration: CardAppSDK.LottieConfiguration = .shared)
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public init()
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var isEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var isSelected: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var isHighlighted: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func beginTracking(_ touch: UIKit.UITouch, with event: UIKit.UIEvent?) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func continueTracking(_ touch: UIKit.UITouch, with event: UIKit.UIEvent?) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func endTracking(_ touch: UIKit.UITouch?, with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func cancelTracking(with event: UIKit.UIEvent?)
+  @_Concurrency.MainActor @preconcurrency open func animationDidSet()
+  @_Concurrency.MainActor @preconcurrency final public let animationView: CardAppSDK.AnimationView
+  @_Concurrency.MainActor @preconcurrency public var animation: CardAppSDK.Animation? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var animationSpeed: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public func setLayer(named: Swift.String, forState: UIKit.UIControl.State)
+  @_Concurrency.MainActor @preconcurrency public func setValueProvider(_ valueProvider: any CardAppSDK.AnyValueProvider, keypath: CardAppSDK.AnimationKeypath)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class AnimatedSwitch : CardAppSDK.AnimatedControl {
+  @_Concurrency.MainActor @preconcurrency override public init(animation: CardAppSDK.Animation, configuration: CardAppSDK.LottieConfiguration = .shared)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init()
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency override open func animationDidSet()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func endTracking(_ touch: UIKit.UITouch?, with event: UIKit.UIEvent?)
+  public enum CancelBehavior {
+    case reverse
+    case none
+    public static func == (a: CardAppSDK.AnimatedSwitch.CancelBehavior, b: CardAppSDK.AnimatedSwitch.CancelBehavior) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor @preconcurrency public var cancelBehavior: CardAppSDK.AnimatedSwitch.CancelBehavior
+  @_Concurrency.MainActor @preconcurrency public var animateUpdateWhenChangingAnimation: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var accessibilityTraits: UIKit.UIAccessibilityTraits {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency public var isOn: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public func setIsOn(_ isOn: Swift.Bool, animated: Swift.Bool, shouldFireHaptics: Swift.Bool = true)
+  @_Concurrency.MainActor @preconcurrency public func setProgressForState(fromProgress: CardAppSDK.AnimationProgressTime, toProgress: CardAppSDK.AnimationProgressTime, forOnState: Swift.Bool)
+  @objc deinit
+}
+public enum CoordinateSpace : Swift.Int, Swift.Codable {
+  case type2d
+  case type3d
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+final public class Animation : Swift.Codable {
+  required public init(from decoder: any Swift.Decoder) throws
+  public init(dictionary: [Swift.String : Any]) throws
+  final public let startFrame: CardAppSDK.AnimationFrameTime
+  final public let endFrame: CardAppSDK.AnimationFrameTime
+  final public let framerate: Swift.Double
+  final public var markerNames: [Swift.String] {
+    get
+  }
+  @objc deinit
+  final public func encode(to encoder: any Swift.Encoder) throws
+}
+public protocol AnimationCacheProvider {
+  func animation(forKey: Swift.String) -> CardAppSDK.Animation?
+  func setAnimation(_ animation: CardAppSDK.Animation, forKey: Swift.String)
+  func clearCache()
+}
+public typealias LottieCompletionBlock = (Swift.Bool) -> Swift.Void
+public protocol AnimationFontProvider {
+  func fontFor(family: Swift.String, size: CoreFoundation.CGFloat) -> CoreText.CTFont?
+}
+final public class DefaultFontProvider : CardAppSDK.AnimationFontProvider {
+  public init()
+  final public func fontFor(family: Swift.String, size: CoreFoundation.CGFloat) -> CoreText.CTFont?
+  @objc deinit
+}
+public protocol AnimationImageProvider {
+  func imageForAsset(asset: CardAppSDK.ImageAsset) -> CoreGraphics.CGImage?
+}
+public struct AnimationKeypath : Swift.Hashable, Swift.ExpressibleByStringLiteral {
+  public init(keypath: Swift.String)
+  public init(stringLiteral: Swift.String)
+  public init(keys: [Swift.String])
+  public static func == (a: CardAppSDK.AnimationKeypath, b: CardAppSDK.AnimationKeypath) -> Swift.Bool
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+  public typealias StringLiteralType = Swift.String
+  public typealias UnicodeScalarLiteralType = Swift.String
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension CardAppSDK.Animation {
+  public typealias DownloadClosure = (CardAppSDK.Animation?) -> Swift.Void
+  final public var duration: Foundation.TimeInterval {
+    get
+  }
+  final public var bounds: CoreFoundation.CGRect {
+    get
+  }
+  final public var size: CoreFoundation.CGSize {
+    get
+  }
+  public static func named(_ name: Swift.String, bundle: Foundation.Bundle = Bundle.main, subdirectory: Swift.String? = nil, animationCache: (any CardAppSDK.AnimationCacheProvider)? = nil) -> CardAppSDK.Animation?
+  public static func filepath(_ filepath: Swift.String, animationCache: (any CardAppSDK.AnimationCacheProvider)? = nil) -> CardAppSDK.Animation?
+  public static func asset(_ name: Swift.String, bundle: Foundation.Bundle = Bundle.main, animationCache: (any CardAppSDK.AnimationCacheProvider)? = nil) -> CardAppSDK.Animation?
+  public static func from(data: Foundation.Data, strategy: CardAppSDK.DecodingStrategy = LottieConfiguration.shared.decodingStrategy) throws -> CardAppSDK.Animation
+  public static func loadedFrom(url: Foundation.URL, session: Foundation.URLSession = .shared, closure: @escaping CardAppSDK.Animation.DownloadClosure, animationCache: (any CardAppSDK.AnimationCacheProvider)?)
+  final public func progressTime(forMarker named: Swift.String) -> CardAppSDK.AnimationProgressTime?
+  final public func frameTime(forMarker named: Swift.String) -> CardAppSDK.AnimationFrameTime?
+  final public func durationFrameTime(forMarker named: Swift.String) -> CardAppSDK.AnimationFrameTime?
+  final public func progressTime(forFrame frameTime: CardAppSDK.AnimationFrameTime, clamped: Swift.Bool = true) -> CardAppSDK.AnimationProgressTime
+  final public func frameTime(forProgress progressTime: CardAppSDK.AnimationProgressTime) -> CardAppSDK.AnimationFrameTime
+  final public func time(forFrame frameTime: CardAppSDK.AnimationFrameTime) -> Foundation.TimeInterval
+  final public func frameTime(forTime time: Foundation.TimeInterval) -> CardAppSDK.AnimationFrameTime
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency final public class AnimationSubview : UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol AnimationTextProvider : AnyObject {
+  func textFor(keypathName: Swift.String, sourceText: Swift.String) -> Swift.String
+}
+final public class DictionaryTextProvider : CardAppSDK.AnimationTextProvider {
+  public init(_ values: [Swift.String : Swift.String])
+  final public func textFor(keypathName: Swift.String, sourceText: Swift.String) -> Swift.String
+  @objc deinit
+}
+final public class DefaultTextProvider : CardAppSDK.AnimationTextProvider {
+  public init()
+  final public func textFor(keypathName _: Swift.String, sourceText: Swift.String) -> Swift.String
+  @objc deinit
+}
+public typealias AnimationFrameTime = CoreFoundation.CGFloat
+public typealias AnimationProgressTime = CoreFoundation.CGFloat
+public enum LottieBackgroundBehavior {
+  case stop
+  case pause
+  case pauseAndRestore
+  case forceFinish
+  case continuePlaying
+  public static func `default`(for renderingEngine: CardAppSDK.RenderingEngine) -> CardAppSDK.LottieBackgroundBehavior
+  public static func == (a: CardAppSDK.LottieBackgroundBehavior, b: CardAppSDK.LottieBackgroundBehavior) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum LottieLoopMode {
+  case playOnce
+  case loop
+  case autoReverse
+  case `repeat`(Swift.Float)
+  case repeatBackwards(Swift.Float)
+}
+extension CardAppSDK.LottieLoopMode : Swift.Equatable {
+  public static func == (lhs: CardAppSDK.LottieLoopMode, rhs: CardAppSDK.LottieLoopMode) -> Swift.Bool
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor @preconcurrency final public class AnimationView : CardAppSDK.AnimationViewBase {
+  @_Concurrency.MainActor @preconcurrency public init(animation: CardAppSDK.Animation?, imageProvider: (any CardAppSDK.AnimationImageProvider)? = nil, textProvider: any CardAppSDK.AnimationTextProvider = DefaultTextProvider(), fontProvider: any CardAppSDK.AnimationFontProvider = DefaultFontProvider(), configuration: CardAppSDK.LottieConfiguration = .shared, logger: CardAppSDK.LottieLogger = .shared)
+  @_Concurrency.MainActor @preconcurrency public init(configuration: CardAppSDK.LottieConfiguration = .shared, logger: CardAppSDK.LottieLogger = .shared)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency final public let configuration: CardAppSDK.LottieConfiguration
+  @_Concurrency.MainActor @preconcurrency final public var valueProviders: [CardAppSDK.AnimationKeypath : any CardAppSDK.AnyValueProvider] {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency final public var backgroundBehavior: CardAppSDK.LottieBackgroundBehavior {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var animation: CardAppSDK.Animation? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var imageProvider: any CardAppSDK.AnimationImageProvider {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var textProvider: any CardAppSDK.AnimationTextProvider {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var fontProvider: any CardAppSDK.AnimationFontProvider {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var isAnimationPlaying: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency final public var isAnimationQueued: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency final public var loopMode: CardAppSDK.LottieLoopMode {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var shouldRasterizeWhenIdle: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var currentProgress: CardAppSDK.AnimationProgressTime {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var currentTime: Foundation.TimeInterval {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var currentFrame: CardAppSDK.AnimationFrameTime {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var realtimeAnimationFrame: CardAppSDK.AnimationFrameTime {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency final public var realtimeAnimationProgress: CardAppSDK.AnimationProgressTime {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency final public var animationSpeed: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var respectAnimationFrameRate: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var viewportFrame: CoreFoundation.CGRect? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override final public var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency final public var currentRenderingEngine: CardAppSDK.RenderingEngine? {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency final public func play(completion: CardAppSDK.LottieCompletionBlock? = nil)
+  @_Concurrency.MainActor @preconcurrency final public func play(fromProgress: CardAppSDK.AnimationProgressTime? = nil, toProgress: CardAppSDK.AnimationProgressTime, loopMode: CardAppSDK.LottieLoopMode? = nil, completion: CardAppSDK.LottieCompletionBlock? = nil)
+  @_Concurrency.MainActor @preconcurrency final public func play(fromFrame: CardAppSDK.AnimationFrameTime? = nil, toFrame: CardAppSDK.AnimationFrameTime, loopMode: CardAppSDK.LottieLoopMode? = nil, completion: CardAppSDK.LottieCompletionBlock? = nil)
+  @_Concurrency.MainActor @preconcurrency final public func play(fromMarker: Swift.String? = nil, toMarker: Swift.String, loopMode: CardAppSDK.LottieLoopMode? = nil, completion: CardAppSDK.LottieCompletionBlock? = nil)
+  @_Concurrency.MainActor @preconcurrency final public func play(marker: Swift.String, loopMode: CardAppSDK.LottieLoopMode? = nil, completion: CardAppSDK.LottieCompletionBlock? = nil)
+  @_Concurrency.MainActor @preconcurrency final public func stop()
+  @_Concurrency.MainActor @preconcurrency final public func pause()
+  @_Concurrency.MainActor @preconcurrency final public func reloadImages()
+  @_Concurrency.MainActor @preconcurrency final public func forceDisplayUpdate()
+  @_Concurrency.MainActor @preconcurrency final public func setValueProvider(_ valueProvider: any CardAppSDK.AnyValueProvider, keypath: CardAppSDK.AnimationKeypath)
+  @_Concurrency.MainActor @preconcurrency final public func getValue(for keypath: CardAppSDK.AnimationKeypath, atFrame: CardAppSDK.AnimationFrameTime?) -> Any?
+  @_Concurrency.MainActor @preconcurrency final public func getOriginalValue(for keypath: CardAppSDK.AnimationKeypath, atFrame: CardAppSDK.AnimationFrameTime?) -> Any?
+  @_Concurrency.MainActor @preconcurrency final public func logHierarchyKeypaths()
+  @_Concurrency.MainActor @preconcurrency final public func addSubview(_ subview: CardAppSDK.AnimationSubview, forLayerAt keypath: CardAppSDK.AnimationKeypath)
+  @_Concurrency.MainActor @preconcurrency final public func convert(_ rect: CoreFoundation.CGRect, toLayerAt keypath: CardAppSDK.AnimationKeypath?) -> CoreFoundation.CGRect?
+  @_Concurrency.MainActor @preconcurrency final public func convert(_ point: CoreFoundation.CGPoint, toLayerAt keypath: CardAppSDK.AnimationKeypath?) -> CoreFoundation.CGPoint?
+  @_Concurrency.MainActor @preconcurrency final public func setNodeIsEnabled(isEnabled: Swift.Bool, keypath: CardAppSDK.AnimationKeypath)
+  @_Concurrency.MainActor @preconcurrency final public func progressTime(forMarker named: Swift.String) -> CardAppSDK.AnimationProgressTime?
+  @_Concurrency.MainActor @preconcurrency final public func frameTime(forMarker named: Swift.String) -> CardAppSDK.AnimationFrameTime?
+  @_Concurrency.MainActor @preconcurrency final public func durationFrameTime(forMarker named: Swift.String) -> CardAppSDK.AnimationFrameTime?
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class AnimationViewBase : UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var contentMode: UIKit.UIView.ContentMode {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func didMoveToWindow()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension CardAppSDK.AnimationView {
+  @_Concurrency.MainActor @preconcurrency convenience public init(name: Swift.String, bundle: Foundation.Bundle = Bundle.main, imageProvider: (any CardAppSDK.AnimationImageProvider)? = nil, animationCache: (any CardAppSDK.AnimationCacheProvider)? = LRUAnimationCache.sharedCache, configuration: CardAppSDK.LottieConfiguration = .shared)
+  @_Concurrency.MainActor @preconcurrency convenience public init(filePath: Swift.String, imageProvider: (any CardAppSDK.AnimationImageProvider)? = nil, animationCache: (any CardAppSDK.AnimationCacheProvider)? = LRUAnimationCache.sharedCache, configuration: CardAppSDK.LottieConfiguration = .shared)
+  @_Concurrency.MainActor @preconcurrency convenience public init(url: Foundation.URL, imageProvider: (any CardAppSDK.AnimationImageProvider)? = nil, closure: @escaping CardAppSDK.AnimationView.DownloadClosure, animationCache: (any CardAppSDK.AnimationCacheProvider)? = LRUAnimationCache.sharedCache, configuration: CardAppSDK.LottieConfiguration = .shared)
+  @_Concurrency.MainActor @preconcurrency convenience public init(asset name: Swift.String, bundle: Foundation.Bundle = Bundle.main, imageProvider: (any CardAppSDK.AnimationImageProvider)? = nil, animationCache: (any CardAppSDK.AnimationCacheProvider)? = LRUAnimationCache.sharedCache, configuration: CardAppSDK.LottieConfiguration = .shared)
+  public typealias DownloadClosure = ((any Swift.Error)?) -> Swift.Void
+}
+public protocol AnyValueProvider {
+  var valueType: any Any.Type { get }
+  var typeErasedStorage: CardAppSDK.AnyValueProviderStorage { get }
+  func hasUpdate(frame: CardAppSDK.AnimationFrameTime) -> Swift.Bool
+}
+extension CardAppSDK.AnyValueProvider {
+  public func value(frame: CardAppSDK.AnimationFrameTime) -> Any
+}
+public enum ValueProviderStorage<T> where T : CardAppSDK.AnyInterpolatable {
+  case singleValue(T)
+  case keyframes([CardAppSDK.Keyframe<T>])
+  case closure((CardAppSDK.AnimationFrameTime) -> T)
+}
+public enum AnyValueProviderStorage {
+  case singleValue(Any)
+  case keyframes([CardAppSDK.Keyframe<Any>], interpolate: (CardAppSDK.AnimationFrameTime) -> Any)
+  case closure((CardAppSDK.AnimationFrameTime) -> Any)
+}
+extension Swift.Array {
+  @inlinable internal init(reserveCapacity: Swift.Int) {
+    self = Array<Element>()
+    self.reserveCapacity(reserveCapacity)
+  }
+  @inlinable internal var slice: Swift.ArraySlice<Element> {
+    get {
+    self[self.startIndex ..< self.endIndex]
+  }
+  }
+  @inlinable internal subscript(safe index: Swift.Array<Element>.Index) -> Element? {
+    get {
+    return indices.contains(index) ? self[index] : nil
+  }
+  }
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  public init(hex: Swift.String)
+  public func toHexString() -> Swift.String
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  @available(*, deprecated)
+  public func chunks(size chunksize: Swift.Int) -> Swift.Array<Swift.Array<Element>>
+}
+extension Swift.Array where Element : Swift.Equatable {
+  public func contains(_ elements: [Element]) -> Swift.Bool
+  public func indexes(of item: Element) -> [Swift.Int]
+  public mutating func removeAll(_ item: Element)
+  public func chunk(size: Swift.Int = 1) -> [[Element]]
+}
+extension Swift.Array {
+  public var randomItem: Element? {
+    get
+  }
+  public var shuffled: [Element] {
+    get
+  }
+  public mutating func shuffle()
+  public func item(at index: Swift.Int) -> Element?
+}
+@_hasMissingDesignatedInitializers public class Asset : Swift.Codable {
+  required public init(from decoder: any Swift.Decoder) throws
+  final public let id: Swift.String
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public enum AttributedTextBlock {
+  case header1(Swift.String)
+  case header2(Swift.String)
+  case normal(Swift.String)
+  case list(Swift.String)
+}
+public class BundleImageProvider : CardAppSDK.AnimationImageProvider {
+  public init(bundle: Foundation.Bundle, searchPath: Swift.String?)
+  public func imageForAsset(asset: CardAppSDK.ImageAsset) -> CoreGraphics.CGImage?
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency open class Button : UIKit.UIButton {
+  public typealias Action = (CardAppSDK.Button) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency public func action(_ closure: @escaping CardAppSDK.Button.Action)
+  @objc deinit
+}
+@objc public enum CardAppDocumentSubType : Swift.Int, Swift.CaseIterable {
+  case dkkd = 1
+  case cccdDaiDien = 2
+  case gcnMST = 3
+  case gcnKDCDK = 4
+  case bctc = 5
+  case tkVAT = 6
+  case tkTHUE = 7
+  case haddkd = 8
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [CardAppSDK.CardAppDocumentSubType]
+  public typealias RawValue = Swift.Int
+  nonisolated public static var allCases: [CardAppSDK.CardAppDocumentSubType] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum CardAppDocumentType : Swift.Int {
+  case hspl = 1
+  case hstc = 2
+  case hsha = 3
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public protocol CardAppManagerDelegate {
+  func onSuccess()
+  func onClose()
+}
+public enum CardType : Swift.Int, Swift.CaseIterable {
+  case DigitsCard12Number
+  case DigitsCard12NumberWithChip
+  case DigitsCard9Number
+  case HCVN
+  case glare
+  case cropTopLeft
+  case cropTopRight
+  case cropBottomLeft
+  case cropBottomRight
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [CardAppSDK.CardType]
+  public typealias RawValue = Swift.Int
+  nonisolated public static var allCases: [CardAppSDK.CardType] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class CardAppManager {
+  public static let shared: CardAppSDK.CardAppManager
+  public var delegate: (any CardAppSDK.CardAppManagerDelegate)?
+  public var bypassMH05: Swift.Bool
+  public init()
+  public func connectToEKYC(_ connect: [Foundation.Notification.Name])
+  @objc public func setDomainCardApp(_ url: Swift.String?)
+  @objc public func setSecretKey(_ key: Swift.String?)
+  @objc public func setPartnerCode(_ code: Swift.String = "CARDAPP")
+  @objc public func setProductCode(_ code: Swift.String = "CREDIT_CARD")
+  @objc public func setCardProgram(_ code: Swift.String = "FASTCARD")
+  @objc public func setCardChannel(_ code: Swift.String = "CARDAPP")
+  @objc public func setBusinessNumber(_ code: Swift.String = "")
+  @objc public func setPhoneNumber(_ code: Swift.String = "")
+  @objc public func bypassCheckBusiness()
+  public func setDebugEnable(_ enable: Swift.Bool?)
+  @objc public func setLanguage(_ aLanguage: Swift.String?)
+  public func startService(mainNavigation: UIKit.UINavigationController?, delegate: (any CardAppSDK.CardAppManagerDelegate)?)
+  @objc deinit
+}
+extension Swift.String {
+  public var isEmptyStr: Swift.Bool {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @objcMembers @_Concurrency.MainActor @preconcurrency public class CATextField : UIKit.UITextField {
+  @_Concurrency.MainActor @preconcurrency public func setOnTextChanged(_ onTextChange: @escaping (Swift.String) -> Swift.Void?)
+  @_Concurrency.MainActor @preconcurrency public func setOnFocusChanged(_ onFocusChange: @escaping (Swift.String) -> Swift.Void?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func awakeAfter(using aDecoder: Foundation.NSCoder) -> Any?
+  public enum FloatingDisplayStatus {
+    case always
+    case never
+    case defaults
+    public static func == (a: CardAppSDK.CATextField.FloatingDisplayStatus, b: CardAppSDK.CATextField.FloatingDisplayStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum DTBorderStyle {
+    case none
+    case rounded
+    case sqare
+    case top
+    case bottom
+    case left
+    case right
+    public static func == (a: CardAppSDK.CATextField.DTBorderStyle, b: CardAppSDK.CATextField.DTBorderStyle) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var dtLayer: QuartzCore.CALayer
+  @objc @_Concurrency.MainActor @preconcurrency public var floatPlaceholderColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor @preconcurrency public var floatPlaceholderActiveColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor @preconcurrency public var floatingLabelShowAnimationDuration: Swift.Double
+  @_Concurrency.MainActor @preconcurrency public var floatingDisplayStatus: CardAppSDK.CATextField.FloatingDisplayStatus
+  @objc deinit
+  @objc @_Concurrency.MainActor @preconcurrency public var borderWidthTextField: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency public var dtborderStyle: CardAppSDK.CATextField.DTBorderStyle {
+    get
+    set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var errorMessage: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var contentType: UIKit.UITextContentType?
+  @objc @_Concurrency.MainActor @preconcurrency public var animateFloatPlaceholder: Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public var hideErrorWhenEditing: Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public var errorFont: UIKit.UIFont {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var errorTextColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var floatPlaceholderFont: UIKit.UIFont {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var paddingYFloatLabel: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var paddingYErrorLabel: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var borderColorTextField: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var canShowBorder: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var placeholderColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var borderStyle: UIKit.UITextField.BorderStyle {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var textAlignment: UIKit.NSTextAlignment {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var text: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var placeholder: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var attributedPlaceholder: Foundation.NSAttributedString? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc @_Concurrency.MainActor @preconcurrency public func setTest()
+  @objc @_Concurrency.MainActor @preconcurrency public func showError(message: Swift.String? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency public func hideError()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func textRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func editingRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func leftViewRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func rightViewRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func clearButtonRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func layoutSubviews()
+}
+extension CardAppSDK.CATextField : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+}
+public class CheckBackSide : Foundation.NSCoding {
+  public var recapturedResult: Swift.String?
+  public var editedResult: Swift.String?
+  public var checkPhotocopiedResult: Swift.String?
+  public var onFrameProb: Swift.String?
+  public var onFrameResult: Swift.String?
+  public var checkRfpResult: Swift.String?
+  public var checkPhotocopiedProb: Swift.String?
+  public var checkLfpProb: Swift.String?
+  public var checkRedStampProb: Swift.String?
+  public var checkRedStampResult: Swift.String?
+  public var checkGlareProb: Swift.String?
+  public var checkRfpProb: Swift.String?
+  public var checkLfpResult: Swift.String?
+  public var checkGlareResult: Swift.String?
+  convenience public init(object: Any)
+  public init(json: CardAppSDK.JSON)
+  public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc required public init(coder aDecoder: Foundation.NSCoder)
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc deinit
+}
+public class CheckFrontSide : Foundation.NSCoding {
+  public var checkReplacementAvatarProb: Swift.String?
+  public var editedResult: Swift.String?
+  public var recapturedResult: Swift.String?
+  public var checkNationalEmblemProb: Swift.String?
+  public var checkPhotocopiedResult: Swift.String?
+  public var onFrameProb: Swift.String?
+  public var onFrameResult: Swift.String?
+  public var checkPhotocopiedProb: Swift.String?
+  public var cornerCutResult: Swift.String?
+  public var checkAvatarProb: Swift.String?
+  public var cornerCutProb: [Swift.String]?
+  public var checkGlareProb: Swift.String?
+  public var checkEmbossedStampResult: Swift.String?
+  public var checkReplacementAvatarResult: Swift.String?
+  public var checkNationalEmblemResult: Swift.String?
+  public var checkAvatarResult: Swift.String?
+  public var checkGlareResult: Swift.String?
+  convenience public init(object: Any)
+  public init(json: CardAppSDK.JSON)
+  public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc required public init(coder aDecoder: Foundation.NSCoder)
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc deinit
+}
+public enum ColorFormatDenominator : Swift.Hashable {
+  case One
+  case OneHundred
+  case TwoFiftyFive
+  public static func == (a: CardAppSDK.ColorFormatDenominator, b: CardAppSDK.ColorFormatDenominator) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct Color : Swift.Hashable {
+  public var r: Swift.Double
+  public var g: Swift.Double
+  public var b: Swift.Double
+  public var a: Swift.Double
+  public init(r: Swift.Double, g: Swift.Double, b: Swift.Double, a: Swift.Double, denominator: CardAppSDK.ColorFormatDenominator = .One)
+  public static func == (a: CardAppSDK.Color, b: CardAppSDK.Color) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension CardAppSDK.Color : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+final public class ColorValueProvider {
+  public init(block: @escaping CardAppSDK.ColorValueProvider.ColorValueBlock)
+  public init(_ color: CardAppSDK.Color)
+  public init(_ keyframes: [CardAppSDK.Keyframe<CardAppSDK.Color>])
+  public typealias ColorValueBlock = (CoreFoundation.CGFloat) -> CardAppSDK.Color
+  final public var color: CardAppSDK.Color {
+    get
+    set
+  }
+  final public var valueType: any Any.Type {
+    get
+  }
+  final public var storage: CardAppSDK.ValueProviderStorage<CardAppSDK.Color> {
+    get
+  }
+  final public func hasUpdate(frame _: CoreFoundation.CGFloat) -> Swift.Bool
+  @objc deinit
+}
+public func Log<T>(_ object: T?, filename: Swift.String = #file, line: Swift.Int = #line, funcname: Swift.String = #function)
+@objc final public class CompatibleAnimationKeypath : ObjectiveC.NSObject {
+  @objc public init(keypath: Swift.String)
+  @objc public init(keys: [Swift.String])
+  final public let animationKeypath: CardAppSDK.AnimationKeypath
+  @objc deinit
+}
+@objc final public class CompatibleAnimation : ObjectiveC.NSObject {
+  @objc public init(name: Swift.String, bundle: Foundation.Bundle = Bundle.main)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor @preconcurrency final public class CompatibleAnimationView : UIKit.UIView {
+  @objc @_Concurrency.MainActor @preconcurrency public init(compatibleAnimation: CardAppSDK.CompatibleAnimation)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc @_Concurrency.MainActor @preconcurrency final public var compatibleAnimation: CardAppSDK.CompatibleAnimation? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency final public var loopAnimationCount: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override final public var contentMode: UIKit.UIView.ContentMode {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency final public var shouldRasterizeWhenIdle: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency final public var currentProgress: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency final public var currentTime: Foundation.TimeInterval {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency final public var currentFrame: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency final public var realtimeAnimationFrame: CoreFoundation.CGFloat {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency final public var realtimeAnimationProgress: CoreFoundation.CGFloat {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency final public var animationSpeed: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency final public var respectAnimationFrameRate: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency final public var isAnimationPlaying: Swift.Bool {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency final public func play()
+  @objc @_Concurrency.MainActor @preconcurrency final public func play(completion: ((Swift.Bool) -> Swift.Void)?)
+  @objc @_Concurrency.MainActor @preconcurrency final public func play(fromProgress: CoreFoundation.CGFloat, toProgress: CoreFoundation.CGFloat, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency final public func play(fromFrame: CoreFoundation.CGFloat, toFrame: CoreFoundation.CGFloat, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency final public func play(fromMarker: Swift.String, toMarker: Swift.String, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency final public func play(marker: Swift.String, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency final public func stop()
+  @objc @_Concurrency.MainActor @preconcurrency final public func pause()
+  @objc @_Concurrency.MainActor @preconcurrency final public func reloadImages()
+  @objc @_Concurrency.MainActor @preconcurrency final public func forceDisplayUpdate()
+  @objc @_Concurrency.MainActor @preconcurrency final public func getValue(for keypath: CardAppSDK.CompatibleAnimationKeypath, atFrame: CoreFoundation.CGFloat) -> Any?
+  @objc @_Concurrency.MainActor @preconcurrency final public func logHierarchyKeypaths()
+  @objc @_Concurrency.MainActor @preconcurrency final public func setColorValue(_ color: UIKit.UIColor, forKeypath keypath: CardAppSDK.CompatibleAnimationKeypath)
+  @objc @_Concurrency.MainActor @preconcurrency final public func getColorValue(for keypath: CardAppSDK.CompatibleAnimationKeypath, atFrame: CoreFoundation.CGFloat) -> UIKit.UIColor?
+  @objc @_Concurrency.MainActor @preconcurrency final public func addSubview(_ subview: CardAppSDK.AnimationSubview, forLayerAt keypath: CardAppSDK.CompatibleAnimationKeypath)
+  @objc @_Concurrency.MainActor @preconcurrency final public func convert(rect: CoreFoundation.CGRect, toLayerAt keypath: CardAppSDK.CompatibleAnimationKeypath?) -> CoreFoundation.CGRect
+  @objc @_Concurrency.MainActor @preconcurrency final public func convert(point: CoreFoundation.CGPoint, toLayerAt keypath: CardAppSDK.CompatibleAnimationKeypath?) -> CoreFoundation.CGPoint
+  @objc @_Concurrency.MainActor @preconcurrency final public func progressTime(forMarker named: Swift.String) -> CoreFoundation.CGFloat
+  @objc @_Concurrency.MainActor @preconcurrency final public func frameTime(forMarker named: Swift.String) -> CoreFoundation.CGFloat
+  @objc @_Concurrency.MainActor @preconcurrency final public func durationFrameTime(forMarker named: Swift.String) -> CoreFoundation.CGFloat
+  @objc deinit
+}
+public class ContactAddressDetail : Foundation.NSCoding {
+  public var district: Swift.String?
+  public var street: Swift.String?
+  public var provinceCode: Swift.String?
+  public var ward: Swift.String?
+  public var province: Swift.String?
+  public var country: Swift.String?
+  convenience public init(object: Any)
+  public init(json: CardAppSDK.JSON)
+  public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc required public init(coder aDecoder: Foundation.NSCoder)
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc deinit
+}
+extension Foundation.Date {
+  public var calendar: Foundation.Calendar {
+    get
+  }
+  public var era: Swift.Int {
+    get
+  }
+  public var year: Swift.Int {
+    get
+    set
+  }
+  public var quarter: Swift.Int {
+    get
+  }
+  public var month: Swift.Int {
+    get
+    set
+  }
+  public var weekOfYear: Swift.Int {
+    get
+  }
+  public var weekOfMonth: Swift.Int {
+    get
+  }
+  public var weekday: Swift.Int {
+    get
+  }
+  public var day: Swift.Int {
+    get
+    set
+  }
+  public var hour: Swift.Int {
+    get
+    set
+  }
+  public var minute: Swift.Int {
+    get
+    set
+  }
+  public var second: Swift.Int {
+    get
+    set
+  }
+  public var nanosecond: Swift.Int {
+    get
+  }
+  public var isInFuture: Swift.Bool {
+    get
+  }
+  public var isInPast: Swift.Bool {
+    get
+  }
+  public var isInToday: Swift.Bool {
+    get
+  }
+  public var iso8601String: Swift.String {
+    get
+  }
+  public var nearestFiveMinutes: Foundation.Date {
+    get
+  }
+  public var nearestTenMinutes: Foundation.Date {
+    get
+  }
+  public var nearestHourQuarter: Foundation.Date {
+    get
+  }
+  public var nearestHalfHour: Foundation.Date {
+    get
+  }
+  public var timeZone: Foundation.TimeZone {
+    get
+  }
+  public var unixTimestamp: Swift.Double {
+    get
+  }
+}
+extension Foundation.Date {
+  public mutating func add(_ component: Foundation.Calendar.Component, value: Swift.Int)
+  public func adding(_ component: Foundation.Calendar.Component, value: Swift.Int) -> Foundation.Date
+  public func changing(_ component: Foundation.Calendar.Component, value: Swift.Int) -> Foundation.Date
+  public func beginning(of component: Foundation.Calendar.Component) -> Foundation.Date?
+  public func end(of component: Foundation.Calendar.Component) -> Foundation.Date?
+  public func dateString(ofStyle style: Foundation.DateFormatter.Style = .medium) -> Swift.String
+  public func dateTimeString(ofStyle style: Foundation.DateFormatter.Style = .medium) -> Swift.String
+  public func isInCurrent(_ component: Foundation.Calendar.Component) -> Swift.Bool
+  public func timeString(ofStyle style: Foundation.DateFormatter.Style = .medium) -> Swift.String
+}
+extension Foundation.Date {
+  public init(calendar: Foundation.Calendar? = Calendar.current, timeZone: Foundation.TimeZone? = TimeZone.current, era: Swift.Int? = Date().era, year: Swift.Int? = Date().year, month: Swift.Int? = Date().month, day: Swift.Int? = Date().day, hour: Swift.Int? = Date().hour, minute: Swift.Int? = Date().minute, second: Swift.Int? = Date().second, nanosecond: Swift.Int? = Date().nanosecond)
+  public init(iso8601String: Swift.String)
+  public init(unixTimestamp: Swift.Double)
+}
+extension Foundation.Date {
+  public static func randomWithinDaysBeforeToday(_ days: Swift.Int) -> Foundation.Date
+  public static func random() -> Foundation.Date
+}
+extension CardAppSDK.SideMenuManager {
+  @objc @available(*, deprecated, renamed: "leftMenuNavigationController")
+  dynamic open var menuLeftNavigationController: CardAppSDK.SideMenuNavigationController? {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, renamed: "rightMenuNavigationController")
+  dynamic open var menuRightNavigationController: CardAppSDK.SideMenuNavigationController? {
+    @objc get
+    @objc set
+  }
+  @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  public var menuPresentMode: CardAppSDK.SideMenuPresentationStyle {
+    get
+    set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuPushStyle: CardAppSDK.SideMenuPushStyle {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuAllowPushOfSameClassTwice: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuWidth: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuAnimationPresentDuration: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuAnimationDismissDuration: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuAnimationCompleteGestureDuration: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuPresentationStyle class.")
+  dynamic public var menuAnimationFadeStrength: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuPresentationStyle class.")
+  dynamic public var menuAnimationTransformScaleFactor: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuPresentationStyle class.")
+  dynamic public var menuAnimationBackgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuPresentationStyle class.")
+  dynamic public var menuShadowOpacity: Swift.Float {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuPresentationStyle class.")
+  dynamic public var menuShadowColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuPresentationStyle class.")
+  dynamic public var menuShadowRadius: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuPresentingViewControllerUserInteractionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuPresentationStyle class.")
+  dynamic public var menuParallaxStrength: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuFadeStatusBar: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuAnimationOptions: UIKit.UIView.AnimationOptions {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuAnimationCompletionCurve: UIKit.UIView.AnimationCurve {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuAnimationUsingSpringWithDamping: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuAnimationInitialSpringVelocity: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuDismissOnPush: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuAlwaysAnimate: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuDismissWhenBackgrounded: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  public var menuBlurEffectStyle: UIKit.UIBlurEffect.Style? {
+    get
+    set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  weak dynamic public var menuLeftSwipeToDismissGesture: UIKit.UIPanGestureRecognizer? {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  weak dynamic public var menuRightSwipeToDismissGesture: UIKit.UIPanGestureRecognizer? {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "This property has been moved to the SideMenuNavigationController class.")
+  dynamic public var menuEnableSwipeGestures: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, renamed: "enableSwipeToDismissGesture")
+  dynamic public var enableSwipeGestures: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @available(*, deprecated, renamed: "SideMenuPresentationStyle")
+  public typealias MenuPresentMode = CardAppSDK.SideMenuPresentationStyle
+  @available(*, deprecated, renamed: "addScreenEdgePanGesturesToPresent")
+  @discardableResult
+  public func menuAddScreenEdgePanGesturesToPresent(toView view: UIKit.UIView, forMenu sides: [CardAppSDK.SideMenuManager.PresentDirection] = [.left, .right]) -> [UIKit.UIScreenEdgePanGestureRecognizer]
+  @objc @available(*, deprecated, renamed: "addPanGestureToPresent")
+  @discardableResult
+  dynamic public func menuAddPanGestureToPresent(toView view: UIKit.UIView) -> UIKit.UIPanGestureRecognizer
+}
+extension CardAppSDK.SideMenuPresentationStyle {
+  @available(*, deprecated, renamed: "viewSlideOutMenuIn")
+  public static var viewSlideInOut: CardAppSDK.SideMenuPresentationStyle {
+    get
+  }
+}
+@available(*, deprecated, renamed: "SideMenuNavigationController")
+public typealias UISideMenuNavigationController = CardAppSDK.SideMenuNavigationController
+@available(*, deprecated, renamed: "SideMenuNavigationControllerDelegate")
+public typealias UISideMenuNavigationControllerDelegate = CardAppSDK.SideMenuNavigationControllerDelegate
+public typealias IndexDropdown = Swift.Int
+public typealias Closure = () -> Swift.Void
+public typealias SelectionClosure = (CardAppSDK.IndexDropdown, Swift.String) -> Swift.Void
+public typealias MultiSelectionClosure = ([CardAppSDK.IndexDropdown], [Swift.String]) -> Swift.Void
+public typealias ConfigurationClosure = (CardAppSDK.IndexDropdown, Swift.String) -> Swift.String
+public typealias CellConfigurationClosure = (CardAppSDK.IndexDropdown, Swift.String, CardAppSDK.DropDownCell) -> Swift.Void
+@objc public protocol AnchorView {
+  @objc var plainView: UIKit.UIView { get }
+}
+extension UIKit.UIView : CardAppSDK.AnchorView {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public var plainView: UIKit.UIView {
+    @objc get
+  }
+}
+extension UIKit.UIBarButtonItem : CardAppSDK.AnchorView {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public var plainView: UIKit.UIView {
+    @objc get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency final public class DropDown : UIKit.UIView {
+  public enum DismissMode {
+    case onTap
+    case automatic
+    case manual
+    public static func == (a: CardAppSDK.DropDown.DismissMode, b: CardAppSDK.DropDown.DismissMode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Direction {
+    case any
+    case top
+    case bottom
+    public static func == (a: CardAppSDK.DropDown.Direction, b: CardAppSDK.DropDown.Direction) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor @preconcurrency weak public static var VisibleDropDown: CardAppSDK.DropDown?
+  @_Concurrency.MainActor @preconcurrency weak final public var anchorView: (any CardAppSDK.AnchorView)? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var direction: CardAppSDK.DropDown.Direction
+  @_Concurrency.MainActor @preconcurrency final public var topOffset: CoreFoundation.CGPoint {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var bottomOffset: CoreFoundation.CGPoint {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var offsetFromWindowBottom: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var width: CoreFoundation.CGFloat? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var arrowIndicationX: CoreFoundation.CGFloat? {
+    get
+    set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public var cellHeight: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override final public var backgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var dimmedBackgroundColor: UIKit.UIColor {
+    get
+    set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public var selectionBackgroundColor: UIKit.UIColor
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public var separatorColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public var cornerRadiusDropdown: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public func setupCornerRadius(_ radius: CoreFoundation.CGFloat)
+  @available(iOS 11.0, *)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public func setupMaskedCorners(_ cornerMask: QuartzCore.CACornerMask)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public var shadowColorDropdown: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public var shadowOffsetDropdown: CoreFoundation.CGSize {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public var shadowOpacityDropdown: Swift.Float {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public var shadowRadiusDropdown: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public var animationduration: Swift.Double
+  @_Concurrency.MainActor @preconcurrency public static var animationEntranceOptions: UIKit.UIView.AnimationOptions
+  @_Concurrency.MainActor @preconcurrency public static var animationExitOptions: UIKit.UIView.AnimationOptions
+  @_Concurrency.MainActor @preconcurrency final public var animationEntranceOptions: UIKit.UIView.AnimationOptions
+  @_Concurrency.MainActor @preconcurrency final public var animationExitOptions: UIKit.UIView.AnimationOptions
+  @_Concurrency.MainActor @preconcurrency final public var downScaleTransform: CoreFoundation.CGAffineTransform {
+    get
+    set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public var textColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public var selectedTextColor: UIKit.UIColor {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic final public var textFont: UIKit.UIFont {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var cellNib: UIKit.UINib {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var dataSource: [Swift.String] {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var localizationKeysDataSource: [Swift.String] {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var cellConfiguration: CardAppSDK.ConfigurationClosure? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var customCellConfiguration: CardAppSDK.CellConfigurationClosure? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency final public var selectionAction: CardAppSDK.SelectionClosure?
+  @_Concurrency.MainActor @preconcurrency final public var multiSelectionAction: CardAppSDK.MultiSelectionClosure?
+  @_Concurrency.MainActor @preconcurrency final public var willShowAction: CardAppSDK.Closure?
+  @_Concurrency.MainActor @preconcurrency final public var cancelAction: CardAppSDK.Closure?
+  @_Concurrency.MainActor @preconcurrency final public var dismissMode: CardAppSDK.DropDown.DismissMode {
+    get
+    set
+  }
+  @objc deinit
+  @_Concurrency.MainActor @preconcurrency @objc convenience dynamic public init()
+  @_Concurrency.MainActor @preconcurrency convenience public init(anchorView: any CardAppSDK.AnchorView, selectionAction: CardAppSDK.SelectionClosure? = nil, dataSource: [Swift.String] = [], topOffset: CoreFoundation.CGPoint? = nil, bottomOffset: CoreFoundation.CGPoint? = nil, cellConfiguration: CardAppSDK.ConfigurationClosure? = nil, cancelAction: CardAppSDK.Closure? = nil)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+}
+extension CardAppSDK.DropDown {
+  @_Concurrency.MainActor @preconcurrency @objc override final public func updateConstraints()
+  @_Concurrency.MainActor @preconcurrency @objc override final public func layoutSubviews()
+}
+extension CardAppSDK.DropDown {
+  @objc(show) @_Concurrency.MainActor @preconcurrency final public func objc_show() -> Foundation.NSDictionary
+  @discardableResult
+  @_Concurrency.MainActor @preconcurrency final public func show(onTopOf window: UIKit.UIWindow? = nil, beforeTransform transform: CoreFoundation.CGAffineTransform? = nil, anchorPoint: CoreFoundation.CGPoint? = nil) -> (canBeDisplayed: Swift.Bool, offscreenHeight: CoreFoundation.CGFloat?)
+  @_Concurrency.MainActor @preconcurrency @objc override final public func accessibilityPerformEscape() -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency final public func hide()
+}
+extension CardAppSDK.DropDown {
+  @_Concurrency.MainActor @preconcurrency final public func reloadAllComponents()
+  @_Concurrency.MainActor @preconcurrency final public func selectRow(at IndexDropdown: CardAppSDK.IndexDropdown?, scrollPosition: UIKit.UITableView.ScrollPosition = .none)
+  @_Concurrency.MainActor @preconcurrency final public func selectRows(at indices: Swift.Set<CardAppSDK.IndexDropdown>?)
+  @_Concurrency.MainActor @preconcurrency final public func deselectRow(at IndexDropdown: CardAppSDK.IndexDropdown?)
+  @_Concurrency.MainActor @preconcurrency final public func deselectRows(at indices: Swift.Set<CardAppSDK.IndexDropdown>?)
+  @_Concurrency.MainActor @preconcurrency final public var indexForSelectedRow: CardAppSDK.IndexDropdown? {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency final public var selectedItem: Swift.String? {
+    get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency final public func selectRow(_ index: Swift.Int, scrollPosition: UIKit.UITableView.ScrollPosition = .none)
+  @objc @_Concurrency.MainActor @preconcurrency final public func clearSelection()
+  @objc @_Concurrency.MainActor @preconcurrency final public func deselectRow(_ index: Swift.Int)
+  @objc @_Concurrency.MainActor @preconcurrency final public var indexPathForSelectedRow: Foundation.NSIndexPath? {
+    @objc get
+  }
+}
+extension CardAppSDK.DropDown : UIKit.UITableViewDataSource, UIKit.UITableViewDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc final public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor @preconcurrency @objc final public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor @preconcurrency @objc final public func tableView(_ tableView: UIKit.UITableView, willDisplay cell: UIKit.UITableViewCell, forRowAt indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor @preconcurrency @objc final public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+}
+extension CardAppSDK.DropDown {
+  @_Concurrency.MainActor @preconcurrency @objc override final public func hitTest(_ point: CoreFoundation.CGPoint, with event: UIKit.UIEvent?) -> UIKit.UIView?
+}
+extension CardAppSDK.DropDown {
+  @objc @_Concurrency.MainActor @preconcurrency public static func startListeningToKeyboard()
+}
+extension CardAppSDK.DropDown {
+  @_Concurrency.MainActor @preconcurrency final public class func setupDefaultAppearance()
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class DropDownCell : UIKit.UITableViewCell {
+  @objc @IBOutlet @_Concurrency.MainActor @preconcurrency weak open var optionLabel: UIKit.UILabel!
+  @available(iOS 3.0, *)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension CardAppSDK.DropDownCell {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var isSelected: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var isHighlighted: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func setHighlighted(_ highlighted: Swift.Bool, animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func setSelected(_ selected: Swift.Bool, animated: Swift.Bool)
+}
+public class FilepathImageProvider : CardAppSDK.AnimationImageProvider {
+  public init(filepath: Swift.String)
+  public init(filepath: Foundation.URL)
+  public func imageForAsset(asset: CardAppSDK.ImageAsset) -> CoreGraphics.CGImage?
+  @objc deinit
+}
+final public class FloatValueProvider {
+  public init(block: @escaping CardAppSDK.FloatValueProvider.CGFloatValueBlock)
+  public init(_ float: CoreFoundation.CGFloat)
+  public typealias CGFloatValueBlock = (CoreFoundation.CGFloat) -> CoreFoundation.CGFloat
+  final public var float: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  final public var valueType: any Any.Type {
+    get
+  }
+  final public var storage: CardAppSDK.ValueProviderStorage<CardAppSDK.Vector1D> {
+    get
+  }
+  final public func hasUpdate(frame _: CoreFoundation.CGFloat) -> Swift.Bool
+  @objc deinit
+}
+extension UIKit.UIFont {
+  public static let loadMyFonts: ()
+}
+final public class GradientValueProvider {
+  public init(block: @escaping CardAppSDK.GradientValueProvider.ColorsValueBlock, locations: CardAppSDK.GradientValueProvider.ColorLocationsBlock? = nil)
+  public init(_ colors: [CardAppSDK.Color], locations: [Swift.Double] = [])
+  public typealias ColorsValueBlock = (CoreFoundation.CGFloat) -> [CardAppSDK.Color]
+  public typealias ColorLocationsBlock = (CoreFoundation.CGFloat) -> [Swift.Double]
+  final public var colors: [CardAppSDK.Color] {
+    get
+    set
+  }
+  final public var locations: [Swift.Double] {
+    get
+    set
+  }
+  final public var valueType: any Any.Type {
+    get
+  }
+  final public var storage: CardAppSDK.ValueProviderStorage<[Swift.Double]> {
+    get
+  }
+  final public func hasUpdate(frame _: CoreFoundation.CGFloat) -> Swift.Bool
+  @objc deinit
+}
+@IBDesignable extension UIKit.UILabel {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic public var localizeKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+@IBDesignable extension UIKit.UIButton {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic public var localizeKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+@IBDesignable extension UIKit.UITextView {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic public var localizeKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+@IBDesignable extension UIKit.UITextField {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic public var localizeKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+@IBDesignable extension UIKit.UINavigationItem {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic public var localizeKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class ImageAsset : CardAppSDK.Asset {
+  final public let name: Swift.String
+  final public let directory: Swift.String
+  final public let width: Swift.Double
+  final public let height: Swift.Double
+  override final public func encode(to encoder: any Swift.Encoder) throws
+  @objc deinit
+}
+public protocol InitializableStruct {
+  init()
+}
+extension CardAppSDK.InitializableStruct {
+  public init(_ block: (inout Self) -> Swift.Void)
+  @discardableResult
+  public mutating func with(_ block: (inout Self) -> Swift.Void) -> Self
+}
+public protocol Interpolatable : CardAppSDK.AnyInterpolatable {
+  func interpolate(to: Self, amount: CoreFoundation.CGFloat) -> Self
+}
+public protocol SpatialInterpolatable : CardAppSDK.AnyInterpolatable {
+  func interpolate(to: Self, amount: CoreFoundation.CGFloat, spatialOutTangent: CoreFoundation.CGPoint?, spatialInTangent: CoreFoundation.CGPoint?) -> Self
+}
+public protocol AnyInterpolatable {
+  func _interpolate(to: Self, amount: CoreFoundation.CGFloat, spatialOutTangent: CoreFoundation.CGPoint?, spatialInTangent: CoreFoundation.CGPoint?) -> Self
+}
+extension CardAppSDK.Interpolatable {
+  public func _interpolate(to: Self, amount: CoreFoundation.CGFloat, spatialOutTangent _: CoreFoundation.CGPoint?, spatialInTangent _: CoreFoundation.CGPoint?) -> Self
+}
+extension CardAppSDK.SpatialInterpolatable {
+  public func interpolate(to: Self, amount: CoreFoundation.CGFloat) -> Self
+  public func _interpolate(to: Self, amount: CoreFoundation.CGFloat, spatialOutTangent: CoreFoundation.CGPoint?, spatialInTangent: CoreFoundation.CGPoint?) -> Self
+}
+extension Swift.Double : CardAppSDK.Interpolatable {
+}
+extension CoreFoundation.CGFloat : CardAppSDK.Interpolatable {
+}
+extension Swift.Float : CardAppSDK.Interpolatable {
+}
+extension CardAppSDK.Interpolatable where Self : Swift.BinaryFloatingPoint {
+  public func interpolate(to: Self, amount: CoreFoundation.CGFloat) -> Self
+}
+extension CoreFoundation.CGRect : CardAppSDK.Interpolatable {
+  public func interpolate(to: CoreFoundation.CGRect, amount: CoreFoundation.CGFloat) -> CoreFoundation.CGRect
+}
+extension CoreFoundation.CGSize : CardAppSDK.Interpolatable {
+  public func interpolate(to: CoreFoundation.CGSize, amount: CoreFoundation.CGFloat) -> CoreFoundation.CGSize
+}
+extension CoreFoundation.CGPoint : CardAppSDK.SpatialInterpolatable {
+  public func interpolate(to: CoreFoundation.CGPoint, amount: CoreFoundation.CGFloat, spatialOutTangent: CoreFoundation.CGPoint?, spatialInTangent: CoreFoundation.CGPoint?) -> CoreFoundation.CGPoint
+}
+extension CardAppSDK.Color : CardAppSDK.Interpolatable {
+  public func interpolate(to: CardAppSDK.Color, amount: CoreFoundation.CGFloat) -> CardAppSDK.Color
+}
+extension CardAppSDK.Vector1D : CardAppSDK.Interpolatable {
+  public func interpolate(to: CardAppSDK.Vector1D, amount: CoreFoundation.CGFloat) -> CardAppSDK.Vector1D
+}
+extension CardAppSDK.Vector2D : CardAppSDK.SpatialInterpolatable {
+  public func interpolate(to: CardAppSDK.Vector2D, amount: CoreFoundation.CGFloat, spatialOutTangent: CoreFoundation.CGPoint?, spatialInTangent: CoreFoundation.CGPoint?) -> CardAppSDK.Vector2D
+}
+extension CardAppSDK.Vector3D : CardAppSDK.SpatialInterpolatable {
+  public func interpolate(to: CardAppSDK.Vector3D, amount: CoreFoundation.CGFloat, spatialOutTangent: CoreFoundation.CGPoint?, spatialInTangent: CoreFoundation.CGPoint?) -> CardAppSDK.Vector3D
+}
+extension Swift.Array : CardAppSDK.Interpolatable, CardAppSDK.AnyInterpolatable where Element : CardAppSDK.Interpolatable {
+  public func interpolate(to: [Element], amount: CoreFoundation.CGFloat) -> [Element]
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class IQBarButtonItem : UIKit.UIBarButtonItem {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init()
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var tintColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open func setTarget(_ target: Swift.AnyObject?, action: ObjectiveC.Selector?)
+  @objc @_Concurrency.MainActor @preconcurrency open var invocation: CardAppSDK.IQInvocation?
+  @objc deinit
+}
+@objc public class IQInvocation : ObjectiveC.NSObject {
+  @objc weak public var target: Swift.AnyObject?
+  @objc public var action: ObjectiveC.Selector
+  @objc public init(_ target: Swift.AnyObject, _ action: ObjectiveC.Selector)
+  @objc public func invoke(from: Any)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor @preconcurrency public class IQKeyboardManager : ObjectiveC.NSObject, UIKit.UIGestureRecognizerDelegate {
+  @objc @_Concurrency.MainActor @preconcurrency public var enable: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var keyboardDistanceFromTextField: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var keyboardShowing: Swift.Bool {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var movedDistance: CoreFoundation.CGFloat {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public class var shared: CardAppSDK.IQKeyboardManager {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var enableAutoToolbar: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var toolbarManageBehaviour: CardAppSDK.IQAutoToolbarManageBehaviour
+  @objc @_Concurrency.MainActor @preconcurrency public var shouldToolbarUsesTextFieldTintColor: Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public var toolbarTintColor: UIKit.UIColor?
+  @objc @_Concurrency.MainActor @preconcurrency public var toolbarBarTintColor: UIKit.UIColor?
+  @objc @_Concurrency.MainActor @preconcurrency public var previousNextDisplayMode: CardAppSDK.IQPreviousNextDisplayMode
+  @objc @_Concurrency.MainActor @preconcurrency public var toolbarPreviousBarButtonItemImage: UIKit.UIImage?
+  @objc @_Concurrency.MainActor @preconcurrency public var toolbarNextBarButtonItemImage: UIKit.UIImage?
+  @objc @_Concurrency.MainActor @preconcurrency public var toolbarDoneBarButtonItemImage: UIKit.UIImage?
+  @objc @_Concurrency.MainActor @preconcurrency public var toolbarPreviousBarButtonItemText: Swift.String?
+  @objc @_Concurrency.MainActor @preconcurrency public var toolbarNextBarButtonItemText: Swift.String?
+  @objc @_Concurrency.MainActor @preconcurrency public var toolbarDoneBarButtonItemText: Swift.String?
+  @objc @_Concurrency.MainActor @preconcurrency public var shouldShowToolbarPlaceholder: Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public var placeholderFont: UIKit.UIFont?
+  @objc @_Concurrency.MainActor @preconcurrency public var placeholderColor: UIKit.UIColor?
+  @objc @_Concurrency.MainActor @preconcurrency public var placeholderButtonColor: UIKit.UIColor?
+  @objc @_Concurrency.MainActor @preconcurrency public var overrideKeyboardAppearance: Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public var keyboardAppearance: UIKit.UIKeyboardAppearance
+  @objc @_Concurrency.MainActor @preconcurrency public var shouldResignOnTouchOutside: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var resignFirstResponderGesture: UIKit.UITapGestureRecognizer {
+    @objc get
+    @objc set
+  }
+  @discardableResult
+  @objc @_Concurrency.MainActor @preconcurrency public func resignFirstResponder() -> Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public var canGoPrevious: Swift.Bool {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency public var canGoNext: Swift.Bool {
+    @objc get
+  }
+  @discardableResult
+  @objc @_Concurrency.MainActor @preconcurrency public func goPrevious() -> Swift.Bool
+  @discardableResult
+  @objc @_Concurrency.MainActor @preconcurrency public func goNext() -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIKit.UIGestureRecognizer) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc public func gestureRecognizer(_ gestureRecognizer: UIKit.UIGestureRecognizer, shouldReceive touch: UIKit.UITouch) -> Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public var shouldPlayInputClicks: Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public var layoutIfNeededOnUpdate: Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public var disabledDistanceHandlingClasses: [UIKit.UIViewController.Type]
+  @objc @_Concurrency.MainActor @preconcurrency public var enabledDistanceHandlingClasses: [UIKit.UIViewController.Type]
+  @objc @_Concurrency.MainActor @preconcurrency public var disabledToolbarClasses: [UIKit.UIViewController.Type]
+  @objc @_Concurrency.MainActor @preconcurrency public var enabledToolbarClasses: [UIKit.UIViewController.Type]
+  @objc @_Concurrency.MainActor @preconcurrency public var toolbarPreviousNextAllowedClasses: [UIKit.UIView.Type]
+  @objc @_Concurrency.MainActor @preconcurrency public var disabledTouchResignedClasses: [UIKit.UIViewController.Type]
+  @objc @_Concurrency.MainActor @preconcurrency public var enabledTouchResignedClasses: [UIKit.UIViewController.Type]
+  @objc @_Concurrency.MainActor @preconcurrency public var touchResignedGestureIgnoreClasses: [UIKit.UIView.Type]
+  @objc @_Concurrency.MainActor @preconcurrency public func registerTextFieldViewClass(_ aClass: UIKit.UIView.Type, didBeginEditingNotificationName: Swift.String, didEndEditingNotificationName: Swift.String)
+  @objc @_Concurrency.MainActor @preconcurrency public func unregisterTextFieldViewClass(_ aClass: UIKit.UIView.Type, didBeginEditingNotificationName: Swift.String, didEndEditingNotificationName: Swift.String)
+  @objc deinit
+  @objc @_Concurrency.MainActor @preconcurrency public func reloadLayoutIfNeeded()
+  @objc @_Concurrency.MainActor @preconcurrency public func reloadInputViews()
+  @objc @_Concurrency.MainActor @preconcurrency public var enableDebugging: Swift.Bool
+  @objc @_Concurrency.MainActor @preconcurrency public func registerAllNotifications()
+  @objc @_Concurrency.MainActor @preconcurrency public func unregisterAllNotifications()
+}
+@objc public enum IQAutoToolbarManageBehaviour : Swift.Int {
+  case bySubviews
+  case byTag
+  case byPosition
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum IQPreviousNextDisplayMode : Swift.Int {
+  case `default`
+  case alwaysHide
+  case alwaysShow
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum IQEnableMode : Swift.Int {
+  case `default`
+  case enabled
+  case disabled
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency public class IQKeyboardReturnKeyHandler : ObjectiveC.NSObject, UIKit.UITextFieldDelegate, UIKit.UITextViewDelegate {
+  @objc @_Concurrency.MainActor @preconcurrency weak public var delegate: (any UIKit.UITextFieldDelegate & UIKit.UITextViewDelegate)?
+  @objc @_Concurrency.MainActor @preconcurrency public var lastTextFieldReturnKeyType: UIKit.UIReturnKeyType {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init()
+  @objc @_Concurrency.MainActor @preconcurrency public init(controller: UIKit.UIViewController)
+  @objc deinit
+  @objc @_Concurrency.MainActor @preconcurrency public func addTextFieldView(_ view: UIKit.UIView)
+  @objc @_Concurrency.MainActor @preconcurrency public func removeTextFieldView(_ view: UIKit.UIView)
+  @objc @_Concurrency.MainActor @preconcurrency public func addResponderFromView(_ view: UIKit.UIView)
+  @objc @_Concurrency.MainActor @preconcurrency public func removeResponderFromView(_ view: UIKit.UIView)
+  @_Concurrency.MainActor @preconcurrency @objc public func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc public func textFieldShouldEndEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc public func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor @preconcurrency @objc public func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+  @available(iOS 10.0, *)
+  @_Concurrency.MainActor @preconcurrency @objc public func textFieldDidEndEditing(_ textField: UIKit.UITextField, reason: UIKit.UITextField.DidEndEditingReason)
+  @_Concurrency.MainActor @preconcurrency @objc public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc public func textFieldShouldClear(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc public func textViewShouldBeginEditing(_ textView: UIKit.UITextView) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc public func textViewShouldEndEditing(_ textView: UIKit.UITextView) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc public func textViewDidBeginEditing(_ textView: UIKit.UITextView)
+  @_Concurrency.MainActor @preconcurrency @objc public func textViewDidEndEditing(_ textView: UIKit.UITextView)
+  @_Concurrency.MainActor @preconcurrency @objc public func textView(_ textView: UIKit.UITextView, shouldChangeTextIn range: Foundation.NSRange, replacementText text: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc public func textViewDidChange(_ textView: UIKit.UITextView)
+  @_Concurrency.MainActor @preconcurrency @objc public func textViewDidChangeSelection(_ textView: UIKit.UITextView)
+  @available(iOS 10.0, *)
+  @_Concurrency.MainActor @preconcurrency @objc public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith URL: Foundation.URL, in characterRange: Foundation.NSRange, interaction: UIKit.UITextItemInteraction) -> Swift.Bool
+  @available(iOS 10.0, *)
+  @_Concurrency.MainActor @preconcurrency @objc public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith textAttachment: UIKit.NSTextAttachment, in characterRange: Foundation.NSRange, interaction: UIKit.UITextItemInteraction) -> Swift.Bool
+  @available(iOS, deprecated: 10.0)
+  @_Concurrency.MainActor @preconcurrency @objc public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith URL: Foundation.URL, in characterRange: Foundation.NSRange) -> Swift.Bool
+  @available(iOS, deprecated: 10.0)
+  @_Concurrency.MainActor @preconcurrency @objc public func textView(_ aTextView: UIKit.UITextView, shouldInteractWith textAttachment: UIKit.NSTextAttachment, in characterRange: Foundation.NSRange) -> Swift.Bool
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency public class IQPreviousNextView : UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class IQTextView : UIKit.UITextView {
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect, textContainer: UIKit.NSTextContainer?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func awakeFromNib()
+  @objc deinit
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency open var placeholderTextColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency open var placeholder: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency open var attributedPlaceholder: Foundation.NSAttributedString? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var text: Swift.String! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var attributedText: Foundation.NSAttributedString! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var font: UIKit.UIFont? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var textAlignment: UIKit.NSTextAlignment {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var delegate: (any UIKit.UITextViewDelegate)? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency open class IQTitleBarButtonItem : CardAppSDK.IQBarButtonItem {
+  @objc @_Concurrency.MainActor @preconcurrency open var titleFont: UIKit.UIFont? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var title: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var titleColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var selectableTitleColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override open var invocation: CardAppSDK.IQInvocation? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor @preconcurrency convenience public init(title: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency open class IQToolbar : UIKit.UIToolbar, UIKit.UIInputViewAudioFeedback {
+  @objc @_Concurrency.MainActor @preconcurrency open var previousBarButton: CardAppSDK.IQBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var nextBarButton: CardAppSDK.IQBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var titleBarButton: CardAppSDK.IQTitleBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var doneBarButton: CardAppSDK.IQBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var fixedSpaceBarButton: CardAppSDK.IQBarButtonItem {
+    @objc get
+    @objc set(newValue)
+  }
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func sizeThatFits(_ size: CoreFoundation.CGSize) -> CoreFoundation.CGSize
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var tintColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor @preconcurrency @objc open var enableInputClicksWhenVisible: Swift.Bool {
+    @objc get
+  }
+  @objc deinit
+}
+@objc extension UIKit.UIScrollView {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var shouldIgnoreScrollingAdjustment: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var shouldRestoreScrollViewContentOffset: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+}
+public let kIQUseDefaultKeyboardDistance: CoreFoundation.CGFloat
+@objc extension UIKit.UIView {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var keyboardDistanceFromTextField: CoreFoundation.CGFloat {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var ignoreSwitchingByNextPrevious: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var shouldResignOnTouchOutsideMode: CardAppSDK.IQEnableMode {
+    @objc get
+    @objc set(newValue)
+  }
+}
+@objc extension UIKit.UIView {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func viewContainingController() -> UIKit.UIViewController?
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func topMostController() -> UIKit.UIViewController?
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func parentContainerViewController() -> UIKit.UIViewController?
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func superviewOfClassType(_ classType: UIKit.UIView.Type, belowView: UIKit.UIView? = nil) -> UIKit.UIView?
+}
+@objc extension UIKit.UIViewController {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func parentIQContainerViewController() -> UIKit.UIViewController?
+}
+@objc public class IQBarButtonItemConfiguration : ObjectiveC.NSObject {
+  @objc public init(barButtonSystemItem: UIKit.UIBarButtonItem.SystemItem, action: ObjectiveC.Selector)
+  @objc public init(image: UIKit.UIImage, action: ObjectiveC.Selector)
+  @objc public init(title: Swift.String, action: ObjectiveC.Selector)
+  final public let barButtonSystemItem: UIKit.UIBarButtonItem.SystemItem?
+  @objc final public let image: UIKit.UIImage?
+  @objc final public let title: Swift.String?
+  @objc final public let action: ObjectiveC.Selector?
+  @objc deinit
+}
+@objc extension UIKit.UIImage {
+  @objc public static func keyboardPreviousiOS9Image() -> UIKit.UIImage?
+  @objc public static func keyboardNextiOS9Image() -> UIKit.UIImage?
+  @objc public static func keyboardPreviousiOS10Image() -> UIKit.UIImage?
+  @objc public static func keyboardNextiOS10Image() -> UIKit.UIImage?
+  @objc public static func keyboardPreviousImage() -> UIKit.UIImage?
+  @objc public static func keyboardNextImage() -> UIKit.UIImage?
+}
+@objc extension UIKit.UIView {
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var keyboardToolbar: CardAppSDK.IQToolbar {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var shouldHideToolbarPlaceholder: Swift.Bool {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var toolbarPlaceholder: Swift.String? {
+    @objc get
+    @objc set(newValue)
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public var drawingToolbarPlaceholder: Swift.String? {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addKeyboardToolbarWithTarget(target: Swift.AnyObject?, titleText: Swift.String?, rightBarButtonConfiguration: CardAppSDK.IQBarButtonItemConfiguration?, previousBarButtonConfiguration: CardAppSDK.IQBarButtonItemConfiguration? = nil, nextBarButtonConfiguration: CardAppSDK.IQBarButtonItemConfiguration? = nil)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, action: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, action: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightButtonOnKeyboardWithImage(_ image: UIKit.UIImage, target: Swift.AnyObject?, action: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightButtonOnKeyboardWithImage(_ image: UIKit.UIImage, target: Swift.AnyObject?, action: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightButtonOnKeyboardWithText(_ text: Swift.String, target: Swift.AnyObject?, action: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightButtonOnKeyboardWithText(_ text: Swift.String, target: Swift.AnyObject?, action: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addCancelDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, cancelAction: ObjectiveC.Selector, doneAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightLeftOnKeyboardWithTarget(_ target: Swift.AnyObject?, leftButtonTitle: Swift.String, rightButtonTitle: Swift.String, leftButtonAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightLeftOnKeyboardWithTarget(_ target: Swift.AnyObject?, leftButtonImage: UIKit.UIImage, rightButtonImage: UIKit.UIImage, leftButtonAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addCancelDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, cancelAction: ObjectiveC.Selector, doneAction: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightLeftOnKeyboardWithTarget(_ target: Swift.AnyObject?, leftButtonTitle: Swift.String, rightButtonTitle: Swift.String, leftButtonAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addRightLeftOnKeyboardWithTarget(_ target: Swift.AnyObject?, leftButtonImage: UIKit.UIImage, rightButtonImage: UIKit.UIImage, leftButtonAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addPreviousNextDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, doneAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addPreviousNextRightOnKeyboardWithTarget(_ target: Swift.AnyObject?, rightButtonImage: UIKit.UIImage, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addPreviousNextRightOnKeyboardWithTarget(_ target: Swift.AnyObject?, rightButtonTitle: Swift.String, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, shouldShowPlaceholder: Swift.Bool = false)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addPreviousNextDoneOnKeyboardWithTarget(_ target: Swift.AnyObject?, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, doneAction: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addPreviousNextRightOnKeyboardWithTarget(_ target: Swift.AnyObject?, rightButtonImage: UIKit.UIImage, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, titleText: Swift.String?)
+  @objc @_Concurrency.MainActor @preconcurrency dynamic public func addPreviousNextRightOnKeyboardWithTarget(_ target: Swift.AnyObject?, rightButtonTitle: Swift.String, previousAction: ObjectiveC.Selector, nextAction: ObjectiveC.Selector, rightButtonAction: ObjectiveC.Selector, titleText: Swift.String?)
+}
+@objc extension UIKit.UIViewController {
+  @available(*, deprecated, message: "Due to change in core-logic of handling distance between textField and keyboard distance, this layout contraint tweak is no longer needed and things will just work out of the box regardless of constraint pinned with safeArea/layoutGuide/superview.")
+  @IBOutlet @objc @_Concurrency.MainActor @preconcurrency dynamic public var IQLayoutGuideConstraint: UIKit.NSLayoutConstraint? {
+    @objc get
+    @objc set(newValue)
+  }
+}
+final public class Keyframe<T> {
+  public init(_ value: T, spatialInTangent: CardAppSDK.Vector3D? = nil, spatialOutTangent: CardAppSDK.Vector3D? = nil)
+  public init(value: T, time: CardAppSDK.AnimationFrameTime, isHold: Swift.Bool = false, inTangent: CardAppSDK.Vector2D? = nil, outTangent: CardAppSDK.Vector2D? = nil, spatialInTangent: CardAppSDK.Vector3D? = nil, spatialOutTangent: CardAppSDK.Vector3D? = nil)
+  final public let value: T
+  final public let time: CardAppSDK.AnimationFrameTime
+  final public let isHold: Swift.Bool
+  final public let inTangent: CardAppSDK.Vector2D?
+  final public let outTangent: CardAppSDK.Vector2D?
+  final public let spatialInTangent: CardAppSDK.Vector3D?
+  final public let spatialOutTangent: CardAppSDK.Vector3D?
+  @objc deinit
+}
+extension CardAppSDK.Keyframe : Swift.Equatable where T : Swift.Equatable {
+  public static func == (lhs: CardAppSDK.Keyframe<T>, rhs: CardAppSDK.Keyframe<T>) -> Swift.Bool
+}
+extension CardAppSDK.Keyframe : Swift.Hashable where T : Swift.Hashable {
+  final public func hash(into hasher: inout Swift.Hasher)
+  final public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class Label : UIKit.UILabel {
+  public typealias Action = (CardAppSDK.Label) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency open var insets: UIKit.UIEdgeInsets
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func drawText(in rect: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func sizeThatFits(_ size: CoreFoundation.CGSize) -> CoreFoundation.CGSize
+  @_Concurrency.MainActor @preconcurrency public func action(_ closure: @escaping CardAppSDK.Label.Action)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension QuartzCore.CALayer {
+  @nonobjc public func logLayerTree(withIndent: Swift.Int = 0)
+}
+public enum LayerType : Swift.Int, Swift.Codable {
+  case precomp
+  case solid
+  case image
+  case null
+  case shape
+  case text
+  public init(from decoder: any Swift.Decoder) throws
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum MatteType : Swift.Int, Swift.Codable {
+  case none
+  case add
+  case invert
+  case unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public enum BlendMode : Swift.Int, Swift.Codable {
+  case normal
+  case multiply
+  case screen
+  case overlay
+  case darken
+  case lighten
+  case colorDodge
+  case colorBurn
+  case hardLight
+  case softLight
+  case difference
+  case exclusion
+  case hue
+  case saturation
+  case color
+  case luminosity
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class LegalRepresentative : Foundation.NSCoding {
+  public var placeOfResidenceDetail: CardAppSDK.PlaceOfResidenceDetail?
+  public var gender: Swift.String?
+  public var placeOfResidence: Swift.String?
+  public var contactAddressDetail: CardAppSDK.ContactAddressDetail?
+  public var contactAddress: Swift.String?
+  public var citizenIndentityNumber: Swift.String?
+  public var nationality: Swift.String?
+  public var position: Swift.String?
+  public var typeOfDocument: Swift.String?
+  public var dateOfBirth: Swift.String?
+  public var fullName: Swift.String?
+  public var placeOfIssue: Swift.String?
+  public var dateOfIssue: Swift.String?
+  convenience public init(object: Any)
+  public init(json: CardAppSDK.JSON)
+  public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc required public init(coder aDecoder: Foundation.NSCoder)
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc deinit
+}
+public let LCLLanguageChangeNotification: Swift.String
+public func LDLocalized(_ string: Swift.String) -> Swift.String
+public func LDLocalized(_ string: Swift.String, arguments: any Swift.CVarArg...) -> Swift.String
+public func LDLocalizedPlural(_ string: Swift.String, argument: any Swift.CVarArg) -> Swift.String
+extension Swift.String {
+  public func LDlocalized() -> Swift.String
+  public func LDlocalizedFormat(_ arguments: any Swift.CVarArg...) -> Swift.String
+  public func LDlocalizedPlural(_ argument: any Swift.CVarArg) -> Swift.String
+  public func LDcommented(_ argument: Swift.String) -> Swift.String
+}
+@objc @_inheritsConvenienceInitializers open class LDLocalize : ObjectiveC.NSObject {
+  open class func availableLanguages(_ excludeBase: Swift.Bool = false) -> [Swift.String]
+  open class func currentLanguage() -> Swift.String
+  open class func setCurrentLanguage(_ language: Swift.String)
+  open class func defaultLanguage() -> Swift.String
+  open class func resetCurrentLanguageToDefault()
+  open class func displayNameForLanguage(_ language: Swift.String) -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct LottieConfiguration : Swift.Hashable {
+  public init(renderingEngine: CardAppSDK.RenderingEngineOption = .mainThread, decodingStrategy: CardAppSDK.DecodingStrategy = .codable)
+  public static var shared: CardAppSDK.LottieConfiguration
+  public var renderingEngine: CardAppSDK.RenderingEngineOption
+  public var decodingStrategy: CardAppSDK.DecodingStrategy
+  public static func == (a: CardAppSDK.LottieConfiguration, b: CardAppSDK.LottieConfiguration) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum RenderingEngineOption : Swift.Hashable {
+  case automatic
+  case specific(CardAppSDK.RenderingEngine)
+  public static var mainThread: CardAppSDK.RenderingEngineOption {
+    get
+  }
+  public static var coreAnimation: CardAppSDK.RenderingEngineOption {
+    get
+  }
+}
+public enum RenderingEngine : Swift.Hashable {
+  case mainThread
+  case coreAnimation
+}
+extension CardAppSDK.RenderingEngineOption : Swift.RawRepresentable, Swift.CustomStringConvertible {
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.String
+}
+extension CardAppSDK.RenderingEngine : Swift.RawRepresentable, Swift.CustomStringConvertible {
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+  public typealias RawValue = Swift.String
+}
+public enum DecodingStrategy : Swift.Hashable {
+  case codable
+  case dictionaryBased
+  public static func == (a: CardAppSDK.DecodingStrategy, b: CardAppSDK.DecodingStrategy) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+final public class LottieLogger {
+  public init(assert: @escaping CardAppSDK.LottieLogger.Assert = { condition, message, file, line in
+       
+       
+       
+      Swift.assert(condition(), message(), file: file, line: line)
+    }, assertionFailure: @escaping CardAppSDK.LottieLogger.AssertionFailure = { message, file, line in
+       
+       
+       
+       
+      Swift.assertionFailure(message(), file: file, line: line)
+    }, warn: @escaping CardAppSDK.LottieLogger.Warn = { message, _, _ in
+    }, info: @escaping CardAppSDK.LottieLogger.Info = { message in
+    })
+  public typealias Assert = (_ condition: @autoclosure () -> Swift.Bool, _ message: @autoclosure () -> Swift.String, _ fileID: Swift.StaticString, _ line: Swift.UInt) -> Swift.Void
+  public typealias AssertionFailure = (_ message: @autoclosure () -> Swift.String, _ fileID: Swift.StaticString, _ line: Swift.UInt) -> Swift.Void
+  public typealias Warn = (_ message: @autoclosure () -> Swift.String, _ fileID: Swift.StaticString, _ line: Swift.UInt) -> Swift.Void
+  public typealias Info = (_ message: @autoclosure () -> Swift.String) -> Swift.Void
+  public static var shared: CardAppSDK.LottieLogger
+  final public func assert(_ condition: @autoclosure () -> Swift.Bool, _ message: @autoclosure () -> Swift.String = String(), fileID: Swift.StaticString = #fileID, line: Swift.UInt = #line)
+  final public func assertionFailure(_ message: @autoclosure () -> Swift.String = String(), fileID: Swift.StaticString = #fileID, line: Swift.UInt = #line)
+  final public func warn(_ message: @autoclosure () -> Swift.String = String(), fileID: Swift.StaticString = #fileID, line: Swift.UInt = #line)
+  final public func info(_ message: @autoclosure () -> Swift.String = String())
+  @objc deinit
+}
+extension CardAppSDK.LottieLogger {
+  public static var printToConsole: CardAppSDK.LottieLogger {
+    get
+  }
+}
+public class LRUAnimationCache : CardAppSDK.AnimationCacheProvider {
+  public init()
+  public static let sharedCache: CardAppSDK.LRUAnimationCache
+  public var cacheSize: Swift.Int
+  public func clearCache()
+  public func animation(forKey: Swift.String) -> CardAppSDK.Animation?
+  public func setAnimation(_ animation: CardAppSDK.Animation, forKey: Swift.String)
+  @objc deinit
+}
+infix operator +| : DefaultPrecedence
+infix operator +- : DefaultPrecedence
+@_hasMissingDesignatedInitializers public class MH11Manager {
+  public func clearData()
+  public func loadData()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class MH12Manager {
+  public func loadData()
+  public func clearData()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class MH13Manager {
+  public func loadData()
+  @objc deinit
+}
+public class Mrz : Foundation.NSCoding {
+  public var expiredDate: Swift.String?
+  public var gender: Swift.String?
+  public var idCard: Swift.String?
+  public var fullName: Swift.String?
+  public var dateOfBirth: Swift.String?
+  public var raw: Swift.String?
+  convenience public init(object: Any)
+  public init(json: CardAppSDK.JSON)
+  public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc required public init(coder aDecoder: Foundation.NSCoder)
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc deinit
+}
+public func < <T>(lhs: T?, rhs: T?) -> Swift.Bool where T : Swift.Comparable
+public func > <T>(lhs: T?, rhs: T?) -> Swift.Bool where T : Swift.Comparable
+public func == <T>(lhs: T?, rhs: T?) -> Swift.Bool where T : Swift.Equatable
+@objc public protocol OTPFieldViewDelegate {
+  @objc func shouldBecomeFirstResponderForOTP(otpTextFieldIndex index: Swift.Int) -> Swift.Bool
+  @objc func enteredOTP(otp: Swift.String)
+  @objc func hasEnteredAllOTP(hasEnteredAll: Swift.Bool) -> Swift.Bool
+}
+@objc public enum DisplayType : Swift.Int {
+  case circular
+  case roundedCorner
+  case square
+  case diamond
+  case underlinedBottom
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum KeyboardType : Swift.Int {
+  case numeric
+  case alphabet
+  case alphaNumeric
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor @preconcurrency public class OTPFieldView : UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency public var displayType: CardAppSDK.DisplayType
+  @_Concurrency.MainActor @preconcurrency public var fieldsCount: Swift.Int
+  @_Concurrency.MainActor @preconcurrency public var otpInputType: CardAppSDK.KeyboardType
+  @_Concurrency.MainActor @preconcurrency public var fieldFont: UIKit.UIFont
+  @_Concurrency.MainActor @preconcurrency public var secureEntry: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public var hideEnteredText: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public var requireCursor: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public var cursorColor: UIKit.UIColor
+  @_Concurrency.MainActor @preconcurrency public var fieldSize: CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency public var separatorSpace: CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency public var fieldBorderWidth: CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency public var shouldAllowIntermediateEditing: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public var defaultBackgroundColor: UIKit.UIColor
+  @_Concurrency.MainActor @preconcurrency public var filledBackgroundColor: UIKit.UIColor
+  @_Concurrency.MainActor @preconcurrency public var defaultBorderColor: UIKit.UIColor
+  @_Concurrency.MainActor @preconcurrency public var filledBorderColor: UIKit.UIColor
+  @_Concurrency.MainActor @preconcurrency public var errorBorderColor: UIKit.UIColor?
+  @_Concurrency.MainActor @preconcurrency public var isEnable: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency weak public var delegate: (any CardAppSDK.OTPFieldViewDelegate)?
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func awakeFromNib()
+  @_Concurrency.MainActor @preconcurrency public func initializeUI()
+  @_Concurrency.MainActor @preconcurrency public func showKeyboard()
+  @_Concurrency.MainActor @preconcurrency public func hideKeyboard()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension CardAppSDK.OTPFieldView : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor @preconcurrency @objc dynamic public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+}
+public class PlaceOfResidenceDetail : Foundation.NSCoding {
+  public var district: Swift.String?
+  public var street: Swift.String?
+  public var provinceCode: Swift.String?
+  public var ward: Swift.String?
+  public var province: Swift.String?
+  public var country: Swift.String?
+  convenience public init(object: Any)
+  public init(json: CardAppSDK.JSON)
+  public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc required public init(coder aDecoder: Foundation.NSCoder)
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc deinit
+}
+final public class PointValueProvider {
+  public init(block: @escaping CardAppSDK.PointValueProvider.PointValueBlock)
+  public init(_ point: CoreFoundation.CGPoint)
+  public typealias PointValueBlock = (CoreFoundation.CGFloat) -> CoreFoundation.CGPoint
+  final public var point: CoreFoundation.CGPoint {
+    get
+    set
+  }
+  final public var valueType: any Any.Type {
+    get
+  }
+  final public var storage: CardAppSDK.ValueProviderStorage<CardAppSDK.Vector3D> {
+    get
+  }
+  final public func hasUpdate(frame _: CoreFoundation.CGFloat) -> Swift.Bool
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @objcMembers public class SideMenuManager : ObjectiveC.NSObject {
+  @objc public enum PresentDirection : Swift.Int {
+    case left = 1, right = 0
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  @objc public static let `default`: CardAppSDK.SideMenuManager
+  @objc public class var defaultManager: CardAppSDK.SideMenuManager {
+    @objc get
+  }
+  @objc open var leftMenuNavigationController: CardAppSDK.SideMenuNavigationController? {
+    @objc get
+    @objc set(menu)
+  }
+  @objc open var rightMenuNavigationController: CardAppSDK.SideMenuNavigationController? {
+    @objc get
+    @objc set(menu)
+  }
+  @objc @discardableResult
+  public func addScreenEdgePanGesturesToPresent(toView view: UIKit.UIView) -> [UIKit.UIScreenEdgePanGestureRecognizer]
+  @objc @discardableResult
+  public func addScreenEdgePanGesturesToPresent(toView view: UIKit.UIView, forMenu side: CardAppSDK.SideMenuManager.PresentDirection) -> UIKit.UIScreenEdgePanGestureRecognizer
+  @objc @discardableResult
+  public func addPanGestureToPresent(toView view: UIKit.UIView) -> UIKit.UIPanGestureRecognizer
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc public enum SideMenuPushStyle : Swift.Int {
+  case `default`, popWhenPossible, preserve, preserveAndHideBackButton, replace, subMenu
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public protocol SideMenuNavigationControllerDelegate {
+  @objc optional func sideMenuWillAppear(menu: CardAppSDK.SideMenuNavigationController, animated: Swift.Bool)
+  @objc optional func sideMenuDidAppear(menu: CardAppSDK.SideMenuNavigationController, animated: Swift.Bool)
+  @objc optional func sideMenuWillDisappear(menu: CardAppSDK.SideMenuNavigationController, animated: Swift.Bool)
+  @objc optional func sideMenuDidDisappear(menu: CardAppSDK.SideMenuNavigationController, animated: Swift.Bool)
+}
+public struct SideMenuSettings : CardAppSDK.InitializableStruct {
+  public var allowPushOfSameClassTwice: Swift.Bool
+  public var alwaysAnimate: Swift.Bool
+  public var animationOptions: UIKit.UIView.AnimationOptions
+  public var blurEffectStyle: UIKit.UIBlurEffect.Style?
+  public var completeGestureDuration: Swift.Double
+  public var completionCurve: UIKit.UIView.AnimationCurve
+  public var dismissDuration: Swift.Double
+  public var dismissOnPresent: Swift.Bool
+  public var dismissOnPush: Swift.Bool
+  public var dismissOnRotation: Swift.Bool
+  public var dismissWhenBackgrounded: Swift.Bool
+  public var enableSwipeToDismissGesture: Swift.Bool
+  public var enableTapToDismissGesture: Swift.Bool
+  public var initialSpringVelocity: CoreFoundation.CGFloat
+  public var menuWidth: CoreFoundation.CGFloat
+  public var presentingViewControllerUserInteractionEnabled: Swift.Bool
+  public var presentingViewControllerUseSnapshot: Swift.Bool
+  public var presentDuration: Swift.Double
+  public var presentationStyle: CardAppSDK.SideMenuPresentationStyle
+  public var pushStyle: CardAppSDK.SideMenuPushStyle
+  public var statusBarEndAlpha: CoreFoundation.CGFloat
+  public var usingSpringWithDamping: CoreFoundation.CGFloat
+  public init()
+}
+@objc @objcMembers @_Concurrency.MainActor @preconcurrency open class SideMenuNavigationController : UIKit.UINavigationController {
+  @objc @_Concurrency.MainActor @preconcurrency weak public var sideMenuDelegate: (any CardAppSDK.SideMenuNavigationControllerDelegate)?
+  @objc @_Concurrency.MainActor @preconcurrency weak open var swipeToDismissGesture: UIKit.UIPanGestureRecognizer? {
+    get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency weak open var tapToDismissGesture: UIKit.UITapGestureRecognizer? {
+    get
+  }
+  @objc @_Concurrency.MainActor @preconcurrency open var sideMenuManager: CardAppSDK.SideMenuManager {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency open var settings: CardAppSDK.SideMenuSettings {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor @preconcurrency public init(rootViewController: UIKit.UIViewController, settings: CardAppSDK.SideMenuSettings = SideMenuSettings())
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func awakeFromNib()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewDidDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: any UIKit.UIViewControllerTransitionCoordinator)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func viewWillLayoutSubviews()
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func pushViewController(_ viewController: UIKit.UIViewController, animated: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open var transitioningDelegate: (any UIKit.UIViewControllerTransitioningDelegate)? {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+extension CardAppSDK.SideMenuNavigationController {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var allowPushOfSameClassTwice: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var alwaysAnimate: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var animationOptions: UIKit.UIView.AnimationOptions {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency open var blurEffectStyle: UIKit.UIBlurEffect.Style? {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var completeGestureDuration: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var completionCurve: UIKit.UIView.AnimationCurve {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var dismissDuration: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var dismissOnPresent: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var dismissOnPush: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var dismissOnRotation: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var dismissWhenBackgrounded: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var enableSwipeToDismissGesture: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var enableTapToDismissGesture: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var initialSpringVelocity: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var leftSide: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc dynamic open var isHidden: Swift.Bool {
+    @objc get
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var menuWidth: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var presentingViewControllerUserInteractionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var presentingViewControllerUseSnapshot: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var presentDuration: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor @preconcurrency open var presentationStyle: CardAppSDK.SideMenuPresentationStyle {
+    get
+    set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var pushStyle: CardAppSDK.SideMenuPushStyle {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var statusBarEndAlpha: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic open var usingSpringWithDamping: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+}
+@objcMembers open class SideMenuPresentationStyle {
+  @objc open var backgroundColor: UIKit.UIColor
+  @objc open var menuStartAlpha: CoreFoundation.CGFloat
+  @objc open var menuOnTop: Swift.Bool
+  @objc open var menuTranslateFactor: CoreFoundation.CGFloat
+  @objc open var menuScaleFactor: CoreFoundation.CGFloat
+  @objc open var onTopShadowColor: UIKit.UIColor
+  @objc open var onTopShadowRadius: CoreFoundation.CGFloat
+  @objc open var onTopShadowOpacity: Swift.Float
+  @objc open var onTopShadowOffset: CoreFoundation.CGSize
+  @objc open var presentingEndAlpha: CoreFoundation.CGFloat
+  @objc open var presentingTranslateFactor: CoreFoundation.CGFloat
+  @objc open var presentingScaleFactor: CoreFoundation.CGFloat
+  @objc open var presentingParallaxStrength: CoreFoundation.CGSize
+  @objc required public init()
+  @objc open func presentationTransitionWillBegin(to presentedViewController: UIKit.UIViewController, from presentingViewController: UIKit.UIViewController)
+  @objc open func presentationTransition(to presentedViewController: UIKit.UIViewController, from presentingViewController: UIKit.UIViewController)
+  @objc open func presentationTransitionDidEnd(to presentedViewController: UIKit.UIViewController, from presentingViewController: UIKit.UIViewController, _ completed: Swift.Bool)
+  @objc open func dismissalTransitionWillBegin(to presentedViewController: UIKit.UIViewController, from presentingViewController: UIKit.UIViewController)
+  @objc open func dismissalTransition(to presentedViewController: UIKit.UIViewController, from presentingViewController: UIKit.UIViewController)
+  @objc open func dismissalTransitionDidEnd(to presentedViewController: UIKit.UIViewController, from presentingViewController: UIKit.UIViewController, _ completed: Swift.Bool)
+  @objc deinit
+}
+extension CardAppSDK.SideMenuPresentationStyle {
+  public static var menuSlideIn: CardAppSDK.SideMenuPresentationStyle {
+    get
+  }
+  public static var viewSlideOut: CardAppSDK.SideMenuPresentationStyle {
+    get
+  }
+  public static var viewSlideOutMenuIn: CardAppSDK.SideMenuPresentationStyle {
+    get
+  }
+  public static var menuDissolveIn: CardAppSDK.SideMenuPresentationStyle {
+    get
+  }
+  public static var viewSlideOutMenuPartialIn: CardAppSDK.SideMenuPresentationStyle {
+    get
+  }
+  public static var viewSlideOutMenuOut: CardAppSDK.SideMenuPresentationStyle {
+    get
+  }
+  public static var viewSlideOutMenuPartialOut: CardAppSDK.SideMenuPresentationStyle {
+    get
+  }
+  public static var viewSlideOutMenuZoom: CardAppSDK.SideMenuPresentationStyle {
+    get
+  }
+}
+final public class SizeValueProvider {
+  public init(block: @escaping CardAppSDK.SizeValueProvider.SizeValueBlock)
+  public init(_ size: CoreFoundation.CGSize)
+  public typealias SizeValueBlock = (CoreFoundation.CGFloat) -> CoreFoundation.CGSize
+  final public var size: CoreFoundation.CGSize {
+    get
+    set
+  }
+  final public var valueType: any Any.Type {
+    get
+  }
+  final public var storage: CardAppSDK.ValueProviderStorage<CardAppSDK.Vector3D> {
+    get
+  }
+  final public func hasUpdate(frame _: CoreFoundation.CGFloat) -> Swift.Bool
+  @objc deinit
+}
+extension Swift.String {
+  public var bytes: Swift.Array<Swift.UInt8> {
+    get
+  }
+  public func toArrayUInt() -> [Swift.UInt8]
+  public func index(from: Swift.Int) -> Swift.String.Index
+  public func substring(from: Swift.Int) -> Swift.String
+  public func substring(to: Swift.Int) -> Swift.String
+  public func substring(with r: Swift.Range<Swift.Int>) -> Swift.String
+  public var numbersOnly: Swift.String {
+    get
+  }
+  public func currencyInputFormatting() -> Swift.String
+}
+extension Foundation.Data {
+  public var bytes: [Swift.UInt8] {
+    get
+  }
+  public init?(fromHexEncodedString string: Swift.String)
+}
+public enum DeviceModel : Swift.String {
+  case simulator, iPod1, iPod2, iPod3, iPod4, iPod5, iPod6, iPod7, iPad2, iPad3, iPad4, iPadAir, iPadAir2, iPadAir3, iPadAir4, iPadAir5, iPad5, iPad6, iPad7, iPad8, iPad9, iPad10, iPadMini, iPadMini2, iPadMini3, iPadMini4, iPadMini5, iPadMini6, iPadPro9_7, iPadPro10_5, iPadPro11, iPadPro2_11, iPadPro3_11, iPadPro12_9, iPadPro2_12_9, iPadPro3_12_9, iPadPro4_12_9, iPadPro5_12_9, iPhone4, iPhone4S, iPhone5, iPhone5S, iPhone5C, iPhone6, iPhone6Plus, iPhone6S, iPhone6SPlus, iPhoneSE, iPhone7, iPhone7Plus, iPhone8, iPhone8Plus, iPhoneX, iPhoneXS, iPhoneXSMax, iPhoneXR, iPhone11, iPhone11Pro, iPhone11ProMax, iPhoneSE2, iPhone12Mini, iPhone12, iPhone12Pro, iPhone12ProMax, iPhone13Mini, iPhone13, iPhone13Pro, iPhone13ProMax, iPhoneSE3, iPhone14, iPhone14Plus, iPhone14Pro, iPhone14ProMax, iPhone15, iPhone15Plus, iPhone15Pro, iPhone15ProMax, iPhone16, iPhone16Plus, iPhone16Pro, iPhone16ProMax, AppleWatch1, AppleWatchS1, AppleWatchS2, AppleWatchS3, AppleWatchS4, AppleWatchS5, AppleWatchSE, AppleWatchS6, AppleWatchS7, AppleTV1, AppleTV2, AppleTV3, AppleTV4, AppleTV_4K, AppleTV2_4K, AppleTV3_4K, unrecognized
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension UIKit.UIDevice {
+  @_Concurrency.MainActor @preconcurrency public var type: CardAppSDK.DeviceModel {
+    get
+  }
+}
+extension Swift.String {
+  public func toDate(withFormat format: Swift.String = "dd/MM/yyyy") -> Foundation.Date?
+}
+extension Foundation.Date {
+  public func toString(withFormat format: Swift.String = "dd/MM/yyyy") -> Swift.String
+}
+extension Swift.String {
+  public func isValidEmail() -> Swift.Bool
+  public func isHaveSpace() -> Swift.Bool
+  public func isValidPhone() -> Swift.Bool
+  public func isValidLandlinePhone() -> Swift.Bool
+  public func isTaxCodeInvalid() -> Swift.Bool
+  public func isValidPercentage() -> Swift.Bool
+  public func isAddressInvalid(_ min: Swift.Int = 4) -> Swift.Bool
+  public func isNameInvalid(_ min: Swift.Int = 4) -> Swift.Bool
+  public func isNameNoNumberInvalid(_ min: Swift.Int = 4) -> Swift.Bool
+  public func isCompanyNameInvalid(_ min: Swift.Int = 4) -> Swift.Bool
+  public func isNameNoVietnameseValid(_ min: Swift.Int = 4) -> Swift.Bool
+  public func isValidDateFormat(format: Swift.String = "dd/MM/yyyy") -> Swift.Bool
+  public func isBeforeToday(format: Swift.String = "dd/MM/yyyy") -> Swift.Bool
+  public func toDateTime(format: Swift.String = "dd/MM/yyyy") -> Foundation.Date?
+  public func hasSpecialCharNoSpace() -> Swift.Bool
+  public func hasSpecialChar() -> Swift.Bool
+  public func hasSpecialCharNoVietnamese() -> Swift.Bool
+  public func invalidBusinessCode() -> Swift.Bool
+  public func invalidDKKD() -> Swift.Bool
+  public func hasSpecialCharNoVietnameseAndSpace() -> Swift.Bool
+  public func hasSpecialCharDiffNumber() -> Swift.Bool
+  public func isDecimal() -> Swift.Bool
+}
+extension Swift.String {
+  public func readVietnameseMoneyText() -> Swift.String
+  public var removingVietnameseAccents: Swift.String {
+    get
+  }
+}
+extension Swift.String {
+  public var regular: Foundation.NSAttributedString {
+    get
+  }
+  public var bold: Foundation.NSAttributedString {
+    get
+  }
+  public var underline: Foundation.NSAttributedString {
+    get
+  }
+  public var strikethrough: Foundation.NSAttributedString {
+    get
+  }
+  public var italic: Foundation.NSAttributedString {
+    get
+  }
+  public func colored(with color: UIKit.UIColor) -> Foundation.NSAttributedString
+}
+extension Swift.String {
+  public func LDlocalized(in bundle: Foundation.Bundle?) -> Swift.String
+  public func LDlocalizedFormat(arguments: any Swift.CVarArg..., in bundle: Foundation.Bundle?) -> Swift.String
+  public func LDlocalizedPlural(argument: any Swift.CVarArg, in bundle: Foundation.Bundle?) -> Swift.String
+}
+extension Swift.String {
+  public func LDlocalized(using tableName: Swift.String?, in bundle: Foundation.Bundle?) -> Swift.String
+  public func LDlocalizedFormat(arguments: any Swift.CVarArg..., using tableName: Swift.String?, in bundle: Foundation.Bundle?) -> Swift.String
+  public func LDlocalizedPlural(argument: any Swift.CVarArg, using tableName: Swift.String?, in bundle: Foundation.Bundle?) -> Swift.String
+}
+extension Swift.String {
+  public func LDlocalized(using tableName: Swift.String?) -> Swift.String
+  public func LDlocalizedFormat(arguments: any Swift.CVarArg..., using tableName: Swift.String?) -> Swift.String
+  public func LDlocalizedPlural(argument: any Swift.CVarArg, using tableName: Swift.String?) -> Swift.String
+}
+@_hasMissingDesignatedInitializers open class SwKeyStore {
+  public enum SecError : Darwin.OSStatus, Swift.Error {
+    case unimplemented
+    case param
+    case allocate
+    case notAvailable
+    case authFailed
+    case duplicateItem
+    case itemNotFound
+    case interactionNotAllowed
+    case decode
+    case missingEntitlement
+    public static var debugLevel: Swift.Int
+    public init?(rawValue: Darwin.OSStatus)
+    public typealias RawValue = Darwin.OSStatus
+    public var rawValue: Darwin.OSStatus {
+      get
+    }
+  }
+  public static func upsertKey(_ pemKey: Swift.String, keyTag: Swift.String, options: [Foundation.NSString : Swift.AnyObject] = [:]) throws
+  public static func getKey(_ keyTag: Swift.String) throws -> Swift.String
+  public static func delKey(_ keyTag: Swift.String) throws
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class SwKeyConvert {
+  public enum SwError : Swift.Error {
+    case invalidKey
+    case badPassphrase
+    case keyNotEncrypted
+    public static var debugLevel: Swift.Int
+    public static func == (a: CardAppSDK.SwKeyConvert.SwError, b: CardAppSDK.SwKeyConvert.SwError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class PKCS8 {
+  @_hasMissingDesignatedInitializers open class PrivateKey {
+    public static func getPKCS1DEROffset(_ derKey: Foundation.Data) -> Swift.Int?
+    public static func stripHeaderIfAny(_ derKey: Foundation.Data) -> Foundation.Data?
+    public static func hasCorrectHeader(_ derKey: Foundation.Data) -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class PublicKey {
+    public static func addHeader(_ derKey: Foundation.Data) -> Foundation.Data
+    public static func getPKCS1DEROffset(_ derKey: Foundation.Data) -> Swift.Int?
+    public static func stripHeaderIfAny(_ derKey: Foundation.Data) -> Foundation.Data?
+    public static func hasCorrectHeader(_ derKey: Foundation.Data) -> Swift.Bool
+    @objc deinit
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class CC {
+  public typealias CCCryptorStatus = Swift.Int32
+  public enum CCError : CardAppSDK.CC.CCCryptorStatus, Swift.Error {
+    case paramError
+    case bufferTooSmall
+    case memoryFailure
+    case alignmentError
+    case decodeError
+    case unimplemented
+    case overflow
+    case rngFailure
+    case unspecifiedError
+    case callSequenceError
+    case keySizeError
+    case invalidKey
+    public static var debugLevel: Swift.Int
+    public init?(rawValue: CardAppSDK.CC.CCCryptorStatus)
+    public typealias RawValue = CardAppSDK.CC.CCCryptorStatus
+    public var rawValue: CardAppSDK.CC.CCCryptorStatus {
+      get
+    }
+  }
+  public static func generateRandom(_ size: Swift.Int) -> Foundation.Data
+  public typealias CCDigestAlgorithm = Swift.UInt32
+  public enum DigestAlgorithm : CardAppSDK.CC.CCDigestAlgorithm {
+    case none
+    case md5
+    case rmd128, rmd160, rmd256, rmd320
+    case sha1
+    case sha224, sha256, sha384, sha512
+    public init?(rawValue: CardAppSDK.CC.CCDigestAlgorithm)
+    public typealias RawValue = CardAppSDK.CC.CCDigestAlgorithm
+    public var rawValue: CardAppSDK.CC.CCDigestAlgorithm {
+      get
+    }
+  }
+  public static func digest(_ data: Foundation.Data, alg: CardAppSDK.CC.DigestAlgorithm) -> Foundation.Data
+  public typealias CCHmacAlgorithm = Swift.UInt32
+  public enum HMACAlg : CardAppSDK.CC.CCHmacAlgorithm {
+    case sha1, md5, sha256, sha384, sha512, sha224
+    public init?(rawValue: CardAppSDK.CC.CCHmacAlgorithm)
+    public typealias RawValue = CardAppSDK.CC.CCHmacAlgorithm
+    public var rawValue: CardAppSDK.CC.CCHmacAlgorithm {
+      get
+    }
+  }
+  public static func HMAC(_ data: Foundation.Data, alg: CardAppSDK.CC.HMACAlg, key: Foundation.Data) -> Foundation.Data
+  public typealias CCOperation = Swift.UInt32
+  public enum OpMode : CardAppSDK.CC.CCOperation {
+    case encrypt, decrypt
+    public init?(rawValue: CardAppSDK.CC.CCOperation)
+    public typealias RawValue = CardAppSDK.CC.CCOperation
+    public var rawValue: CardAppSDK.CC.CCOperation {
+      get
+    }
+  }
+  public typealias CCMode = Swift.UInt32
+  public enum BlockMode : CardAppSDK.CC.CCMode {
+    case ecb, cbc, cfb, ctr, f8, lrw, ofb, xts, rc4, cfb8
+    public init?(rawValue: CardAppSDK.CC.CCMode)
+    public typealias RawValue = CardAppSDK.CC.CCMode
+    public var rawValue: CardAppSDK.CC.CCMode {
+      get
+    }
+  }
+  public enum AuthBlockMode : CardAppSDK.CC.CCMode {
+    case gcm, ccm
+    public init?(rawValue: CardAppSDK.CC.CCMode)
+    public typealias RawValue = CardAppSDK.CC.CCMode
+    public var rawValue: CardAppSDK.CC.CCMode {
+      get
+    }
+  }
+  public typealias CCAlgorithm = Swift.UInt32
+  public enum Algorithm : CardAppSDK.CC.CCAlgorithm {
+    case aes, des, threeDES, cast, rc4, rc2, blowfish
+    public init?(rawValue: CardAppSDK.CC.CCAlgorithm)
+    public typealias RawValue = CardAppSDK.CC.CCAlgorithm
+    public var rawValue: CardAppSDK.CC.CCAlgorithm {
+      get
+    }
+  }
+  public typealias CCPadding = Swift.UInt32
+  public enum Padding : CardAppSDK.CC.CCPadding {
+    case noPadding, pkcs7Padding
+    public init?(rawValue: CardAppSDK.CC.CCPadding)
+    public typealias RawValue = CardAppSDK.CC.CCPadding
+    public var rawValue: CardAppSDK.CC.CCPadding {
+      get
+    }
+  }
+  public static func crypt(_ opMode: CardAppSDK.CC.OpMode, blockMode: CardAppSDK.CC.BlockMode, algorithm: CardAppSDK.CC.Algorithm, padding: CardAppSDK.CC.Padding, data: Foundation.Data, key: Foundation.Data, iv: Foundation.Data) throws -> Foundation.Data
+  public static func cryptAuth(_ opMode: CardAppSDK.CC.OpMode, blockMode: CardAppSDK.CC.AuthBlockMode, algorithm: CardAppSDK.CC.Algorithm, data: Foundation.Data, aData: Foundation.Data, key: Foundation.Data, iv: Foundation.Data, tagLength: Swift.Int) throws -> Foundation.Data
+  public static func digestAvailable() -> Swift.Bool
+  public static func randomAvailable() -> Swift.Bool
+  public static func hmacAvailable() -> Swift.Bool
+  public static func cryptorAvailable() -> Swift.Bool
+  public static func available() -> Swift.Bool
+  @_hasMissingDesignatedInitializers open class GCM {
+    public static func crypt(_ opMode: CardAppSDK.CC.OpMode, algorithm: CardAppSDK.CC.Algorithm, data: Foundation.Data, key: Foundation.Data, iv: Foundation.Data, aData: Foundation.Data, tagLength: Swift.Int) throws -> (Foundation.Data, Foundation.Data)
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class CCM {
+    public static func crypt(_ opMode: CardAppSDK.CC.OpMode, algorithm: CardAppSDK.CC.Algorithm, data: Foundation.Data, key: Foundation.Data, iv: Foundation.Data, aData: Foundation.Data, tagLength: Swift.Int) throws -> (Foundation.Data, Foundation.Data)
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class RSA {
+    public typealias CCAsymmetricPadding = Swift.UInt32
+    public enum AsymmetricPadding : CardAppSDK.CC.RSA.CCAsymmetricPadding {
+      case pkcs1
+      case oaep
+      public init?(rawValue: CardAppSDK.CC.RSA.CCAsymmetricPadding)
+      public typealias RawValue = CardAppSDK.CC.RSA.CCAsymmetricPadding
+      public var rawValue: CardAppSDK.CC.RSA.CCAsymmetricPadding {
+        get
+      }
+    }
+    public enum AsymmetricSAPadding : Swift.UInt32 {
+      case pkcs15
+      case pss
+      public init?(rawValue: Swift.UInt32)
+      public typealias RawValue = Swift.UInt32
+      public var rawValue: Swift.UInt32 {
+        get
+      }
+    }
+    public static func generateKeyPair(_ keySize: Swift.Int = 4096) throws -> (Foundation.Data, Foundation.Data)
+    public static func getPublicKeyFromPrivateKey(_ derKey: Foundation.Data) throws -> Foundation.Data
+    public static func encrypt(_ data: Foundation.Data, derKey: Foundation.Data, tag: Foundation.Data, padding: CardAppSDK.CC.RSA.AsymmetricPadding, digest: CardAppSDK.CC.DigestAlgorithm) throws -> Foundation.Data
+    public static func decrypt(_ data: Foundation.Data, derKey: Foundation.Data, tag: Foundation.Data, padding: CardAppSDK.CC.RSA.AsymmetricPadding, digest: CardAppSDK.CC.DigestAlgorithm) throws -> (Foundation.Data, Swift.Int)
+    public static func sign(_ message: Foundation.Data, derKey: Foundation.Data, padding: CardAppSDK.CC.RSA.AsymmetricSAPadding, digest: CardAppSDK.CC.DigestAlgorithm, saltLen: Swift.Int) throws -> Foundation.Data
+    public static func verify(_ message: Foundation.Data, derKey: Foundation.Data, padding: CardAppSDK.CC.RSA.AsymmetricSAPadding, digest: CardAppSDK.CC.DigestAlgorithm, saltLen: Swift.Int, signedData: Foundation.Data) throws -> Swift.Bool
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class DH {
+    public enum DHParam {
+      case rfc3526Group5
+      case rfc2409Group2
+      public static func == (a: CardAppSDK.CC.DH.DHParam, b: CardAppSDK.CC.DH.DHParam) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    open class DH {
+      public init(dhParam: CardAppSDK.CC.DH.DHParam) throws
+      open func generateKey() throws -> Foundation.Data
+      open func computeKey(_ peerKey: Foundation.Data) throws -> Foundation.Data
+      @objc deinit
+    }
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class EC {
+    public static func generateKeyPair(_ keySize: Swift.Int) throws -> (Foundation.Data, Foundation.Data)
+    public static func getPublicKeyFromPrivateKey(_ privateKey: Foundation.Data) throws -> Foundation.Data
+    public static func signHash(_ privateKey: Foundation.Data, hash: Foundation.Data) throws -> Foundation.Data
+    public static func verifyHash(_ publicKey: Foundation.Data, hash: Foundation.Data, signedData: Foundation.Data) throws -> Swift.Bool
+    public static func computeSharedSecret(_ privateKey: Foundation.Data, publicKey: Foundation.Data) throws -> Foundation.Data
+    public struct KeyComponents {
+      public init(_ keySize: Swift.Int, _ x: Foundation.Data, _ y: Foundation.Data, _ d: Foundation.Data)
+      public var keySize: Swift.Int
+      public var x: Foundation.Data
+      public var y: Foundation.Data
+      public var d: Foundation.Data
+    }
+    public static func getPublicKeyComponents(_ keyData: Foundation.Data) throws -> CardAppSDK.CC.EC.KeyComponents
+    public static func getPrivateKeyComponents(_ keyData: Foundation.Data) throws -> CardAppSDK.CC.EC.KeyComponents
+    public static func createFromData(_ keySize: _Builtin_stddef.size_t, _ x: Foundation.Data, _ y: Foundation.Data) throws -> Foundation.Data
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class CRC {
+    public typealias CNcrc = Swift.UInt32
+    public enum Mode : CardAppSDK.CC.CRC.CNcrc {
+      case crc8, crc8ICODE, crc8ITU, crc8ROHC, crc8WCDMA, crc16, crc16CCITTTrue, crc16CCITTFalse, crc16USB, crc16XMODEM, crc16DECTR, crc16DECTX, crc16ICODE, crc16VERIFONE, crc16A, crc16B, crc16Fletcher, crc32Adler, crc32, crc32CASTAGNOLI, crc32BZIP2, crc32MPEG2, crc32POSIX, crc32XFER, crc64ECMA182
+      public init?(rawValue: CardAppSDK.CC.CRC.CNcrc)
+      public typealias RawValue = CardAppSDK.CC.CRC.CNcrc
+      public var rawValue: CardAppSDK.CC.CRC.CNcrc {
+        get
+      }
+    }
+    public static func crc(_ input: Foundation.Data, mode: CardAppSDK.CC.CRC.Mode) throws -> Swift.UInt64
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class CMAC {
+    public static func AESCMAC(_ data: Foundation.Data, key: Foundation.Data) -> Foundation.Data
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class KeyDerivation {
+    public typealias CCPseudoRandomAlgorithm = Swift.UInt32
+    public enum PRFAlg : CardAppSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm {
+      case sha1, sha224, sha256, sha384, sha512
+      public init?(rawValue: CardAppSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm)
+      public typealias RawValue = CardAppSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm
+      public var rawValue: CardAppSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm {
+        get
+      }
+    }
+    public static func PBKDF2(_ password: Swift.String, salt: Foundation.Data, prf: CardAppSDK.CC.KeyDerivation.PRFAlg, rounds: Swift.UInt32) throws -> Foundation.Data
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class KeyWrap {
+    public static let rfc3394IV: Foundation.Data
+    public static func SymmetricKeyWrap(_ iv: Foundation.Data, kek: Foundation.Data, rawKey: Foundation.Data) throws -> Foundation.Data
+    public static func SymmetricKeyUnwrap(_ iv: Foundation.Data, kek: Foundation.Data, wrappedKey: Foundation.Data) throws -> Foundation.Data
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @objc deinit
+}
+extension Foundation.Data {
+  public func hexadecimalString() -> Swift.String
+  public func arrayOfBytes() -> [Swift.UInt8]
+}
+extension Swift.String {
+  public func dataFromHexadecimalString() -> Foundation.Data?
+}
+public enum SwiftyJSONError : Swift.Int, Swift.Error {
+  case unsupportedType
+  case indexOutOfBounds
+  case elementTooDeep
+  case wrongType
+  case notExist
+  case invalidJSON
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension CardAppSDK.SwiftyJSONError : Foundation.CustomNSError {
+  public static var errorDomain: Swift.String {
+    get
+  }
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+public enum Type : Swift.Int {
+  case number
+  case string
+  case bool
+  case array
+  case dictionary
+  case null
+  case unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct JSON {
+  public init(data: Foundation.Data, options opt: Foundation.JSONSerialization.ReadingOptions = []) throws
+  public init(_ object: Any)
+  public init(parseJSON jsonString: Swift.String)
+  public mutating func merge(with other: CardAppSDK.JSON) throws
+  public func merged(with other: CardAppSDK.JSON) throws -> CardAppSDK.JSON
+  public var type: CardAppSDK.`Type` {
+    get
+  }
+  public var error: CardAppSDK.SwiftyJSONError? {
+    get
+  }
+  public var object: Any {
+    get
+    set
+  }
+  @available(*, unavailable, renamed: "null")
+  public static var nullJSON: CardAppSDK.JSON {
+    get
+  }
+  public static var null: CardAppSDK.JSON {
+    get
+  }
+}
+public enum Index<T> : Swift.Comparable {
+  case array(Swift.Int)
+  case dictionary(Swift.DictionaryIndex<Swift.String, T>)
+  case null
+  public static func == (lhs: CardAppSDK.Index<T>, rhs: CardAppSDK.Index<T>) -> Swift.Bool
+  public static func < (lhs: CardAppSDK.Index<T>, rhs: CardAppSDK.Index<T>) -> Swift.Bool
+}
+public typealias JSONIndex = CardAppSDK.Index<CardAppSDK.JSON>
+public typealias JSONRawIndex = CardAppSDK.Index<Any>
+extension CardAppSDK.JSON : Swift.Collection {
+  public typealias Index = CardAppSDK.JSONRawIndex
+  public var startIndex: CardAppSDK.JSON.Index {
+    get
+  }
+  public var endIndex: CardAppSDK.JSON.Index {
+    get
+  }
+  public func index(after i: CardAppSDK.JSON.Index) -> CardAppSDK.JSON.Index
+  public subscript(position: CardAppSDK.JSON.Index) -> (Swift.String, CardAppSDK.JSON) {
+    get
+  }
+  public typealias Element = (Swift.String, CardAppSDK.JSON)
+  public typealias Indices = Swift.DefaultIndices<CardAppSDK.JSON>
+  public typealias Iterator = Swift.IndexingIterator<CardAppSDK.JSON>
+  public typealias SubSequence = Swift.Slice<CardAppSDK.JSON>
+}
+public enum JSONKey {
+  case index(Swift.Int)
+  case key(Swift.String)
+}
+public protocol JSONSubscriptType {
+  var jsonKey: CardAppSDK.JSONKey { get }
+}
+extension Swift.Int : CardAppSDK.JSONSubscriptType {
+  public var jsonKey: CardAppSDK.JSONKey {
+    get
+  }
+}
+extension Swift.String : CardAppSDK.JSONSubscriptType {
+  public var jsonKey: CardAppSDK.JSONKey {
+    get
+  }
+}
+extension CardAppSDK.JSON {
+  public subscript(path: [any CardAppSDK.JSONSubscriptType]) -> CardAppSDK.JSON {
+    get
+    set
+  }
+  public subscript(path: any CardAppSDK.JSONSubscriptType...) -> CardAppSDK.JSON {
+    get
+    set
+  }
+}
+extension CardAppSDK.JSON : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift.StringLiteralType)
+  public init(extendedGraphemeClusterLiteral value: Swift.StringLiteralType)
+  public init(unicodeScalarLiteral value: Swift.StringLiteralType)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.StringLiteralType
+  public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift.StringLiteralType
+}
+extension CardAppSDK.JSON : Swift.ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Swift.IntegerLiteralType)
+  public typealias IntegerLiteralType = Swift.IntegerLiteralType
+}
+extension CardAppSDK.JSON : Swift.ExpressibleByBooleanLiteral {
+  public init(booleanLiteral value: Swift.BooleanLiteralType)
+  public typealias BooleanLiteralType = Swift.BooleanLiteralType
+}
+extension CardAppSDK.JSON : Swift.ExpressibleByFloatLiteral {
+  public init(floatLiteral value: Swift.FloatLiteralType)
+  public typealias FloatLiteralType = Swift.FloatLiteralType
+}
+extension CardAppSDK.JSON : Swift.ExpressibleByDictionaryLiteral {
+  public init(dictionaryLiteral elements: (Swift.String, Any)...)
+  public typealias Key = Swift.String
+  public typealias Value = Any
+}
+extension CardAppSDK.JSON : Swift.ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: Any...)
+  public typealias ArrayLiteralElement = Any
+}
+extension CardAppSDK.JSON : Swift.RawRepresentable {
+  public init?(rawValue: Any)
+  public var rawValue: Any {
+    get
+  }
+  public func rawData(options opt: Foundation.JSONSerialization.WritingOptions = JSONSerialization.WritingOptions(rawValue: 0)) throws -> Foundation.Data
+  public func rawString(_ encoding: Swift.String.Encoding = .utf8, options opt: Foundation.JSONSerialization.WritingOptions = .prettyPrinted) -> Swift.String?
+  public func rawString(_ options: [CardAppSDK.writingOptionsKeys : Any]) -> Swift.String?
+  public typealias RawValue = Any
+}
+extension CardAppSDK.JSON : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension CardAppSDK.JSON {
+  public var array: [CardAppSDK.JSON]? {
+    get
+  }
+  public var arrayValue: [CardAppSDK.JSON] {
+    get
+  }
+  public var arrayObject: [Any]? {
+    get
+    set
+  }
+}
+extension CardAppSDK.JSON {
+  public var dictionary: [Swift.String : CardAppSDK.JSON]? {
+    get
+  }
+  public var dictionaryValue: [Swift.String : CardAppSDK.JSON] {
+    get
+  }
+  public var dictionaryObject: [Swift.String : Any]? {
+    get
+    set
+  }
+}
+extension CardAppSDK.JSON {
+  public var bool: Swift.Bool? {
+    get
+    set
+  }
+  public var boolValue: Swift.Bool {
+    get
+    set
+  }
+}
+extension CardAppSDK.JSON {
+  public var string: Swift.String? {
+    get
+    set
+  }
+  public var stringValue: Swift.String {
+    get
+    set
+  }
+}
+extension CardAppSDK.JSON {
+  public var number: Foundation.NSNumber? {
+    get
+    set
+  }
+  public var numberValue: Foundation.NSNumber {
+    get
+    set
+  }
+}
+extension CardAppSDK.JSON {
+  public var null: Foundation.NSNull? {
+    get
+    set
+  }
+  public func exists() -> Swift.Bool
+}
+extension CardAppSDK.JSON {
+  public var url: Foundation.URL? {
+    get
+    set
+  }
+}
+extension CardAppSDK.JSON {
+  public var double: Swift.Double? {
+    get
+    set
+  }
+  public var doubleValue: Swift.Double {
+    get
+    set
+  }
+  public var float: Swift.Float? {
+    get
+    set
+  }
+  public var floatValue: Swift.Float {
+    get
+    set
+  }
+  public var int: Swift.Int? {
+    get
+    set
+  }
+  public var intValue: Swift.Int {
+    get
+    set
+  }
+  public var uInt: Swift.UInt? {
+    get
+    set
+  }
+  public var uIntValue: Swift.UInt {
+    get
+    set
+  }
+  public var int8: Swift.Int8? {
+    get
+    set
+  }
+  public var int8Value: Swift.Int8 {
+    get
+    set
+  }
+  public var uInt8: Swift.UInt8? {
+    get
+    set
+  }
+  public var uInt8Value: Swift.UInt8 {
+    get
+    set
+  }
+  public var int16: Swift.Int16? {
+    get
+    set
+  }
+  public var int16Value: Swift.Int16 {
+    get
+    set
+  }
+  public var uInt16: Swift.UInt16? {
+    get
+    set
+  }
+  public var uInt16Value: Swift.UInt16 {
+    get
+    set
+  }
+  public var int32: Swift.Int32? {
+    get
+    set
+  }
+  public var int32Value: Swift.Int32 {
+    get
+    set
+  }
+  public var uInt32: Swift.UInt32? {
+    get
+    set
+  }
+  public var uInt32Value: Swift.UInt32 {
+    get
+    set
+  }
+  public var int64: Swift.Int64? {
+    get
+    set
+  }
+  public var int64Value: Swift.Int64 {
+    get
+    set
+  }
+  public var uInt64: Swift.UInt64? {
+    get
+    set
+  }
+  public var uInt64Value: Swift.UInt64 {
+    get
+    set
+  }
+}
+extension CardAppSDK.JSON : Swift.Comparable {
+}
+public func == (lhs: CardAppSDK.JSON, rhs: CardAppSDK.JSON) -> Swift.Bool
+public func <= (lhs: CardAppSDK.JSON, rhs: CardAppSDK.JSON) -> Swift.Bool
+public func >= (lhs: CardAppSDK.JSON, rhs: CardAppSDK.JSON) -> Swift.Bool
+public func > (lhs: CardAppSDK.JSON, rhs: CardAppSDK.JSON) -> Swift.Bool
+public func < (lhs: CardAppSDK.JSON, rhs: CardAppSDK.JSON) -> Swift.Bool
+public enum writingOptionsKeys {
+  case jsonSerialization
+  case castNilToNSNull
+  case maxObjextDepth
+  case encoding
+  public static func == (a: CardAppSDK.writingOptionsKeys, b: CardAppSDK.writingOptionsKeys) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension CardAppSDK.JSON : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class TextField : UIKit.UITextField {
+  public typealias Config = (CardAppSDK.TextField) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency public func configure(configurate: CardAppSDK.TextField.Config?)
+  public typealias Action = (UIKit.UITextField) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func leftViewRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func textRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic open func editingRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor @preconcurrency public var leftViewPadding: CoreFoundation.CGFloat?
+  @_Concurrency.MainActor @preconcurrency public var leftTextPadding: CoreFoundation.CGFloat?
+  @_Concurrency.MainActor @preconcurrency public func action(closure: @escaping CardAppSDK.TextField.Action)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency public func makeToast(_ message: Swift.String?, duration: Foundation.TimeInterval = ToastManager.shared.duration, position: CardAppSDK.ToastPosition = ToastManager.shared.position, title: Swift.String? = nil, image: UIKit.UIImage? = nil, style: CardAppSDK.ToastStyle = ToastManager.shared.style, completion: ((_ didTap: Swift.Bool) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor @preconcurrency public func makeToast(_ message: Swift.String?, duration: Foundation.TimeInterval = ToastManager.shared.duration, point: CoreFoundation.CGPoint, title: Swift.String?, image: UIKit.UIImage?, style: CardAppSDK.ToastStyle = ToastManager.shared.style, completion: ((_ didTap: Swift.Bool) -> Swift.Void)?)
+  @_Concurrency.MainActor @preconcurrency public func showToast(_ toast: UIKit.UIView, duration: Foundation.TimeInterval = ToastManager.shared.duration, position: CardAppSDK.ToastPosition = ToastManager.shared.position, completion: ((_ didTap: Swift.Bool) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor @preconcurrency public func showToast(_ toast: UIKit.UIView, duration: Foundation.TimeInterval = ToastManager.shared.duration, point: CoreFoundation.CGPoint, completion: ((_ didTap: Swift.Bool) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor @preconcurrency public func hideToast()
+  @_Concurrency.MainActor @preconcurrency public func livenessHideToast(_ toast: UIKit.UIView)
+  @_Concurrency.MainActor @preconcurrency public func hideAllToasts(includeActivity: Swift.Bool = false, clearQueue: Swift.Bool = true)
+  @_Concurrency.MainActor @preconcurrency public func clearToastQueue()
+  @_Concurrency.MainActor @preconcurrency public func makeToastActivity(_ position: CardAppSDK.ToastPosition)
+  @_Concurrency.MainActor @preconcurrency public func makeToastActivity(_ point: CoreFoundation.CGPoint)
+  @_Concurrency.MainActor @preconcurrency public func hideToastActivity()
+  @_Concurrency.MainActor @preconcurrency public func toastViewForMessage(_ message: Swift.String?, title: Swift.String?, image: UIKit.UIImage?, style: CardAppSDK.ToastStyle) throws -> UIKit.UIView
+}
+public struct ToastStyle {
+  public init()
+  public var backgroundColor: UIKit.UIColor
+  public var titleColor: UIKit.UIColor
+  public var messageColor: UIKit.UIColor
+  public var maxWidthPercentage: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  public var maxHeightPercentage: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  public var horizontalPadding: CoreFoundation.CGFloat
+  public var verticalPadding: CoreFoundation.CGFloat
+  public var cornerRadius: CoreFoundation.CGFloat
+  public var titleFont: UIKit.UIFont
+  public var messageFont: UIKit.UIFont
+  public var titleAlignment: UIKit.NSTextAlignment
+  public var messageAlignment: UIKit.NSTextAlignment
+  public var titleNumberOfLines: Swift.Int
+  public var messageNumberOfLines: Swift.Int
+  public var displayShadow: Swift.Bool
+  public var shadowColor: UIKit.UIColor
+  public var shadowOpacity: Swift.Float {
+    get
+    set
+  }
+  public var shadowRadius: CoreFoundation.CGFloat
+  public var shadowOffset: CoreFoundation.CGSize
+  public var imageSize: CoreFoundation.CGSize
+  public var activitySize: CoreFoundation.CGSize
+  public var fadeDuration: Swift.Double
+  public var activityIndicatorColor: UIKit.UIColor
+  public var activityBackgroundColor: UIKit.UIColor
+}
+@_hasMissingDesignatedInitializers public class ToastManager {
+  public static let shared: CardAppSDK.ToastManager
+  public var style: CardAppSDK.ToastStyle
+  public var isTapToDismissEnabled: Swift.Bool
+  public var isQueueEnabled: Swift.Bool
+  public var duration: Swift.Double
+  public var position: CardAppSDK.ToastPosition
+  @objc deinit
+}
+public enum ToastPosition {
+  case top
+  case center
+  case bottom
+  public static func == (a: CardAppSDK.ToastPosition, b: CardAppSDK.ToastPosition) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension UIKit.UIAlertController {
+  @_Concurrency.MainActor @preconcurrency public func show(animated: Swift.Bool = true, vibrate: Swift.Bool = false, style: UIKit.UIBlurEffect.Style? = nil, completion: (() -> Swift.Void)? = nil)
+}
+extension UIKit.UIColor {
+  public var hexString: Swift.String {
+    get
+  }
+  public var shortHexString: Swift.String? {
+    get
+  }
+  public var rgbComponents: (red: Swift.Int, green: Swift.Int, blue: Swift.Int) {
+    get
+  }
+  public var cgFloatComponents: (red: CoreFoundation.CGFloat, green: CoreFoundation.CGFloat, blue: CoreFoundation.CGFloat) {
+    get
+  }
+  public var hsbaComponents: (hue: CoreFoundation.CGFloat, saturation: CoreFoundation.CGFloat, brightness: CoreFoundation.CGFloat, alpha: CoreFoundation.CGFloat) {
+    get
+  }
+  public static var random: UIKit.UIColor {
+    get
+  }
+}
+extension UIKit.UIColor {
+  convenience public init(hex: Swift.Int, alpha: CoreFoundation.CGFloat)
+  convenience public init(hex: Swift.Int)
+  convenience public init(hexString: Swift.String)
+  convenience public init(red: Swift.Int, green: Swift.Int, blue: Swift.Int, transparency: CoreFoundation.CGFloat = 1)
+}
+extension UIKit.UIColor {
+  public var lottieColorValue: CardAppSDK.Color {
+    get
+  }
+}
+@available(iOS 12.0, *)
+extension CoreGraphics.CGImage {
+  public func getCroppingRect(for faces: [Vision.VNFaceObservation], margin: CoreFoundation.CGFloat, scale: CoreFoundation.CGFloat = 1, orientation: UIKit.UIImage.Orientation = .up) -> UIKit.UIImage?
+}
+extension UIKit.UIImageView {
+  @_Concurrency.MainActor @preconcurrency public func animateSDK(isHidden: Swift.Bool, duration: Foundation.TimeInterval = 1, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor @preconcurrency public func fadeOutSDK(duration: Foundation.TimeInterval = 1, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor @preconcurrency public func fadeInSDK(duration: Foundation.TimeInterval = 1, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+}
+extension UIKit.UIImageView {
+  @_Concurrency.MainActor @preconcurrency public func setImage(string: Swift.String?, color: UIKit.UIColor? = nil, circular: Swift.Bool = false, textAttributes: [Foundation.NSAttributedString.Key : Any]? = nil)
+}
+extension Swift.String {
+  public var initials: Swift.String {
+    get
+  }
+}
+public typealias GradientColors = (top: UIKit.UIColor, bottom: UIKit.UIColor)
+extension UIKit.UIImageView {
+  @_Concurrency.MainActor @preconcurrency public func setImageForName(string: Swift.String, backgroundColor: UIKit.UIColor? = nil, circular: Swift.Bool, textAttributes: [Foundation.NSAttributedString.Key : Swift.AnyObject]?, gradient: Swift.Bool = false)
+  @_Concurrency.MainActor @preconcurrency public func setImageForName(string: Swift.String, gradientColors: CardAppSDK.GradientColors? = nil, circular: Swift.Bool = true, textAttributes: [Foundation.NSAttributedString.Key : Swift.AnyObject]? = nil)
+  @_Concurrency.MainActor @preconcurrency public func setImageForName(string: Swift.String, backgroundColor: UIKit.UIColor? = nil, circular: Swift.Bool, textAttributes: [Foundation.NSAttributedString.Key : Swift.AnyObject]? = nil, gradient: Swift.Bool = false, gradientColors: CardAppSDK.GradientColors? = nil)
+}
+extension UIKit.UISegmentedControl {
+  @_Concurrency.MainActor @preconcurrency public func title(font: UIKit.UIFont)
+  @_Concurrency.MainActor @preconcurrency public var segmentTitles: [Swift.String?] {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency public var segmentImages: [UIKit.UIImage?] {
+    get
+    set
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor @preconcurrency open class UITableViewVibrantCell : UIKit.UITableViewCell {
+  @_Concurrency.MainActor @preconcurrency open var blurEffectStyle: UIKit.UIBlurEffect.Style? {
+    get
+    set
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+extension UIKit.UITextField {
+  public typealias TextFieldConfig = (UIKit.UITextField) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency public func config(textField configurate: UIKit.UITextField.TextFieldConfig?)
+}
+extension UIKit.UITextField {
+  @_Concurrency.MainActor @preconcurrency public func setPlaceHolderTextColor(_ color: UIKit.UIColor)
+  @_Concurrency.MainActor @preconcurrency public func placeholder(text value: Swift.String, color: UIKit.UIColor = .red)
+}
+extension UIKit.UITextView {
+  @_Concurrency.MainActor @preconcurrency public func scrollToBottom()
+  @_Concurrency.MainActor @preconcurrency public func scrollToTop()
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor @preconcurrency public class Gradient : UIKit.UIView {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public class var layerClass: Swift.AnyClass {
+    @objc get
+  }
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor @preconcurrency public class GradientLabel : CardAppSDK.Gradient {
+  @_Concurrency.MainActor @preconcurrency @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor @preconcurrency @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@IBDesignable extension UIKit.UIView {
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic public var circleCorner: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic public var shadowPath: CoreGraphics.CGPath? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic public var shadowShouldRasterize: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor @preconcurrency dynamic public var shadowRasterizationScale: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+}
+extension UIKit.UIView {
+  public typealias Configuration = (UIKit.UIView) -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency public func config(configurate: UIKit.UIView.Configuration?)
+  @_Concurrency.MainActor @preconcurrency public func roundCorners(_ corners: UIKit.UIRectCorner, radius: CoreFoundation.CGFloat)
+}
+public struct Vector1D : Swift.Hashable {
+  public init(_ value: Swift.Double)
+  public let value: Swift.Double
+  public static func == (a: CardAppSDK.Vector1D, b: CardAppSDK.Vector1D) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct Vector3D : Swift.Hashable {
+  public let x: Swift.Double
+  public let y: Swift.Double
+  public let z: Swift.Double
+  public init(x: Swift.Double, y: Swift.Double, z: Swift.Double)
+  public static func == (a: CardAppSDK.Vector3D, b: CardAppSDK.Vector3D) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension CardAppSDK.Vector1D : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+public struct Vector2D : Swift.Codable, Swift.Hashable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+  public static func == (a: CardAppSDK.Vector2D, b: CardAppSDK.Vector2D) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension CardAppSDK.Vector3D : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+extension CardAppSDK.Vector3D {
+  public var pointValue: CoreFoundation.CGPoint {
+    get
+  }
+  public var sizeValue: CoreFoundation.CGSize {
+    get
+  }
+}
+extension CardAppSDK.AnimatedSwitch.CancelBehavior : Swift.Equatable {}
+extension CardAppSDK.AnimatedSwitch.CancelBehavior : Swift.Hashable {}
+extension CardAppSDK.CoordinateSpace : Swift.Equatable {}
+extension CardAppSDK.CoordinateSpace : Swift.Hashable {}
+extension CardAppSDK.CoordinateSpace : Swift.RawRepresentable {}
+extension CardAppSDK.LottieBackgroundBehavior : Swift.Equatable {}
+extension CardAppSDK.LottieBackgroundBehavior : Swift.Hashable {}
+extension CardAppSDK.BlendMode : Swift.Equatable {}
+extension CardAppSDK.BlendMode : Swift.Hashable {}
+extension CardAppSDK.BlendMode : Swift.RawRepresentable {}
+extension CardAppSDK.CardAppDocumentSubType : Swift.Equatable {}
+extension CardAppSDK.CardAppDocumentSubType : Swift.Hashable {}
+extension CardAppSDK.CardAppDocumentSubType : Swift.RawRepresentable {}
+extension CardAppSDK.CardAppDocumentType : Swift.Equatable {}
+extension CardAppSDK.CardAppDocumentType : Swift.Hashable {}
+extension CardAppSDK.CardAppDocumentType : Swift.RawRepresentable {}
+extension CardAppSDK.CardType : Swift.Equatable {}
+extension CardAppSDK.CardType : Swift.Hashable {}
+extension CardAppSDK.CardType : Swift.RawRepresentable {}
+extension CardAppSDK.CATextField.FloatingDisplayStatus : Swift.Equatable {}
+extension CardAppSDK.CATextField.FloatingDisplayStatus : Swift.Hashable {}
+extension CardAppSDK.CATextField.DTBorderStyle : Swift.Equatable {}
+extension CardAppSDK.CATextField.DTBorderStyle : Swift.Hashable {}
+extension CardAppSDK.ColorValueProvider : CardAppSDK.AnyValueProvider {}
+extension CardAppSDK.DropDown.DismissMode : Swift.Equatable {}
+extension CardAppSDK.DropDown.DismissMode : Swift.Hashable {}
+extension CardAppSDK.DropDown.Direction : Swift.Equatable {}
+extension CardAppSDK.DropDown.Direction : Swift.Hashable {}
+extension CardAppSDK.FloatValueProvider : CardAppSDK.AnyValueProvider {}
+extension CardAppSDK.GradientValueProvider : CardAppSDK.AnyValueProvider {}
+extension CardAppSDK.IQKeyboardManager : Swift.Sendable {}
+extension CardAppSDK.IQAutoToolbarManageBehaviour : Swift.Equatable {}
+extension CardAppSDK.IQAutoToolbarManageBehaviour : Swift.Hashable {}
+extension CardAppSDK.IQAutoToolbarManageBehaviour : Swift.RawRepresentable {}
+extension CardAppSDK.IQPreviousNextDisplayMode : Swift.Equatable {}
+extension CardAppSDK.IQPreviousNextDisplayMode : Swift.Hashable {}
+extension CardAppSDK.IQPreviousNextDisplayMode : Swift.RawRepresentable {}
+extension CardAppSDK.IQEnableMode : Swift.Equatable {}
+extension CardAppSDK.IQEnableMode : Swift.Hashable {}
+extension CardAppSDK.IQEnableMode : Swift.RawRepresentable {}
+extension CardAppSDK.IQKeyboardReturnKeyHandler : Swift.Sendable {}
+extension CardAppSDK.LayerType : Swift.Equatable {}
+extension CardAppSDK.LayerType : Swift.Hashable {}
+extension CardAppSDK.LayerType : Swift.RawRepresentable {}
+extension CardAppSDK.MatteType : Swift.Equatable {}
+extension CardAppSDK.MatteType : Swift.Hashable {}
+extension CardAppSDK.MatteType : Swift.RawRepresentable {}
+extension CardAppSDK.DisplayType : Swift.Equatable {}
+extension CardAppSDK.DisplayType : Swift.Hashable {}
+extension CardAppSDK.DisplayType : Swift.RawRepresentable {}
+extension CardAppSDK.KeyboardType : Swift.Equatable {}
+extension CardAppSDK.KeyboardType : Swift.Hashable {}
+extension CardAppSDK.KeyboardType : Swift.RawRepresentable {}
+extension CardAppSDK.PointValueProvider : CardAppSDK.AnyValueProvider {}
+extension CardAppSDK.SideMenuManager.PresentDirection : Swift.Equatable {}
+extension CardAppSDK.SideMenuManager.PresentDirection : Swift.Hashable {}
+extension CardAppSDK.SideMenuManager.PresentDirection : Swift.RawRepresentable {}
+extension CardAppSDK.SideMenuPushStyle : Swift.Equatable {}
+extension CardAppSDK.SideMenuPushStyle : Swift.Hashable {}
+extension CardAppSDK.SideMenuPushStyle : Swift.RawRepresentable {}
+extension CardAppSDK.SizeValueProvider : CardAppSDK.AnyValueProvider {}
+extension CardAppSDK.DeviceModel : Swift.Equatable {}
+extension CardAppSDK.DeviceModel : Swift.Hashable {}
+extension CardAppSDK.DeviceModel : Swift.RawRepresentable {}
+extension CardAppSDK.SwKeyStore.SecError : Swift.Equatable {}
+extension CardAppSDK.SwKeyStore.SecError : Swift.Hashable {}
+extension CardAppSDK.SwKeyStore.SecError : Swift.RawRepresentable {}
+extension CardAppSDK.SwKeyConvert.SwError : Swift.Equatable {}
+extension CardAppSDK.SwKeyConvert.SwError : Swift.Hashable {}
+extension CardAppSDK.CC.CCError : Swift.Equatable {}
+extension CardAppSDK.CC.CCError : Swift.Hashable {}
+extension CardAppSDK.CC.CCError : Swift.RawRepresentable {}
+extension CardAppSDK.CC.DigestAlgorithm : Swift.Equatable {}
+extension CardAppSDK.CC.DigestAlgorithm : Swift.Hashable {}
+extension CardAppSDK.CC.DigestAlgorithm : Swift.RawRepresentable {}
+extension CardAppSDK.CC.HMACAlg : Swift.Equatable {}
+extension CardAppSDK.CC.HMACAlg : Swift.Hashable {}
+extension CardAppSDK.CC.HMACAlg : Swift.RawRepresentable {}
+extension CardAppSDK.CC.OpMode : Swift.Equatable {}
+extension CardAppSDK.CC.OpMode : Swift.Hashable {}
+extension CardAppSDK.CC.OpMode : Swift.RawRepresentable {}
+extension CardAppSDK.CC.BlockMode : Swift.Equatable {}
+extension CardAppSDK.CC.BlockMode : Swift.Hashable {}
+extension CardAppSDK.CC.BlockMode : Swift.RawRepresentable {}
+extension CardAppSDK.CC.AuthBlockMode : Swift.Equatable {}
+extension CardAppSDK.CC.AuthBlockMode : Swift.Hashable {}
+extension CardAppSDK.CC.AuthBlockMode : Swift.RawRepresentable {}
+extension CardAppSDK.CC.Algorithm : Swift.Equatable {}
+extension CardAppSDK.CC.Algorithm : Swift.Hashable {}
+extension CardAppSDK.CC.Algorithm : Swift.RawRepresentable {}
+extension CardAppSDK.CC.Padding : Swift.Equatable {}
+extension CardAppSDK.CC.Padding : Swift.Hashable {}
+extension CardAppSDK.CC.Padding : Swift.RawRepresentable {}
+extension CardAppSDK.CC.RSA.AsymmetricPadding : Swift.Equatable {}
+extension CardAppSDK.CC.RSA.AsymmetricPadding : Swift.Hashable {}
+extension CardAppSDK.CC.RSA.AsymmetricPadding : Swift.RawRepresentable {}
+extension CardAppSDK.CC.RSA.AsymmetricSAPadding : Swift.Equatable {}
+extension CardAppSDK.CC.RSA.AsymmetricSAPadding : Swift.Hashable {}
+extension CardAppSDK.CC.RSA.AsymmetricSAPadding : Swift.RawRepresentable {}
+extension CardAppSDK.CC.DH.DHParam : Swift.Equatable {}
+extension CardAppSDK.CC.DH.DHParam : Swift.Hashable {}
+extension CardAppSDK.CC.CRC.Mode : Swift.Equatable {}
+extension CardAppSDK.CC.CRC.Mode : Swift.Hashable {}
+extension CardAppSDK.CC.CRC.Mode : Swift.RawRepresentable {}
+extension CardAppSDK.CC.KeyDerivation.PRFAlg : Swift.Equatable {}
+extension CardAppSDK.CC.KeyDerivation.PRFAlg : Swift.Hashable {}
+extension CardAppSDK.CC.KeyDerivation.PRFAlg : Swift.RawRepresentable {}
+extension CardAppSDK.SwiftyJSONError : Swift.Equatable {}
+extension CardAppSDK.SwiftyJSONError : Swift.Hashable {}
+extension CardAppSDK.SwiftyJSONError : Swift.RawRepresentable {}
+extension CardAppSDK.`Type` : Swift.Equatable {}
+extension CardAppSDK.`Type` : Swift.Hashable {}
+extension CardAppSDK.`Type` : Swift.RawRepresentable {}
+extension CardAppSDK.writingOptionsKeys : Swift.Equatable {}
+extension CardAppSDK.writingOptionsKeys : Swift.Hashable {}
+extension CardAppSDK.ToastPosition : Swift.Equatable {}
+extension CardAppSDK.ToastPosition : Swift.Hashable {}

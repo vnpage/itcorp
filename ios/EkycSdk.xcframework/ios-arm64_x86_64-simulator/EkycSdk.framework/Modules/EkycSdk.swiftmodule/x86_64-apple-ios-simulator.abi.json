@@ -1,0 +1,1163 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "EkycSdk",
+    "printedName": "EkycSdk",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "EkycSdk",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "EnterpriseOnboardingSDK",
+        "printedName": "EnterpriseOnboardingSDK",
+        "declKind": "Import",
+        "moduleName": "EkycSdk"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "EKYCSDKContainerVC",
+        "printedName": "EKYCSDKContainerVC",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "myNavigationController",
+            "printedName": "myNavigationController",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UINavigationController",
+                "printedName": "UIKit.UINavigationController",
+                "usr": "c:objc(cs)UINavigationController"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7EkycSdk18EKYCSDKContainerVCC22myNavigationControllerSo012UINavigationG0Cvp",
+            "mangledName": "$s7EkycSdk18EKYCSDKContainerVCC22myNavigationControllerSo012UINavigationG0Cvp",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UINavigationController",
+                    "printedName": "UIKit.UINavigationController",
+                    "usr": "c:objc(cs)UINavigationController"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7EkycSdk18EKYCSDKContainerVCC22myNavigationControllerSo012UINavigationG0Cvg",
+                "mangledName": "$s7EkycSdk18EKYCSDKContainerVCC22myNavigationControllerSo012UINavigationG0Cvg",
+                "moduleName": "EkycSdk",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "viewDidLoad",
+            "printedName": "viewDidLoad()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@EkycSdk@objc(cs)EKYCSDKContainerVC(im)viewDidLoad",
+            "mangledName": "$s7EkycSdk18EKYCSDKContainerVCC11viewDidLoadyyF",
+            "moduleName": "EkycSdk",
+            "overriding": true,
+            "objc_name": "viewDidLoad",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "push",
+            "printedName": "push(_:animated:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk18EKYCSDKContainerVCC4push_8animatedySo16UIViewControllerC_SbtF",
+            "mangledName": "$s7EkycSdk18EKYCSDKContainerVCC4push_8animatedySo16UIViewControllerC_SbtF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "resetTo",
+            "printedName": "resetTo(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk18EKYCSDKContainerVCC7resetToyySo16UIViewControllerCF",
+            "mangledName": "$s7EkycSdk18EKYCSDKContainerVCC7resetToyySo16UIViewControllerCF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "pop",
+            "printedName": "pop()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk18EKYCSDKContainerVCC3popyyF",
+            "mangledName": "$s7EkycSdk18EKYCSDKContainerVCC3popyyF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "popToRoot",
+            "printedName": "popToRoot()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk18EKYCSDKContainerVCC9popToRootyyF",
+            "mangledName": "$s7EkycSdk18EKYCSDKContainerVCC9popToRootyyF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "Preconcurrency",
+              "Custom",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(nibName:bundle:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "EKYCSDKContainerVC",
+                "printedName": "EkycSdk.EKYCSDKContainerVC",
+                "usr": "c:@M@EkycSdk@objc(cs)EKYCSDKContainerVC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Bundle?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bundle",
+                    "printedName": "Foundation.Bundle",
+                    "usr": "c:objc(cs)NSBundle"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@EkycSdk@objc(cs)EKYCSDKContainerVC(im)initWithNibName:bundle:",
+            "mangledName": "$s7EkycSdk18EKYCSDKContainerVCC7nibName6bundleACSSSg_So8NSBundleCSgtcfc",
+            "moduleName": "EkycSdk",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithNibName:bundle:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "EkycSdk.EKYCSDKContainerVC?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EKYCSDKContainerVC",
+                    "printedName": "EkycSdk.EKYCSDKContainerVC",
+                    "usr": "c:@M@EkycSdk@objc(cs)EKYCSDKContainerVC"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@EkycSdk@objc(cs)EKYCSDKContainerVC(im)initWithCoder:",
+            "mangledName": "$s7EkycSdk18EKYCSDKContainerVCC5coderACSgSo7NSCoderC_tcfc",
+            "moduleName": "EkycSdk",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Preconcurrency",
+              "Custom",
+              "Required"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@EkycSdk@objc(cs)EKYCSDKContainerVC",
+        "mangledName": "$s7EkycSdk18EKYCSDKContainerVCC",
+        "moduleName": "EkycSdk",
+        "declAttributes": [
+          "Preconcurrency",
+          "Custom",
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)UIViewController",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "UIKit.UIViewController",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "EkycSdk",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "EkycSdk"
+      },
+      {
+        "kind": "Import",
+        "name": "EnterpriseOnboardingSDK",
+        "printedName": "EnterpriseOnboardingSDK",
+        "declKind": "Import",
+        "moduleName": "EkycSdk"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "EkycSdkManagerDelegate",
+        "printedName": "EkycSdkManagerDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "onSuccess",
+            "printedName": "onSuccess()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB15ManagerDelegateP9onSuccessyyF",
+            "mangledName": "$s7EkycSdk0aB15ManagerDelegateP9onSuccessyyF",
+            "moduleName": "EkycSdk",
+            "genericSig": "<τ_0_0 where τ_0_0 : EkycSdk.EkycSdkManagerDelegate>",
+            "sugared_genericSig": "<Self where Self : EkycSdk.EkycSdkManagerDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "onClose",
+            "printedName": "onClose()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB15ManagerDelegateP7onCloseyyF",
+            "mangledName": "$s7EkycSdk0aB15ManagerDelegateP7onCloseyyF",
+            "moduleName": "EkycSdk",
+            "genericSig": "<τ_0_0 where τ_0_0 : EkycSdk.EkycSdkManagerDelegate>",
+            "sugared_genericSig": "<Self where Self : EkycSdk.EkycSdkManagerDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:7EkycSdk0aB15ManagerDelegateP",
+        "mangledName": "$s7EkycSdk0aB15ManagerDelegateP",
+        "moduleName": "EkycSdk",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "EkycSdkManager",
+        "printedName": "EkycSdkManager",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "setChannel",
+            "printedName": "setChannel(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB7ManagerC10setChannelyySSF",
+            "mangledName": "$s7EkycSdk0aB7ManagerC10setChannelyySSF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setDomainEIDCloud",
+            "printedName": "setDomainEIDCloud(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB7ManagerC17setDomainEIDCloudyySSF",
+            "mangledName": "$s7EkycSdk0aB7ManagerC17setDomainEIDCloudyySSF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setDomainEnterpriseCloud",
+            "printedName": "setDomainEnterpriseCloud(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB7ManagerC24setDomainEnterpriseCloudyySSF",
+            "mangledName": "$s7EkycSdk0aB7ManagerC24setDomainEnterpriseCloudyySSF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setDkkd",
+            "printedName": "setDkkd(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB7ManagerC7setDkkdyySSF",
+            "mangledName": "$s7EkycSdk0aB7ManagerC7setDkkdyySSF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setByPassCheckBusiness",
+            "printedName": "setByPassCheckBusiness()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB7ManagerC22setByPassCheckBusinessyyF",
+            "mangledName": "$s7EkycSdk0aB7ManagerC22setByPassCheckBusinessyyF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setSkipFirstScreen",
+            "printedName": "setSkipFirstScreen()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB7ManagerC18setSkipFirstScreenyyF",
+            "mangledName": "$s7EkycSdk0aB7ManagerC18setSkipFirstScreenyyF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "registerSuccess",
+            "printedName": "registerSuccess()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB7ManagerC15registerSuccessyyF",
+            "mangledName": "$s7EkycSdk0aB7ManagerC15registerSuccessyyF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "didLogout",
+            "printedName": "didLogout()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB7ManagerC9didLogoutyyF",
+            "mangledName": "$s7EkycSdk0aB7ManagerC9didLogoutyyF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "shared",
+            "printedName": "shared",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "EkycSdkManager",
+                "printedName": "EkycSdk.EkycSdkManager",
+                "usr": "s:7EkycSdk0aB7ManagerC"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7EkycSdk0aB7ManagerC6sharedACvpZ",
+            "mangledName": "$s7EkycSdk0aB7ManagerC6sharedACvpZ",
+            "moduleName": "EkycSdk",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "EkycSdkManager",
+                    "printedName": "EkycSdk.EkycSdkManager",
+                    "usr": "s:7EkycSdk0aB7ManagerC"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7EkycSdk0aB7ManagerC6sharedACvgZ",
+                "mangledName": "$s7EkycSdk0aB7ManagerC6sharedACvgZ",
+                "moduleName": "EkycSdk",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "getConnect",
+            "printedName": "getConnect()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Foundation.NSNotification.Name]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Name",
+                    "printedName": "Foundation.NSNotification.Name",
+                    "usr": "c:@T@NSNotificationName"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB7ManagerC10getConnectSaySo18NSNotificationNameaGyF",
+            "mangledName": "$s7EkycSdk0aB7ManagerC10getConnectSaySo18NSNotificationNameaGyF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "EkycSdkManager",
+                "printedName": "EkycSdk.EkycSdkManager",
+                "usr": "s:7EkycSdk0aB7ManagerC"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:7EkycSdk0aB7ManagerCACycfc",
+            "mangledName": "$s7EkycSdk0aB7ManagerCACycfc",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "setNavigationController",
+            "printedName": "setNavigationController(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UINavigationController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UINavigationController",
+                    "printedName": "UIKit.UINavigationController",
+                    "usr": "c:objc(cs)UINavigationController"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB7ManagerC23setNavigationControlleryySo012UINavigationF0CSgF",
+            "mangledName": "$s7EkycSdk0aB7ManagerC23setNavigationControlleryySo012UINavigationF0CSgF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "startService",
+            "printedName": "startService()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk0aB7ManagerC12startServiceyyF",
+            "mangledName": "$s7EkycSdk0aB7ManagerC12startServiceyyF",
+            "moduleName": "EkycSdk",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:7EkycSdk0aB7ManagerC",
+        "mangledName": "$s7EkycSdk0aB7ManagerC",
+        "moduleName": "EkycSdk",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "EnterpriseOnboardingManagerDelegate",
+            "printedName": "EnterpriseOnboardingManagerDelegate",
+            "usr": "s:23EnterpriseOnboardingSDK0aB15ManagerDelegateP",
+            "mangledName": "$s23EnterpriseOnboardingSDK0aB15ManagerDelegateP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SDKNavigator",
+        "printedName": "SDKNavigator",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "container",
+            "printedName": "container",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "WeakStorage",
+                "printedName": "EkycSdk.EKYCSDKContainerVC?"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:7EkycSdk12SDKNavigatorC9containerAA18EKYCSDKContainerVCCSgvpZ",
+            "mangledName": "$s7EkycSdk12SDKNavigatorC9containerAA18EKYCSDKContainerVCCSgvpZ",
+            "moduleName": "EkycSdk",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "ReferenceOwnership",
+              "AccessControl"
+            ],
+            "ownership": 1,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "EkycSdk.EKYCSDKContainerVC?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EKYCSDKContainerVC",
+                        "printedName": "EkycSdk.EKYCSDKContainerVC",
+                        "usr": "c:@M@EkycSdk@objc(cs)EKYCSDKContainerVC"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7EkycSdk12SDKNavigatorC9containerAA18EKYCSDKContainerVCCSgvgZ",
+                "mangledName": "$s7EkycSdk12SDKNavigatorC9containerAA18EKYCSDKContainerVCCSgvgZ",
+                "moduleName": "EkycSdk",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "EkycSdk.EKYCSDKContainerVC?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "EKYCSDKContainerVC",
+                        "printedName": "EkycSdk.EKYCSDKContainerVC",
+                        "usr": "c:@M@EkycSdk@objc(cs)EKYCSDKContainerVC"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7EkycSdk12SDKNavigatorC9containerAA18EKYCSDKContainerVCCSgvsZ",
+                "mangledName": "$s7EkycSdk12SDKNavigatorC9containerAA18EKYCSDKContainerVCCSgvsZ",
+                "moduleName": "EkycSdk",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:7EkycSdk12SDKNavigatorC9containerAA18EKYCSDKContainerVCCSgvMZ",
+                "mangledName": "$s7EkycSdk12SDKNavigatorC9containerAA18EKYCSDKContainerVCCSgvMZ",
+                "moduleName": "EkycSdk",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "push",
+            "printedName": "push(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk12SDKNavigatorC4pushyySo16UIViewControllerCFZ",
+            "mangledName": "$s7EkycSdk12SDKNavigatorC4pushyySo16UIViewControllerCFZ",
+            "moduleName": "EkycSdk",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "reset",
+            "printedName": "reset(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk12SDKNavigatorC5reset2toySo16UIViewControllerC_tFZ",
+            "mangledName": "$s7EkycSdk12SDKNavigatorC5reset2toySo16UIViewControllerC_tFZ",
+            "moduleName": "EkycSdk",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "pop",
+            "printedName": "pop()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk12SDKNavigatorC3popyyFZ",
+            "mangledName": "$s7EkycSdk12SDKNavigatorC3popyyFZ",
+            "moduleName": "EkycSdk",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "popToRoot",
+            "printedName": "popToRoot()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:7EkycSdk12SDKNavigatorC9popToRootyyFZ",
+            "mangledName": "$s7EkycSdk12SDKNavigatorC9popToRootyyFZ",
+            "moduleName": "EkycSdk",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:7EkycSdk12SDKNavigatorC",
+        "mangledName": "$s7EkycSdk12SDKNavigatorC",
+        "moduleName": "EkycSdk",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ],
+        "hasMissingDesignatedInitializers": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/leonacky\/Data\/dev\/2025\/Corp\/CardApp\/cardapp-fe-ios\/CardAppBridge\/EKYCSDKContainerVC.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1423,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/leonacky\/Data\/dev\/2025\/Corp\/CardApp\/cardapp-fe-ios\/CardAppBridge\/EkycSdkManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 848,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/leonacky\/Data\/dev\/2025\/Corp\/CardApp\/cardapp-fe-ios\/CardAppBridge\/EkycSdkManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1053,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/leonacky\/Data\/dev\/2025\/Corp\/CardApp\/cardapp-fe-ios\/CardAppBridge\/EkycSdkManager.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1098,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/leonacky\/Data\/dev\/2025\/Corp\/CardApp\/cardapp-fe-ios\/CardAppBridge\/EkycSdkManager.swift",
+      "kind": "StringLiteral",
+      "offset": 2659,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/leonacky\/Data\/dev\/2025\/Corp\/CardApp\/cardapp-fe-ios\/CardAppBridge\/EkycSdkManager.swift",
+      "kind": "StringLiteral",
+      "offset": 3633,
+      "length": 2,
+      "value": "\"\""
+    }
+  ]
+}

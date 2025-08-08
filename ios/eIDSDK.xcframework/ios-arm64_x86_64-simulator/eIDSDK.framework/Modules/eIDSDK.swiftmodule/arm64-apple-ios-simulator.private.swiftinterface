@@ -1,0 +1,2982 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target arm64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name eIDSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import AudioToolbox
+import Combine
+import CommonCrypto
+import CoreGraphics
+import CoreNFC
+import CryptoKit
+import CryptoTokenKit
+import Darwin
+import DeveloperToolsSupport
+import Dispatch
+import Foundation
+import MachO
+import MobileCoreServices
+import ObjectiveC
+import OpenSSL
+import Swift
+import SwiftUI
+import SystemConfiguration
+import UIKit
+import Vision
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@_exported import eIDSDK
+public typealias FailedCheckType = (check: eIDSDK.FailedCheck, failMessage: Swift.String)
+public enum FailedCheck : Swift.CaseIterable {
+  case urlSchemes
+  case existenceOfSuspiciousFiles
+  case suspiciousFilesCanBeOpened
+  case restrictedDirectoriesWriteable
+  case fork
+  case symbolicLinks
+  case dyld
+  case openedPorts
+  case pSelectFlag
+  case suspiciousObjCClasses
+  public static func == (a: eIDSDK.FailedCheck, b: eIDSDK.FailedCheck) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public typealias AllCases = [eIDSDK.FailedCheck]
+  public static var allCases: [eIDSDK.FailedCheck] {
+    get
+  }
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum AFError : Swift.Error {
+  public enum ParameterEncodingFailureReason {
+    case missingURL
+    case jsonEncodingFailed(error: any Swift.Error)
+    case propertyListEncodingFailed(error: any Swift.Error)
+  }
+  public enum MultipartEncodingFailureReason {
+    case bodyPartURLInvalid(url: Foundation.URL)
+    case bodyPartFilenameInvalid(in: Foundation.URL)
+    case bodyPartFileNotReachable(at: Foundation.URL)
+    case bodyPartFileNotReachableWithError(atURL: Foundation.URL, error: any Swift.Error)
+    case bodyPartFileIsDirectory(at: Foundation.URL)
+    case bodyPartFileSizeNotAvailable(at: Foundation.URL)
+    case bodyPartFileSizeQueryFailedWithError(forURL: Foundation.URL, error: any Swift.Error)
+    case bodyPartInputStreamCreationFailed(for: Foundation.URL)
+    case outputStreamCreationFailed(for: Foundation.URL)
+    case outputStreamFileAlreadyExists(at: Foundation.URL)
+    case outputStreamURLInvalid(url: Foundation.URL)
+    case outputStreamWriteFailed(error: any Swift.Error)
+    case inputStreamReadFailed(error: any Swift.Error)
+  }
+  public enum ResponseValidationFailureReason {
+    case dataFileNil
+    case dataFileReadFailed(at: Foundation.URL)
+    case missingContentType(acceptableContentTypes: [Swift.String])
+    case unacceptableContentType(acceptableContentTypes: [Swift.String], responseContentType: Swift.String)
+    case unacceptableStatusCode(code: Swift.Int)
+  }
+  public enum ResponseSerializationFailureReason {
+    case inputDataNil
+    case inputDataNilOrZeroLength
+    case inputFileNil
+    case inputFileReadFailed(at: Foundation.URL)
+    case stringSerializationFailed(encoding: Swift.String.Encoding)
+    case jsonSerializationFailed(error: any Swift.Error)
+    case propertyListSerializationFailed(error: any Swift.Error)
+  }
+  case invalidURL(url: any eIDSDK.URLConvertible)
+  case parameterEncodingFailed(reason: eIDSDK.AFError.ParameterEncodingFailureReason)
+  case multipartEncodingFailed(reason: eIDSDK.AFError.MultipartEncodingFailureReason)
+  case responseValidationFailed(reason: eIDSDK.AFError.ResponseValidationFailureReason)
+  case responseSerializationFailed(reason: eIDSDK.AFError.ResponseSerializationFailureReason)
+}
+extension eIDSDK.AFError {
+  public var isInvalidURLError: Swift.Bool {
+    get
+  }
+  public var isParameterEncodingError: Swift.Bool {
+    get
+  }
+  public var isMultipartEncodingError: Swift.Bool {
+    get
+  }
+  public var isResponseValidationError: Swift.Bool {
+    get
+  }
+  public var isResponseSerializationError: Swift.Bool {
+    get
+  }
+}
+extension eIDSDK.AFError {
+  public var urlConvertible: (any eIDSDK.URLConvertible)? {
+    get
+  }
+  public var url: Foundation.URL? {
+    get
+  }
+  public var underlyingError: (any Swift.Error)? {
+    get
+  }
+  public var acceptableContentTypes: [Swift.String]? {
+    get
+  }
+  public var responseContentType: Swift.String? {
+    get
+  }
+  public var responseCode: Swift.Int? {
+    get
+  }
+  public var failedStringEncoding: Swift.String.Encoding? {
+    get
+  }
+}
+extension eIDSDK.AFError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class OCRManager : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public func getOCRViewController(delegate: any eIDSDK.OCRDelegate, isAutoDetect: Swift.Bool = false, isCapturePassport: Swift.Bool, isOnlyCardChip: Swift.Bool) -> eIDSDK.OCRViewController?
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class NotImplementedDG : eIDSDK.DataGroup {
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers open class LDSessionDelegate : ObjectiveC.NSObject {
+  open var sessionDidBecomeInvalidWithError: ((Foundation.URLSession, (any Swift.Error)?) -> Swift.Void)?
+  open var sessionDidReceiveChallenge: ((Foundation.URLSession, Foundation.URLAuthenticationChallenge) -> (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?))?
+  open var sessionDidReceiveChallengeWithCompletion: ((Foundation.URLSession, Foundation.URLAuthenticationChallenge, @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void) -> Swift.Void)?
+  open var sessionDidFinishEventsForBackgroundURLSession: ((Foundation.URLSession) -> Swift.Void)?
+  open var taskWillPerformHTTPRedirection: ((Foundation.URLSession, Foundation.URLSessionTask, Foundation.HTTPURLResponse, Foundation.URLRequest) -> Foundation.URLRequest?)?
+  open var taskWillPerformHTTPRedirectionWithCompletion: ((Foundation.URLSession, Foundation.URLSessionTask, Foundation.HTTPURLResponse, Foundation.URLRequest, @escaping (Foundation.URLRequest?) -> Swift.Void) -> Swift.Void)?
+  open var taskDidReceiveChallenge: ((Foundation.URLSession, Foundation.URLSessionTask, Foundation.URLAuthenticationChallenge) -> (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?))?
+  open var taskDidReceiveChallengeWithCompletion: ((Foundation.URLSession, Foundation.URLSessionTask, Foundation.URLAuthenticationChallenge, @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void) -> Swift.Void)?
+  open var taskNeedNewBodyStream: ((Foundation.URLSession, Foundation.URLSessionTask) -> Foundation.InputStream?)?
+  open var taskNeedNewBodyStreamWithCompletion: ((Foundation.URLSession, Foundation.URLSessionTask, @escaping (Foundation.InputStream?) -> Swift.Void) -> Swift.Void)?
+  open var taskDidSendBodyData: ((Foundation.URLSession, Foundation.URLSessionTask, Swift.Int64, Swift.Int64, Swift.Int64) -> Swift.Void)?
+  open var taskDidComplete: ((Foundation.URLSession, Foundation.URLSessionTask, (any Swift.Error)?) -> Swift.Void)?
+  open var dataTaskDidReceiveResponse: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.URLResponse) -> Foundation.URLSession.ResponseDisposition)?
+  open var dataTaskDidReceiveResponseWithCompletion: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.URLResponse, @escaping (Foundation.URLSession.ResponseDisposition) -> Swift.Void) -> Swift.Void)?
+  open var dataTaskDidBecomeDownloadTask: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.URLSessionDownloadTask) -> Swift.Void)?
+  open var dataTaskDidReceiveData: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.Data) -> Swift.Void)?
+  open var dataTaskWillCacheResponse: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.CachedURLResponse) -> Foundation.CachedURLResponse?)?
+  open var dataTaskWillCacheResponseWithCompletion: ((Foundation.URLSession, Foundation.URLSessionDataTask, Foundation.CachedURLResponse, @escaping (Foundation.CachedURLResponse?) -> Swift.Void) -> Swift.Void)?
+  open var downloadTaskDidFinishDownloadingToURL: ((Foundation.URLSession, Foundation.URLSessionDownloadTask, Foundation.URL) -> Swift.Void)?
+  open var downloadTaskDidWriteData: ((Foundation.URLSession, Foundation.URLSessionDownloadTask, Swift.Int64, Swift.Int64, Swift.Int64) -> Swift.Void)?
+  open var downloadTaskDidResumeAtOffset: ((Foundation.URLSession, Foundation.URLSessionDownloadTask, Swift.Int64, Swift.Int64) -> Swift.Void)?
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+  open var streamTaskReadClosed: ((Foundation.URLSession, Foundation.URLSessionStreamTask) -> Swift.Void)? {
+    get
+    set
+  }
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+  open var streamTaskWriteClosed: ((Foundation.URLSession, Foundation.URLSessionStreamTask) -> Swift.Void)? {
+    get
+    set
+  }
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+  open var streamTaskBetterRouteDiscovered: ((Foundation.URLSession, Foundation.URLSessionStreamTask) -> Swift.Void)? {
+    get
+    set
+  }
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+  open var streamTaskDidBecomeInputAndOutputStreams: ((Foundation.URLSession, Foundation.URLSessionStreamTask, Foundation.InputStream, Foundation.OutputStream) -> Swift.Void)? {
+    get
+    set
+  }
+  open subscript(task: Foundation.URLSessionTask) -> eIDSDK.Request? {
+    get
+    set
+  }
+  @objc override dynamic public init()
+  @objc override dynamic open func responds(to selector: ObjectiveC.Selector) -> Swift.Bool
+  @objc deinit
+}
+extension eIDSDK.LDSessionDelegate : Foundation.URLSessionDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, didBecomeInvalidWithError error: (any Swift.Error)?)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
+  @objc dynamic open func urlSessionDidFinishEvents(forBackgroundURLSession session: Foundation.URLSession)
+}
+extension eIDSDK.LDSessionDelegate : Foundation.URLSessionTaskDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, willPerformHTTPRedirection response: Foundation.HTTPURLResponse, newRequest request: Foundation.URLRequest, completionHandler: @escaping (Foundation.URLRequest?) -> Swift.Void)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didReceive challenge: Foundation.URLAuthenticationChallenge, completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, Foundation.URLCredential?) -> Swift.Void)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, needNewBodyStream completionHandler: @escaping (Foundation.InputStream?) -> Swift.Void)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didSendBodyData bytesSent: Swift.Int64, totalBytesSent: Swift.Int64, totalBytesExpectedToSend: Swift.Int64)
+  @available(iOS 10.0, macOS 10.12, tvOS 10.0, *)
+  @objc(URLSession:task:didFinishCollectingMetrics:) dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didFinishCollecting metrics: Foundation.URLSessionTaskMetrics)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, task: Foundation.URLSessionTask, didCompleteWithError error: (any Swift.Error)?)
+}
+extension eIDSDK.LDSessionDelegate : Foundation.URLSessionDataDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive response: Foundation.URLResponse, completionHandler: @escaping (Foundation.URLSession.ResponseDisposition) -> Swift.Void)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didBecome downloadTask: Foundation.URLSessionDownloadTask)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, didReceive data: Foundation.Data)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, dataTask: Foundation.URLSessionDataTask, willCacheResponse proposedResponse: Foundation.CachedURLResponse, completionHandler: @escaping (Foundation.CachedURLResponse?) -> Swift.Void)
+}
+extension eIDSDK.LDSessionDelegate : Foundation.URLSessionDownloadDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didFinishDownloadingTo location: Foundation.URL)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didWriteData bytesWritten: Swift.Int64, totalBytesWritten: Swift.Int64, totalBytesExpectedToWrite: Swift.Int64)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, downloadTask: Foundation.URLSessionDownloadTask, didResumeAtOffset fileOffset: Swift.Int64, expectedTotalBytes: Swift.Int64)
+}
+@available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+extension eIDSDK.LDSessionDelegate : Foundation.URLSessionStreamDelegate {
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, readClosedFor streamTask: Foundation.URLSessionStreamTask)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, writeClosedFor streamTask: Foundation.URLSessionStreamTask)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, betterRouteDiscoveredFor streamTask: Foundation.URLSessionStreamTask)
+  @objc dynamic open func urlSession(_ session: Foundation.URLSession, streamTask: Foundation.URLSessionStreamTask, didBecome inputStream: Foundation.InputStream, outputStream: Foundation.OutputStream)
+}
+@objc public protocol DocumentScanPreviewDelegate {
+  @objc func previewBackPress()
+  @objc func takeResum(image: UIKit.UIImage?, imageString: Swift.String?)
+  @objc func donePress(image: UIKit.UIImage?, imageString: Swift.String?)
+}
+public class AddressDetails : Foundation.NSCoding {
+  public var district: Swift.String?
+  public var ward: Swift.String?
+  public var street: Swift.String?
+  public var province: Swift.String?
+  public var country: Swift.String?
+  convenience public init(object: Any)
+  public init(json: eIDSDK.JSON)
+  public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc required public init(coder aDecoder: Foundation.NSCoder)
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class SwKeyStore {
+  public enum SecError : Darwin.OSStatus, Swift.Error {
+    case unimplemented
+    case param
+    case allocate
+    case notAvailable
+    case authFailed
+    case duplicateItem
+    case itemNotFound
+    case interactionNotAllowed
+    case decode
+    case missingEntitlement
+    public static var debugLevel: Swift.Int
+    public init?(rawValue: Darwin.OSStatus)
+    public typealias RawValue = Darwin.OSStatus
+    public var rawValue: Darwin.OSStatus {
+      get
+    }
+  }
+  public static func upsertKey(_ pemKey: Swift.String, keyTag: Swift.String, options: [Foundation.NSString : Swift.AnyObject] = [:]) throws
+  public static func getKey(_ keyTag: Swift.String) throws -> Swift.String
+  public static func delKey(_ keyTag: Swift.String) throws
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class SwKeyConvert {
+  public enum SwError : Swift.Error {
+    case invalidKey
+    case badPassphrase
+    case keyNotEncrypted
+    public static var debugLevel: Swift.Int
+    public static func == (a: eIDSDK.SwKeyConvert.SwError, b: eIDSDK.SwKeyConvert.SwError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_hasMissingDesignatedInitializers open class PrivateKey {
+    public static func pemToPKCS1DER(_ pemKey: Swift.String) throws -> Foundation.Data
+    public static func derToPKCS1PEM(_ derKey: Foundation.Data) -> Swift.String
+    public typealias EncMode = eIDSDK.PEM.EncryptedPrivateKey.EncMode
+    public static func encryptPEM(_ pemKey: Swift.String, passphrase: Swift.String, mode: eIDSDK.SwKeyConvert.PrivateKey.EncMode) throws -> Swift.String
+    public static func decryptPEM(_ pemKey: Swift.String, passphrase: Swift.String) throws -> Swift.String
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class PublicKey {
+    public static func pemToPKCS1DER(_ pemKey: Swift.String) throws -> Foundation.Data
+    public static func pemToPKCS8DER(_ pemKey: Swift.String) throws -> Foundation.Data
+    public static func derToPKCS1PEM(_ derKey: Foundation.Data) -> Swift.String
+    public static func derToPKCS8PEM(_ derKey: Foundation.Data) -> Swift.String
+    @objc deinit
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class PKCS8 {
+  @_hasMissingDesignatedInitializers open class PrivateKey {
+    public static func getPKCS1DEROffset(_ derKey: Foundation.Data) -> Swift.Int?
+    public static func stripHeaderIfAny(_ derKey: Foundation.Data) -> Foundation.Data?
+    public static func hasCorrectHeader(_ derKey: Foundation.Data) -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class PublicKey {
+    public static func addHeader(_ derKey: Foundation.Data) -> Foundation.Data
+    public static func getPKCS1DEROffset(_ derKey: Foundation.Data) -> Swift.Int?
+    public static func stripHeaderIfAny(_ derKey: Foundation.Data) -> Foundation.Data?
+    public static func hasCorrectHeader(_ derKey: Foundation.Data) -> Swift.Bool
+    @objc deinit
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class PEM {
+  public enum SwError : Swift.Error {
+    case parse(Swift.String)
+    case badPassphrase
+    case keyNotEncrypted
+    public static var debugLevel: Swift.Int
+  }
+  @_hasMissingDesignatedInitializers open class PrivateKey {
+    public static func toDER(_ pemKey: Swift.String) throws -> Foundation.Data
+    public static func toPEM(_ derKey: Foundation.Data) -> Swift.String
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class PublicKey {
+    public static func toDER(_ pemKey: Swift.String) throws -> Foundation.Data
+    public static func toPEM(_ derKey: Foundation.Data) -> Swift.String
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class EncryptedPrivateKey {
+    public enum EncMode {
+      case aes128CBC, aes256CBC
+      public static func == (a: eIDSDK.PEM.EncryptedPrivateKey.EncMode, b: eIDSDK.PEM.EncryptedPrivateKey.EncMode) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public static func toDER(_ pemKey: Swift.String, passphrase: Swift.String) throws -> Foundation.Data
+    public static func toPEM(_ derKey: Foundation.Data, passphrase: Swift.String, mode: eIDSDK.PEM.EncryptedPrivateKey.EncMode) -> Swift.String
+    @objc deinit
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class CC {
+  public typealias CCCryptorStatus = Swift.Int32
+  public enum CCError : eIDSDK.CC.CCCryptorStatus, Swift.Error {
+    case paramError
+    case bufferTooSmall
+    case memoryFailure
+    case alignmentError
+    case decodeError
+    case unimplemented
+    case overflow
+    case rngFailure
+    case unspecifiedError
+    case callSequenceError
+    case keySizeError
+    case invalidKey
+    public static var debugLevel: Swift.Int
+    public init?(rawValue: eIDSDK.CC.CCCryptorStatus)
+    public typealias RawValue = eIDSDK.CC.CCCryptorStatus
+    public var rawValue: eIDSDK.CC.CCCryptorStatus {
+      get
+    }
+  }
+  public static func generateRandom(_ size: Swift.Int) -> Foundation.Data
+  public typealias CCDigestAlgorithm = Swift.UInt32
+  public enum DigestAlgorithm : eIDSDK.CC.CCDigestAlgorithm {
+    case none
+    case md5
+    case rmd128, rmd160, rmd256, rmd320
+    case sha1
+    case sha224, sha256, sha384, sha512
+    public init?(rawValue: eIDSDK.CC.CCDigestAlgorithm)
+    public typealias RawValue = eIDSDK.CC.CCDigestAlgorithm
+    public var rawValue: eIDSDK.CC.CCDigestAlgorithm {
+      get
+    }
+  }
+  public static func digest(_ data: Foundation.Data, alg: eIDSDK.CC.DigestAlgorithm) -> Foundation.Data
+  public typealias CCHmacAlgorithm = Swift.UInt32
+  public enum HMACAlg : eIDSDK.CC.CCHmacAlgorithm {
+    case sha1, md5, sha256, sha384, sha512, sha224
+    public init?(rawValue: eIDSDK.CC.CCHmacAlgorithm)
+    public typealias RawValue = eIDSDK.CC.CCHmacAlgorithm
+    public var rawValue: eIDSDK.CC.CCHmacAlgorithm {
+      get
+    }
+  }
+  public static func HMAC(_ data: Foundation.Data, alg: eIDSDK.CC.HMACAlg, key: Foundation.Data) -> Foundation.Data
+  public typealias CCOperation = Swift.UInt32
+  public enum OpMode : eIDSDK.CC.CCOperation {
+    case encrypt, decrypt
+    public init?(rawValue: eIDSDK.CC.CCOperation)
+    public typealias RawValue = eIDSDK.CC.CCOperation
+    public var rawValue: eIDSDK.CC.CCOperation {
+      get
+    }
+  }
+  public typealias CCMode = Swift.UInt32
+  public enum BlockMode : eIDSDK.CC.CCMode {
+    case ecb, cbc, cfb, ctr, f8, lrw, ofb, xts, rc4, cfb8
+    public init?(rawValue: eIDSDK.CC.CCMode)
+    public typealias RawValue = eIDSDK.CC.CCMode
+    public var rawValue: eIDSDK.CC.CCMode {
+      get
+    }
+  }
+  public enum AuthBlockMode : eIDSDK.CC.CCMode {
+    case gcm, ccm
+    public init?(rawValue: eIDSDK.CC.CCMode)
+    public typealias RawValue = eIDSDK.CC.CCMode
+    public var rawValue: eIDSDK.CC.CCMode {
+      get
+    }
+  }
+  public typealias CCAlgorithm = Swift.UInt32
+  public enum Algorithm : eIDSDK.CC.CCAlgorithm {
+    case aes, des, threeDES, cast, rc4, rc2, blowfish
+    public init?(rawValue: eIDSDK.CC.CCAlgorithm)
+    public typealias RawValue = eIDSDK.CC.CCAlgorithm
+    public var rawValue: eIDSDK.CC.CCAlgorithm {
+      get
+    }
+  }
+  public typealias CCPadding = Swift.UInt32
+  public enum Padding : eIDSDK.CC.CCPadding {
+    case noPadding, pkcs7Padding
+    public init?(rawValue: eIDSDK.CC.CCPadding)
+    public typealias RawValue = eIDSDK.CC.CCPadding
+    public var rawValue: eIDSDK.CC.CCPadding {
+      get
+    }
+  }
+  public static func crypt(_ opMode: eIDSDK.CC.OpMode, blockMode: eIDSDK.CC.BlockMode, algorithm: eIDSDK.CC.Algorithm, padding: eIDSDK.CC.Padding, data: Foundation.Data, key: Foundation.Data, iv: Foundation.Data) throws -> Foundation.Data
+  public static func cryptAuth(_ opMode: eIDSDK.CC.OpMode, blockMode: eIDSDK.CC.AuthBlockMode, algorithm: eIDSDK.CC.Algorithm, data: Foundation.Data, aData: Foundation.Data, key: Foundation.Data, iv: Foundation.Data, tagLength: Swift.Int) throws -> Foundation.Data
+  public static func digestAvailable() -> Swift.Bool
+  public static func randomAvailable() -> Swift.Bool
+  public static func hmacAvailable() -> Swift.Bool
+  public static func cryptorAvailable() -> Swift.Bool
+  public static func available() -> Swift.Bool
+  @_hasMissingDesignatedInitializers open class GCM {
+    public static func crypt(_ opMode: eIDSDK.CC.OpMode, algorithm: eIDSDK.CC.Algorithm, data: Foundation.Data, key: Foundation.Data, iv: Foundation.Data, aData: Foundation.Data, tagLength: Swift.Int) throws -> (Foundation.Data, Foundation.Data)
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class CCM {
+    public static func crypt(_ opMode: eIDSDK.CC.OpMode, algorithm: eIDSDK.CC.Algorithm, data: Foundation.Data, key: Foundation.Data, iv: Foundation.Data, aData: Foundation.Data, tagLength: Swift.Int) throws -> (Foundation.Data, Foundation.Data)
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class RSA {
+    public typealias CCAsymmetricPadding = Swift.UInt32
+    public enum AsymmetricPadding : eIDSDK.CC.RSA.CCAsymmetricPadding {
+      case pkcs1
+      case oaep
+      public init?(rawValue: eIDSDK.CC.RSA.CCAsymmetricPadding)
+      public typealias RawValue = eIDSDK.CC.RSA.CCAsymmetricPadding
+      public var rawValue: eIDSDK.CC.RSA.CCAsymmetricPadding {
+        get
+      }
+    }
+    public enum AsymmetricSAPadding : Swift.UInt32 {
+      case pkcs15
+      case pss
+      public init?(rawValue: Swift.UInt32)
+      public typealias RawValue = Swift.UInt32
+      public var rawValue: Swift.UInt32 {
+        get
+      }
+    }
+    public static func generateKeyPair(_ keySize: Swift.Int = 4096) throws -> (Foundation.Data, Foundation.Data)
+    public static func getPublicKeyFromPrivateKey(_ derKey: Foundation.Data) throws -> Foundation.Data
+    public static func encrypt(_ data: Foundation.Data, derKey: Foundation.Data, tag: Foundation.Data, padding: eIDSDK.CC.RSA.AsymmetricPadding, digest: eIDSDK.CC.DigestAlgorithm) throws -> Foundation.Data
+    public static func decrypt(_ data: Foundation.Data, derKey: Foundation.Data, tag: Foundation.Data, padding: eIDSDK.CC.RSA.AsymmetricPadding, digest: eIDSDK.CC.DigestAlgorithm) throws -> (Foundation.Data, Swift.Int)
+    public static func sign(_ message: Foundation.Data, derKey: Foundation.Data, padding: eIDSDK.CC.RSA.AsymmetricSAPadding, digest: eIDSDK.CC.DigestAlgorithm, saltLen: Swift.Int) throws -> Foundation.Data
+    public static func verify(_ message: Foundation.Data, derKey: Foundation.Data, padding: eIDSDK.CC.RSA.AsymmetricSAPadding, digest: eIDSDK.CC.DigestAlgorithm, saltLen: Swift.Int, signedData: Foundation.Data) throws -> Swift.Bool
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class DH {
+    public enum DHParam {
+      case rfc3526Group5
+      case rfc2409Group2
+      public static func == (a: eIDSDK.CC.DH.DHParam, b: eIDSDK.CC.DH.DHParam) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    open class DH {
+      public init(dhParam: eIDSDK.CC.DH.DHParam) throws
+      open func generateKey() throws -> Foundation.Data
+      open func computeKey(_ peerKey: Foundation.Data) throws -> Foundation.Data
+      @objc deinit
+    }
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class EC {
+    public static func generateKeyPair(_ keySize: Swift.Int) throws -> (Foundation.Data, Foundation.Data)
+    public static func getPublicKeyFromPrivateKey(_ privateKey: Foundation.Data) throws -> Foundation.Data
+    public static func signHash(_ privateKey: Foundation.Data, hash: Foundation.Data) throws -> Foundation.Data
+    public static func verifyHash(_ publicKey: Foundation.Data, hash: Foundation.Data, signedData: Foundation.Data) throws -> Swift.Bool
+    public static func computeSharedSecret(_ privateKey: Foundation.Data, publicKey: Foundation.Data) throws -> Foundation.Data
+    public struct KeyComponents {
+      public init(_ keySize: Swift.Int, _ x: Foundation.Data, _ y: Foundation.Data, _ d: Foundation.Data)
+      public var keySize: Swift.Int
+      public var x: Foundation.Data
+      public var y: Foundation.Data
+      public var d: Foundation.Data
+    }
+    public static func getPublicKeyComponents(_ keyData: Foundation.Data) throws -> eIDSDK.CC.EC.KeyComponents
+    public static func getPrivateKeyComponents(_ keyData: Foundation.Data) throws -> eIDSDK.CC.EC.KeyComponents
+    public static func createFromData(_ keySize: Darwin.size_t, _ x: Foundation.Data, _ y: Foundation.Data) throws -> Foundation.Data
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class CRC {
+    public typealias CNcrc = Swift.UInt32
+    public enum Mode : eIDSDK.CC.CRC.CNcrc {
+      case crc8, crc8ICODE, crc8ITU, crc8ROHC, crc8WCDMA, crc16, crc16CCITTTrue, crc16CCITTFalse, crc16USB, crc16XMODEM, crc16DECTR, crc16DECTX, crc16ICODE, crc16VERIFONE, crc16A, crc16B, crc16Fletcher, crc32Adler, crc32, crc32CASTAGNOLI, crc32BZIP2, crc32MPEG2, crc32POSIX, crc32XFER, crc64ECMA182
+      public init?(rawValue: eIDSDK.CC.CRC.CNcrc)
+      public typealias RawValue = eIDSDK.CC.CRC.CNcrc
+      public var rawValue: eIDSDK.CC.CRC.CNcrc {
+        get
+      }
+    }
+    public static func crc(_ input: Foundation.Data, mode: eIDSDK.CC.CRC.Mode) throws -> Swift.UInt64
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class CMAC {
+    public static func AESCMAC(_ data: Foundation.Data, key: Foundation.Data) -> Foundation.Data
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class KeyDerivation {
+    public typealias CCPseudoRandomAlgorithm = Swift.UInt32
+    public enum PRFAlg : eIDSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm {
+      case sha1, sha224, sha256, sha384, sha512
+      public init?(rawValue: eIDSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm)
+      public typealias RawValue = eIDSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm
+      public var rawValue: eIDSDK.CC.KeyDerivation.CCPseudoRandomAlgorithm {
+        get
+      }
+    }
+    public static func PBKDF2(_ password: Swift.String, salt: Foundation.Data, prf: eIDSDK.CC.KeyDerivation.PRFAlg, rounds: Swift.UInt32) throws -> Foundation.Data
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @_hasMissingDesignatedInitializers open class KeyWrap {
+    public static let rfc3394IV: Foundation.Data
+    public static func SymmetricKeyWrap(_ iv: Foundation.Data, kek: Foundation.Data, rawKey: Foundation.Data) throws -> Foundation.Data
+    public static func SymmetricKeyUnwrap(_ iv: Foundation.Data, kek: Foundation.Data, wrappedKey: Foundation.Data) throws -> Foundation.Data
+    public static func available() -> Swift.Bool
+    @objc deinit
+  }
+  @objc deinit
+}
+extension Foundation.Data {
+  public func hexadecimalString() -> Swift.String
+  public func arrayOfBytes() -> [Swift.UInt8]
+}
+extension Swift.String {
+  public func dataFromHexadecimalString() -> Foundation.Data?
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class ChipAuthenticationPublicKeyInfo : eIDSDK.SecurityInfo {
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getKeyId() -> Swift.Int
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers open class TaskDelegate : ObjectiveC.NSObject {
+  final public let queue: Foundation.OperationQueue
+  public var data: Foundation.Data? {
+    get
+  }
+  public var error: (any Swift.Error)?
+  @objc deinit
+}
+public enum LogLevel : Swift.Int, Swift.CaseIterable {
+  case verbose
+  case debug
+  case info
+  case warning
+  case error
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [eIDSDK.LogLevel]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [eIDSDK.LogLevel] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class Log {
+  public static var logLevel: eIDSDK.LogLevel
+  public static var storeLogs: Swift.Bool
+  public static var logData: [Swift.String]
+  public class func verbose(_ msg: @autoclosure () -> Swift.String)
+  public class func debug(_ msg: @autoclosure () -> Swift.String)
+  public class func info(_ msg: @autoclosure () -> Swift.String)
+  public class func warning(_ msg: @autoclosure () -> Swift.String)
+  public class func error(_ msg: @autoclosure () -> Swift.String)
+  public class func clearStoredLogs()
+  @objc deinit
+}
+public enum PACEMappingType {
+  case GM
+  case IM
+  case CAM
+  public static func == (a: eIDSDK.PACEMappingType, b: eIDSDK.PACEMappingType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class PACEInfo : eIDSDK.SecurityInfo {
+  public static let PARAM_ID_GFP_1024_160: Swift.Int
+  public static let PARAM_ID_GFP_2048_224: Swift.Int
+  public static let PARAM_ID_GFP_2048_256: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P192_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P192_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P224_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P224_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P256_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P256_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P320_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P384_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P384_R1: Swift.Int
+  public static let PARAM_ID_ECP_BRAINPOOL_P512_R1: Swift.Int
+  public static let PARAM_ID_ECP_NIST_P521_R1: Swift.Int
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getVersion() -> Swift.Int
+  public func getParameterId() -> Swift.Int?
+  public func getParameterSpec() throws -> Swift.Int32
+  public func getMappingType() throws -> eIDSDK.PACEMappingType
+  public func getKeyAgreementAlgorithm() throws -> Swift.String
+  public func getCipherAlgorithm() throws -> Swift.String
+  public func getDigestAlgorithm() throws -> Swift.String
+  public func getKeyLength() throws -> Swift.Int
+  public func createMappingKey() throws -> Swift.OpaquePointer
+  public static func getParameterSpec(stdDomainParam: Swift.Int) throws -> Swift.Int32
+  public static func toMappingType(oid: Swift.String) throws -> eIDSDK.PACEMappingType
+  public static func toKeyAgreementAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toCipherAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toDigestAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toKeyLength(oid: Swift.String) throws -> Swift.Int
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public struct DataGroupHash {
+  public var id: Swift.String
+  public var sodHash: Swift.String
+  public var computedHash: Swift.String
+  public var match: Swift.Bool
+}
+public enum HTTPMethod : Swift.String {
+  case options
+  case get
+  case head
+  case post
+  case put
+  case patch
+  case delete
+  case trace
+  case connect
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public typealias Parameters = [Swift.String : Any]
+public protocol ParameterEncoding {
+  func encode(_ urlRequest: any eIDSDK.URLRequestConvertible, with parameters: eIDSDK.Parameters?) throws -> Foundation.URLRequest
+}
+public struct URLEncoding : eIDSDK.ParameterEncoding {
+  public enum Destination {
+    case methodDependent, queryString, httpBody
+    public static func == (a: eIDSDK.URLEncoding.Destination, b: eIDSDK.URLEncoding.Destination) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum ArrayEncoding {
+    case brackets, noBrackets
+    public static func == (a: eIDSDK.URLEncoding.ArrayEncoding, b: eIDSDK.URLEncoding.ArrayEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum BoolEncoding {
+    case numeric, literal
+    public static func == (a: eIDSDK.URLEncoding.BoolEncoding, b: eIDSDK.URLEncoding.BoolEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static var `default`: eIDSDK.URLEncoding {
+    get
+  }
+  public static var methodDependent: eIDSDK.URLEncoding {
+    get
+  }
+  public static var queryString: eIDSDK.URLEncoding {
+    get
+  }
+  public static var httpBody: eIDSDK.URLEncoding {
+    get
+  }
+  public let destination: eIDSDK.URLEncoding.Destination
+  public let arrayEncoding: eIDSDK.URLEncoding.ArrayEncoding
+  public let boolEncoding: eIDSDK.URLEncoding.BoolEncoding
+  public init(destination: eIDSDK.URLEncoding.Destination = .methodDependent, arrayEncoding: eIDSDK.URLEncoding.ArrayEncoding = .brackets, boolEncoding: eIDSDK.URLEncoding.BoolEncoding = .numeric)
+  public func encode(_ urlRequest: any eIDSDK.URLRequestConvertible, with parameters: eIDSDK.Parameters?) throws -> Foundation.URLRequest
+  public func queryComponents(fromKey key: Swift.String, value: Any) -> [(Swift.String, Swift.String)]
+  public func escape(_ string: Swift.String) -> Swift.String
+}
+public struct JSONEncoding : eIDSDK.ParameterEncoding {
+  public static var `default`: eIDSDK.JSONEncoding {
+    get
+  }
+  public static var prettyPrinted: eIDSDK.JSONEncoding {
+    get
+  }
+  public let options: Foundation.JSONSerialization.WritingOptions
+  public init(options: Foundation.JSONSerialization.WritingOptions = [])
+  public func encode(_ urlRequest: any eIDSDK.URLRequestConvertible, with parameters: eIDSDK.Parameters?) throws -> Foundation.URLRequest
+  public func encode(_ urlRequest: any eIDSDK.URLRequestConvertible, withJSONObject jsonObject: Any? = nil) throws -> Foundation.URLRequest
+}
+public struct PropertyListEncoding : eIDSDK.ParameterEncoding {
+  public static var `default`: eIDSDK.PropertyListEncoding {
+    get
+  }
+  public static var xml: eIDSDK.PropertyListEncoding {
+    get
+  }
+  public static var binary: eIDSDK.PropertyListEncoding {
+    get
+  }
+  public let format: Foundation.PropertyListSerialization.PropertyListFormat
+  public let options: Foundation.PropertyListSerialization.WriteOptions
+  public init(format: Foundation.PropertyListSerialization.PropertyListFormat = .xml, options: Foundation.PropertyListSerialization.WriteOptions = 0)
+  public func encode(_ urlRequest: any eIDSDK.URLRequestConvertible, with parameters: eIDSDK.Parameters?) throws -> Foundation.URLRequest
+}
+public class CheckFrontSide : Foundation.NSCoding {
+  public var checkReplacementAvatarProb: Swift.String?
+  public var editedResult: Swift.String?
+  public var recapturedResult: Swift.String?
+  public var checkNationalEmblemProb: Swift.String?
+  public var checkPhotocopiedResult: Swift.String?
+  public var onFrameProb: Swift.String?
+  public var onFrameResult: Swift.String?
+  public var checkPhotocopiedProb: Swift.String?
+  public var cornerCutResult: Swift.String?
+  public var checkAvatarProb: Swift.String?
+  public var cornerCutProb: [Swift.String]?
+  public var checkGlareProb: Swift.String?
+  public var checkEmbossedStampResult: Swift.String?
+  public var checkReplacementAvatarResult: Swift.String?
+  public var checkNationalEmblemResult: Swift.String?
+  public var checkAvatarResult: Swift.String?
+  public var checkGlareResult: Swift.String?
+  convenience public init(object: Any)
+  public init(json: eIDSDK.JSON)
+  public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc required public init(coder aDecoder: Foundation.NSCoder)
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc deinit
+}
+public let LCLLanguageChangeNotification: Swift.String
+public func LDLocalized(_ string: Swift.String) -> Swift.String
+public func LDLocalized(_ string: Swift.String, arguments: any Swift.CVarArg...) -> Swift.String
+public func LDLocalizedPlural(_ string: Swift.String, argument: any Swift.CVarArg) -> Swift.String
+extension Swift.String {
+  public func LDlocalized() -> Swift.String
+  public func LDlocalizedFormat(_ arguments: any Swift.CVarArg...) -> Swift.String
+  public func LDlocalizedPlural(_ argument: any Swift.CVarArg) -> Swift.String
+  public func LDcommented(_ argument: Swift.String) -> Swift.String
+}
+@objc @_inheritsConvenienceInitializers open class LDLocalize : ObjectiveC.NSObject {
+  open class func availableLanguages(_ excludeBase: Swift.Bool = false) -> [Swift.String]
+  open class func currentLanguage() -> Swift.String
+  open class func setCurrentLanguage(_ language: Swift.String)
+  open class func defaultLanguage() -> Swift.String
+  open class func resetCurrentLanguageToDefault()
+  open class func displayNameForLanguage(_ language: Swift.String) -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct Timeline {
+  public let requestStartTime: CoreFoundation.CFAbsoluteTime
+  public let initialResponseTime: CoreFoundation.CFAbsoluteTime
+  public let requestCompletedTime: CoreFoundation.CFAbsoluteTime
+  public let serializationCompletedTime: CoreFoundation.CFAbsoluteTime
+  public let latency: Foundation.TimeInterval
+  public let requestDuration: Foundation.TimeInterval
+  public let serializationDuration: Foundation.TimeInterval
+  public let totalDuration: Foundation.TimeInterval
+  public init(requestStartTime: CoreFoundation.CFAbsoluteTime = 0.0, initialResponseTime: CoreFoundation.CFAbsoluteTime = 0.0, requestCompletedTime: CoreFoundation.CFAbsoluteTime = 0.0, serializationCompletedTime: CoreFoundation.CFAbsoluteTime = 0.0)
+}
+extension eIDSDK.Timeline : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension eIDSDK.Timeline : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup15 : eIDSDK.DataGroup {
+  public var rsaPublicKey: Swift.OpaquePointer? {
+    get
+  }
+  public var ecdsaPublicKey: Swift.OpaquePointer? {
+    get
+  }
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public enum NFCPassportReaderError : Swift.Error, Swift.Equatable {
+  case ResponseError(Swift.String, Swift.UInt8, Swift.UInt8)
+  case InvalidResponse
+  case UnexpectedError
+  case NFCNotSupported
+  case NFCNotAvailable
+  case NoConnectedTag
+  case D087Malformed
+  case InvalidResponseChecksum
+  case MissingMandatoryFields
+  case CannotDecodeASN1Length
+  case InvalidASN1Value
+  case UnableToProtectAPDU
+  case UnableToUnprotectAPDU
+  case UnsupportedDataGroup
+  case DataGroupNotRead
+  case UnknownTag
+  case UnknownImageFormat
+  case NotImplemented
+  case TagNotValid
+  case ConnectionError
+  case UserCanceled
+  case InvalidMRZKey
+  case PaceNotSupported
+  case PaceFailed
+  case MoreThanOneTagFound
+  case SessionTimeout
+  case InvalidHashAlgorithmSpecified
+  case Timeout
+  case InvalidDataPassed(Swift.String)
+  case NotYetSupported(Swift.String)
+  public var value: Swift.String {
+    get
+  }
+  public static func == (a: eIDSDK.NFCPassportReaderError, b: eIDSDK.NFCPassportReaderError) -> Swift.Bool
+}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.NFCPassportReaderError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public enum OpenSSLError : Swift.Error {
+  case UnableToGetX509CertificateFromPKCS7(Swift.String)
+  case UnableToGetX509CertificatesFromPEM(Swift.String)
+  case UnableToVerifyX509CertificateForSOD(Swift.String)
+  case VerifyAndReturnSODEncapsulatedData(Swift.String)
+  case UnableToReadECPublicKey(Swift.String)
+  case UnableToExtractSignedDataFromPKCS7(Swift.String)
+  case VerifySignedAttributes(Swift.String)
+  case UnableToParseASN1(Swift.String)
+  case UnableToDecryptRSASignature(Swift.String)
+}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.OpenSSLError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public enum PassiveAuthenticationError : Swift.Error {
+  case UnableToParseSODHashes(Swift.String)
+  case InvalidDataGroupHash(Swift.String)
+  case SODMissing(Swift.String)
+}
+extension eIDSDK.PassiveAuthenticationError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+@available(iOS 13, *)
+public class BACHandler {
+  public var ksenc: [Swift.UInt8]
+  public var ksmac: [Swift.UInt8]
+  public var kifd: [Swift.UInt8]
+  public init()
+  public init(tagReader: eIDSDK.TagReader)
+  public func performBACAndGetSessionKeys(mrzKey: Swift.String, completed: @escaping (_ error: eIDSDK.NFCPassportReaderError?) -> ())
+  public func sessionKeys(data: [Swift.UInt8]) throws -> ([Swift.UInt8], [Swift.UInt8], [Swift.UInt8])
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class COM : eIDSDK.DataGroup {
+  public var version: Swift.String {
+    get
+  }
+  public var unicodeVersion: Swift.String {
+    get
+  }
+  public var dataGroupsPresent: [Swift.String] {
+    get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup2 : eIDSDK.DataGroup {
+  public var nrImages: Swift.Int {
+    get
+  }
+  public var versionNumber: Swift.Int {
+    get
+  }
+  public var lengthOfRecord: Swift.Int {
+    get
+  }
+  public var numberOfFacialImages: Swift.Int {
+    get
+  }
+  public var facialRecordDataLength: Swift.Int {
+    get
+  }
+  public var nrFeaturePoints: Swift.Int {
+    get
+  }
+  public var gender: Swift.Int {
+    get
+  }
+  public var eyeColor: Swift.Int {
+    get
+  }
+  public var hairColor: Swift.Int {
+    get
+  }
+  public var featureMask: Swift.Int {
+    get
+  }
+  public var expression: Swift.Int {
+    get
+  }
+  public var poseAngle: Swift.Int {
+    get
+  }
+  public var poseAngleUncertainty: Swift.Int {
+    get
+  }
+  public var faceImageType: Swift.Int {
+    get
+  }
+  public var imageDataType: Swift.Int {
+    get
+  }
+  public var imageWidth: Swift.Int {
+    get
+  }
+  public var imageHeight: Swift.Int {
+    get
+  }
+  public var imageColorSpace: Swift.Int {
+    get
+  }
+  public var sourceType: Swift.Int {
+    get
+  }
+  public var deviceType: Swift.Int {
+    get
+  }
+  public var quality: Swift.Int {
+    get
+  }
+  public var imageData: [Swift.UInt8] {
+    get
+  }
+  @objc deinit
+}
+public protocol RequestAdapter {
+  func adapt(_ urlRequest: Foundation.URLRequest) throws -> Foundation.URLRequest
+}
+public typealias RequestRetryCompletion = (_ shouldRetry: Swift.Bool, _ timeDelay: Foundation.TimeInterval) -> Swift.Void
+public protocol RequestRetrier {
+  func should(_ manager: eIDSDK.SessionManager, retry request: eIDSDK.Request, with error: any Swift.Error, completion: @escaping eIDSDK.RequestRetryCompletion)
+}
+public typealias HTTPHeaders = [Swift.String : Swift.String]
+@_hasMissingDesignatedInitializers open class Request {
+  public typealias ProgressHandler = (Foundation.Progress) -> Swift.Void
+  open var delegate: eIDSDK.TaskDelegate {
+    get
+  }
+  open var task: Foundation.URLSessionTask? {
+    get
+  }
+  final public let session: Foundation.URLSession
+  open var request: Foundation.URLRequest? {
+    get
+  }
+  open var response: Foundation.HTTPURLResponse? {
+    get
+  }
+  open var retryCount: Swift.UInt {
+    get
+  }
+  @discardableResult
+  open func authenticate(user: Swift.String, password: Swift.String, persistence: Foundation.URLCredential.Persistence = .forSession) -> Self
+  @discardableResult
+  open func authenticate(usingCredential credential: Foundation.URLCredential) -> Self
+  open class func authorizationHeader(user: Swift.String, password: Swift.String) -> (key: Swift.String, value: Swift.String)?
+  open func resume()
+  open func suspend()
+  open func cancel()
+  @objc deinit
+}
+extension eIDSDK.Request : Swift.CustomStringConvertible {
+  open var description: Swift.String {
+    get
+  }
+}
+extension eIDSDK.Request : Swift.CustomDebugStringConvertible {
+  open var debugDescription: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class DataRequest : eIDSDK.Request {
+  override open var request: Foundation.URLRequest? {
+    get
+  }
+  open var progress: Foundation.Progress {
+    get
+  }
+  @discardableResult
+  open func stream(closure: ((Foundation.Data) -> Swift.Void)? = nil) -> Self
+  @discardableResult
+  open func downloadProgress(queue: Dispatch.DispatchQueue = DispatchQueue.main, closure: @escaping eIDSDK.DataRequest.ProgressHandler) -> Self
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class DownloadRequest : eIDSDK.Request {
+  public struct DownloadOptions : Swift.OptionSet {
+    public let rawValue: Swift.UInt
+    public static let createIntermediateDirectories: eIDSDK.DownloadRequest.DownloadOptions
+    public static let removePreviousFile: eIDSDK.DownloadRequest.DownloadOptions
+    public init(rawValue: Swift.UInt)
+    public typealias ArrayLiteralElement = eIDSDK.DownloadRequest.DownloadOptions
+    public typealias Element = eIDSDK.DownloadRequest.DownloadOptions
+    public typealias RawValue = Swift.UInt
+  }
+  public typealias DownloadFileDestination = (_ temporaryURL: Foundation.URL, _ response: Foundation.HTTPURLResponse) -> (destinationURL: Foundation.URL, options: eIDSDK.DownloadRequest.DownloadOptions)
+  override open var request: Foundation.URLRequest? {
+    get
+  }
+  open var resumeData: Foundation.Data? {
+    get
+  }
+  open var progress: Foundation.Progress {
+    get
+  }
+  override open func cancel()
+  open func cancel(createResumeData: Swift.Bool)
+  @discardableResult
+  open func downloadProgress(queue: Dispatch.DispatchQueue = DispatchQueue.main, closure: @escaping eIDSDK.DownloadRequest.ProgressHandler) -> Self
+  open class func suggestedDownloadDestination(for directory: Foundation.FileManager.SearchPathDirectory = .documentDirectory, in domain: Foundation.FileManager.SearchPathDomainMask = .userDomainMask) -> eIDSDK.DownloadRequest.DownloadFileDestination
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class UploadRequest : eIDSDK.DataRequest {
+  override open var request: Foundation.URLRequest? {
+    get
+  }
+  open var uploadProgress: Foundation.Progress {
+    get
+  }
+  @discardableResult
+  open func uploadProgress(queue: Dispatch.DispatchQueue = DispatchQueue.main, closure: @escaping eIDSDK.UploadRequest.ProgressHandler) -> Self
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+open class StreamRequest : eIDSDK.Request {
+  @objc deinit
+}
+public enum CardType : Swift.Int, Swift.CaseIterable {
+  case DigitsCard12Number
+  case DigitsCard12NumberWithChip
+  case DigitsCard9Number
+  case HCVN
+  case glare
+  case cropTopLeft
+  case cropTopRight
+  case cropBottomLeft
+  case cropBottomRight
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [eIDSDK.CardType]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [eIDSDK.CardType] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc public class eIDSDKManager : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public func setDomainURL(_ url: Swift.String?)
+  @objc public func setTransactionCode(tCode: Swift.String)
+  public func getTransactionCode() -> Swift.String?
+  @objc public func setToken(_ token: Swift.String?)
+  public func getToken() -> Swift.String?
+  public func getCode() -> Swift.String?
+  @objc public func setLanguage(_ aLanguage: Swift.String?)
+  public func startNFC(cardID: Swift.String = "", dobYYMMDD: Swift.String = "", doeYYMMDD: Swift.String = "", doiYYMMDD: Swift.String = "", logEnable: Swift.Bool = true, delegate: any eIDSDK.NFCDelegate)
+  public func startQRScan(delegate: any eIDSDK.CardQRReaderDelegate)
+  public func startLiveness(delegate: any eIDSDK.LivenessDelegate, frontSideCaptured: Swift.String, timeout: Swift.Int = 30)
+  public func startOCR(delegate: any eIDSDK.OCRDelegate, isCapturePassport: Swift.Bool, isOnlyCardChip: Swift.Bool)
+  public func startScanDocument(title: Swift.String, delegate: any eIDSDK.DocumentScanDelegate)
+  @objc deinit
+}
+extension Swift.Array {
+  @inlinable internal init(reserveCapacity: Swift.Int) {
+    self = Array<Element>()
+    self.reserveCapacity(reserveCapacity)
+  }
+  @inlinable internal var slice: Swift.ArraySlice<Element> {
+    get {
+    self[self.startIndex ..< self.endIndex]
+  }
+  }
+  @inlinable internal subscript(safe index: Swift.Array<Element>.Index) -> Element? {
+    get {
+    return indices.contains(index) ? self[index] : nil
+  }
+  }
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  public init(hex: Swift.String)
+  public func toHexString() -> Swift.String
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  @available(*, deprecated)
+  public func chunks(size chunksize: Swift.Int) -> Swift.Array<Swift.Array<Element>>
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup11 : eIDSDK.DataGroup {
+  public var fullName: Swift.String? {
+    get
+  }
+  public var personalNumber: Swift.String? {
+    get
+  }
+  public var dateOfBirth: Swift.String? {
+    get
+  }
+  public var placeOfBirth: Swift.String? {
+    get
+  }
+  public var address: Swift.String? {
+    get
+  }
+  public var telephone: Swift.String? {
+    get
+  }
+  public var profession: Swift.String? {
+    get
+  }
+  public var title: Swift.String? {
+    get
+  }
+  public var personalSummary: Swift.String? {
+    get
+  }
+  public var proofOfCitizenship: Swift.String? {
+    get
+  }
+  public var tdNumbers: Swift.String? {
+    get
+  }
+  public var custodyInfo: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class OpenSSLUtils {
+  public static func getOpenSSLError() -> Swift.String
+  @available(iOS 13, macOS 10.15, *)
+  public static func getPublicKeyData(from key: Swift.OpaquePointer) -> [Swift.UInt8]?
+  @available(iOS 13, macOS 10.15, *)
+  public static func decodePublicKeyFromBytes(pubKeyData: [Swift.UInt8], params: Swift.OpaquePointer) -> Swift.OpaquePointer?
+  public static func computeSharedSecret(privateKeyPair: Swift.OpaquePointer, publicKey: Swift.OpaquePointer) -> [Swift.UInt8]
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public enum DocTypeEnum : Swift.String {
+  case TD1
+  case TD2
+  case OTHER
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup1 : eIDSDK.DataGroup {
+  public var elements: [Swift.String : Swift.String] {
+    get
+  }
+  @objc deinit
+}
+extension Swift.String {
+  public func LDlocalized(in bundle: Foundation.Bundle?) -> Swift.String
+  public func LDlocalizedFormat(arguments: any Swift.CVarArg..., in bundle: Foundation.Bundle?) -> Swift.String
+  public func LDlocalizedPlural(argument: any Swift.CVarArg, in bundle: Foundation.Bundle?) -> Swift.String
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class Gradient : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public class var layerClass: Swift.AnyClass {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func traitCollectionDidChange(_ previousTraitCollection: UIKit.UITraitCollection?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class GradientLabel : eIDSDK.Gradient {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol CardQRReaderDelegate {
+  func didScanResult(result: eIDSDK.QRResponseModel, qrImage: Swift.String)
+  func didClose()
+}
+public class CardQRReaderManager {
+  public var delegate: (any eIDSDK.CardQRReaderDelegate)?
+  public init(delegate: any eIDSDK.CardQRReaderDelegate)
+  public func startScan()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup7 : eIDSDK.DataGroup {
+  public var imageData: [Swift.UInt8] {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup {
+  public var datagroupType: eIDSDK.DataGroupId
+  public var rangTime: Swift.Double
+  public var body: [Swift.UInt8] {
+    get
+  }
+  public var data: [Swift.UInt8] {
+    get
+  }
+  public func hash(_ hashAlgorythm: Swift.String) -> [Swift.UInt8]
+  @objc deinit
+}
+@available(iOS 12.0, *)
+extension CoreGraphics.CGImage {
+  public func getCroppingRect(for faces: [Vision.VNFaceObservation], margin: CoreFoundation.CGFloat, scale: CoreFoundation.CGFloat = 1, orientation: UIKit.UIImage.Orientation = .up) -> UIKit.UIImage?
+}
+extension UIKit.UIImageView {
+  @_Concurrency.MainActor(unsafe) public func animateSDK(isHidden: Swift.Bool, duration: Foundation.TimeInterval = 1, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public func fadeOutSDK(duration: Foundation.TimeInterval = 1, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+  @_Concurrency.MainActor(unsafe) public func fadeInSDK(duration: Foundation.TimeInterval = 1, completion: ((Swift.Bool) -> Swift.Void)? = nil)
+}
+@_inheritsConvenienceInitializers @objc public class DocumentScanSDKManager : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public func closeDocumentScan()
+  @objc public func getDocumentScanViewController(delegate: any eIDSDK.DocumentScanDelegate, title: Swift.String) -> UIKit.UIViewController
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc public class LivenessManager : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc public func getLivenessViewController(delegate: any eIDSDK.LivenessDelegate, frontSideCaptured: Swift.String, timeout: Swift.Int = 30) -> eIDSDK.LivenessViewController?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class NFCResponse {
+  public var birthDate: Swift.String?
+  public var citizenPid: Swift.String?
+  public var dateProvide: Swift.String?
+  public var ethnic: Swift.String?
+  public var fatherName: Swift.String?
+  public var fullName: Swift.String?
+  public var gender: Swift.String?
+  public var homeTown: Swift.String?
+  public var husBandName: Swift.String?
+  public var identifyCharacteristics: Swift.String?
+  public var motherName: Swift.String?
+  public var nationality: Swift.String?
+  public var oldIdentify: Swift.String?
+  public var outOfDate: Swift.String?
+  public var photoBase64: Swift.String?
+  public var regPlaceAddress: Swift.String?
+  public var religion: Swift.String?
+  public var wifeName: Swift.String?
+  public var chipAuth: Swift.String?
+  public var chipAuthMessage: Swift.String?
+  public var cscaAuth: Swift.String?
+  public var cscaAuthMessage: Swift.String?
+  public var sodBase64: Swift.String?
+  public var hash_check: Swift.String?
+  public var valid: Swift.String?
+  public var photo: Swift.String?
+  public var husBandOrWifeName: Swift.String?
+  @objc deinit
+}
+extension Swift.String {
+  public func LDlocalized(using tableName: Swift.String?, in bundle: Foundation.Bundle?) -> Swift.String
+  public func LDlocalizedFormat(arguments: any Swift.CVarArg..., using tableName: Swift.String?, in bundle: Foundation.Bundle?) -> Swift.String
+  public func LDlocalizedPlural(argument: any Swift.CVarArg, using tableName: Swift.String?, in bundle: Foundation.Bundle?) -> Swift.String
+}
+@available(iOS 13, *)
+public protocol NFCDelegate {
+  func NFCNotAvaiable()
+  func NFCMessageDisplay(_ messages: eIDSDK.NFCViewDisplayMessage) -> Swift.String
+  func NFCSuccess(data: [Swift.String : Any])
+  func NFCFail(_ error: eIDSDK.NFCPassportReaderError)
+}
+@available(iOS 13, *)
+public class NFCManager {
+  public init()
+  public var delegate: (any eIDSDK.NFCDelegate)?
+  public init(cardID: Swift.String = "", dobYYMMDD: Swift.String = "", doeYYMMDD: Swift.String = "", doiYYMMDD: Swift.String = "", logEnable: Swift.Bool = true)
+  public func scanPassport()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class KYCResponse : eIDSDK.BaseResponse {
+  public var frontImageString: Swift.String?
+  public var backImageString: Swift.String?
+  public var genderScore: Swift.String?
+  public var codeCityAddress: Swift.String?
+  public var backSideOfId: Swift.String?
+  public var homeTown: Swift.String?
+  public var expiredDateScore: Swift.String?
+  public var homeTownScore: Swift.String?
+  public var fullNameScore: Swift.String?
+  public var nationality: Swift.String?
+  public var issuedDateScore: Swift.String?
+  public var addressDetails: eIDSDK.AddressDetails?
+  public var fullName: Swift.String?
+  public var codeCityHomeTown: Swift.String?
+  public var issuedPlace: Swift.String?
+  public var addressScore: Swift.String?
+  public var nationalityScore: Swift.String?
+  public var checkFrontSide: eIDSDK.CheckFrontSide?
+  public var frontSideOfId: Swift.String?
+  public var mrz: eIDSDK.Mrz?
+  public var address: Swift.String?
+  public var gender: Swift.String?
+  public var recognitionFeature: Swift.String?
+  public var dateOfBirth: Swift.String?
+  public var idNumber: Swift.String?
+  public var checkBackSide: eIDSDK.CheckBackSide?
+  public var issuedDate: Swift.String?
+  public var dateOfBirthScore: Swift.String?
+  public var expiredDate: Swift.String?
+  public var idCardScore: Swift.String?
+  public var codeCityIssuedPlace: Swift.String?
+  public var issuedPlaceScore: Swift.String?
+  convenience public init(object: Any)
+  required public init(json: eIDSDK.JSON)
+  override public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc deinit
+}
+public protocol URLConvertible {
+  func asURL() throws -> Foundation.URL
+}
+extension Swift.String : eIDSDK.URLConvertible {
+  public func asURL() throws -> Foundation.URL
+}
+extension Foundation.URL : eIDSDK.URLConvertible {
+  public func asURL() throws -> Foundation.URL
+}
+extension Foundation.URLComponents : eIDSDK.URLConvertible {
+  public func asURL() throws -> Foundation.URL
+}
+public protocol URLRequestConvertible {
+  func asURLRequest() throws -> Foundation.URLRequest
+}
+extension eIDSDK.URLRequestConvertible {
+  public var urlRequest: Foundation.URLRequest? {
+    get
+  }
+}
+extension Foundation.URLRequest : eIDSDK.URLRequestConvertible {
+  public func asURLRequest() throws -> Foundation.URLRequest
+}
+extension Foundation.URLRequest {
+  public init(url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod, headers: eIDSDK.HTTPHeaders? = nil) throws
+}
+@discardableResult
+public func request(_ url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod = .get, parameters: eIDSDK.Parameters? = nil, encoding: any eIDSDK.ParameterEncoding = URLEncoding.default, headers: eIDSDK.HTTPHeaders? = nil) -> eIDSDK.DataRequest
+@discardableResult
+public func request(_ urlRequest: any eIDSDK.URLRequestConvertible) -> eIDSDK.DataRequest
+@discardableResult
+public func download(_ url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod = .get, parameters: eIDSDK.Parameters? = nil, encoding: any eIDSDK.ParameterEncoding = URLEncoding.default, headers: eIDSDK.HTTPHeaders? = nil, to destination: eIDSDK.DownloadRequest.DownloadFileDestination? = nil) -> eIDSDK.DownloadRequest
+@discardableResult
+public func download(_ urlRequest: any eIDSDK.URLRequestConvertible, to destination: eIDSDK.DownloadRequest.DownloadFileDestination? = nil) -> eIDSDK.DownloadRequest
+@discardableResult
+public func download(resumingWith resumeData: Foundation.Data, to destination: eIDSDK.DownloadRequest.DownloadFileDestination? = nil) -> eIDSDK.DownloadRequest
+@discardableResult
+public func upload(_ fileURL: Foundation.URL, to url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod = .post, headers: eIDSDK.HTTPHeaders? = nil) -> eIDSDK.UploadRequest
+@discardableResult
+public func upload(_ fileURL: Foundation.URL, with urlRequest: any eIDSDK.URLRequestConvertible) -> eIDSDK.UploadRequest
+@discardableResult
+public func upload(_ data: Foundation.Data, to url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod = .post, headers: eIDSDK.HTTPHeaders? = nil) -> eIDSDK.UploadRequest
+@discardableResult
+public func upload(_ data: Foundation.Data, with urlRequest: any eIDSDK.URLRequestConvertible) -> eIDSDK.UploadRequest
+@discardableResult
+public func upload(_ stream: Foundation.InputStream, to url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod = .post, headers: eIDSDK.HTTPHeaders? = nil) -> eIDSDK.UploadRequest
+@discardableResult
+public func upload(_ stream: Foundation.InputStream, with urlRequest: any eIDSDK.URLRequestConvertible) -> eIDSDK.UploadRequest
+public func upload(multipartFormData: @escaping (eIDSDK.MultipartFormData) -> Swift.Void, usingThreshold encodingMemoryThreshold: Swift.UInt64 = SessionManager.multipartFormDataEncodingMemoryThreshold, to url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod = .post, headers: eIDSDK.HTTPHeaders? = nil, encodingCompletion: ((eIDSDK.SessionManager.MultipartFormDataEncodingResult) -> Swift.Void)?)
+public func upload(multipartFormData: @escaping (eIDSDK.MultipartFormData) -> Swift.Void, usingThreshold encodingMemoryThreshold: Swift.UInt64 = SessionManager.multipartFormDataEncodingMemoryThreshold, with urlRequest: any eIDSDK.URLRequestConvertible, encodingCompletion: ((eIDSDK.SessionManager.MultipartFormDataEncodingResult) -> Swift.Void)?)
+@available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+@discardableResult
+public func stream(withHostName hostName: Swift.String, port: Swift.Int) -> eIDSDK.StreamRequest
+@available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+@discardableResult
+public func stream(with netService: Foundation.NetService) -> eIDSDK.StreamRequest
+public class Mrz : Foundation.NSCoding {
+  public var expiredDate: Swift.String?
+  public var gender: Swift.String?
+  public var idCard: Swift.String?
+  public var fullName: Swift.String?
+  public var dateOfBirth: Swift.String?
+  public var raw: Swift.String?
+  convenience public init(object: Any)
+  public init(json: eIDSDK.JSON)
+  public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc required public init(coder aDecoder: Foundation.NSCoder)
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class ActiveAuthenticationInfo : eIDSDK.SecurityInfo {
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getSignatureAlgorithmOIDString() -> Swift.String?
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public enum DataGroupId : Swift.Int, Swift.CaseIterable {
+  case COM
+  case DG1
+  case DG2
+  case DG3
+  case DG4
+  case DG5
+  case DG6
+  case DG7
+  case DG8
+  case DG9
+  case DG10
+  case DG11
+  case DG12
+  case DG13
+  case DG14
+  case DG15
+  case DG16
+  case SOD
+  case Unknown
+  public func getName() -> Swift.String
+  public static func getIDFromName(name: Swift.String) -> eIDSDK.DataGroupId
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [eIDSDK.DataGroupId]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [eIDSDK.DataGroupId] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public func binToHexRep(_ val: [Swift.UInt8], asArray: Swift.Bool = false) -> Swift.String
+public func binToHexRep(_ val: Swift.UInt8) -> Swift.String
+public func binToHex(_ val: Swift.UInt8) -> Swift.Int
+public func binToHex(_ val: [Swift.UInt8]) -> Swift.UInt64
+public func binToHex(_ val: Swift.ArraySlice<Swift.UInt8>) -> Swift.UInt64
+public func hexToBin(_ val: Swift.UInt64) -> [Swift.UInt8]
+public func binToInt(_ val: Swift.ArraySlice<Swift.UInt8>) -> Swift.Int
+public func binToInt(_ val: [Swift.UInt8]) -> Swift.Int
+public func intToBin(_ data: Swift.Int, pad: Swift.Int = 2) -> [Swift.UInt8]
+public func hexRepToBin(_ val: Swift.String) -> [Swift.UInt8]
+public func xor(_ kifd: [Swift.UInt8], _ response_kicc: [Swift.UInt8]) -> [Swift.UInt8]
+public func generateRandomUInt8Array(_ size: Swift.Int) -> [Swift.UInt8]
+public func pad(_ toPad: [Swift.UInt8], blockSize: Swift.Int) -> [Swift.UInt8]
+public func unpad(_ tounpad: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func mac(algoName: eIDSDK.SecureMessagingSupportedAlgorithms, key: [Swift.UInt8], msg: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func desMAC(key: [Swift.UInt8], msg: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func aesMAC(key: [Swift.UInt8], msg: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func wrapDO(b: Swift.UInt8, arr: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func unwrapDO(tag: Swift.UInt8, wrappedData: [Swift.UInt8]) throws -> [Swift.UInt8]
+public func intToBytes(val: Swift.Int, removePadding: Swift.Bool) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func oidToBytes(oid: Swift.String, replaceTag: Swift.Bool) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func asn1Length(_ data: Swift.ArraySlice<Swift.UInt8>) throws -> (Swift.Int, Swift.Int)
+@available(iOS 13, macOS 10.15, *)
+public func asn1Length(_ data: [Swift.UInt8]) throws -> (Swift.Int, Swift.Int)
+@available(iOS 13, macOS 10.15, *)
+public func toAsn1Length(_ data: Swift.Int) throws -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcHash(data: [Swift.UInt8], hashAlgorithm: Swift.String) throws -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA1Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA224Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA256Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA512Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func calcSHA384Hash(_ data: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public enum CertificateType {
+  case documentSigningCertificate
+  case issuerSigningCertificate
+  public static func == (a: eIDSDK.CertificateType, b: eIDSDK.CertificateType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public enum CertificateItem : Swift.String {
+  case fingerprint
+  case issuerName
+  case subjectName
+  case serialNumber
+  case signatureAlgorithm
+  case publicKeyAlgorithm
+  case notBefore
+  case notAfter
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public class X509Wrapper {
+  final public let cert: Swift.OpaquePointer
+  public init?(with cert: Swift.OpaquePointer?)
+  public func getItemsAsDict() -> [eIDSDK.CertificateItem : Swift.String]
+  public func certToPEM() -> Swift.String
+  public func getFingerprint() -> Swift.String?
+  public func getNotBeforeDate() -> Swift.String?
+  public func getNotAfterDate() -> Swift.String?
+  public func getSerialNumber() -> Swift.String?
+  public func getSignatureAlgorithm() -> Swift.String?
+  public func getPublicKeyAlgorithm() -> Swift.String?
+  public func getIssuerName() -> Swift.String?
+  public func getSubjectName() -> Swift.String?
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers open class NetworkReachabilityManager {
+  public enum NetworkReachabilityStatus {
+    case unknown
+    case notReachable
+    case reachable(eIDSDK.NetworkReachabilityManager.ConnectionType)
+  }
+  public enum ConnectionType {
+    case ethernetOrWiFi
+    case wwan
+    public static func == (a: eIDSDK.NetworkReachabilityManager.ConnectionType, b: eIDSDK.NetworkReachabilityManager.ConnectionType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public typealias Listener = (eIDSDK.NetworkReachabilityManager.NetworkReachabilityStatus) -> Swift.Void
+  open var isReachable: Swift.Bool {
+    get
+  }
+  open var isReachableOnWWAN: Swift.Bool {
+    get
+  }
+  open var isReachableOnEthernetOrWiFi: Swift.Bool {
+    get
+  }
+  open var networkReachabilityStatus: eIDSDK.NetworkReachabilityManager.NetworkReachabilityStatus {
+    get
+  }
+  open var listenerQueue: Dispatch.DispatchQueue
+  open var listener: eIDSDK.NetworkReachabilityManager.Listener?
+  open var flags: SystemConfiguration.SCNetworkReachabilityFlags? {
+    get
+  }
+  open var previousFlags: SystemConfiguration.SCNetworkReachabilityFlags
+  convenience public init?(host: Swift.String)
+  convenience public init?()
+  @objc deinit
+  @discardableResult
+  open func startListening() -> Swift.Bool
+  open func stopListening()
+}
+extension eIDSDK.NetworkReachabilityManager.NetworkReachabilityStatus : Swift.Equatable {
+}
+public func == (lhs: eIDSDK.NetworkReachabilityManager.NetworkReachabilityStatus, rhs: eIDSDK.NetworkReachabilityManager.NetworkReachabilityStatus) -> Swift.Bool
+open class SessionManager {
+  public enum MultipartFormDataEncodingResult {
+    case success(request: eIDSDK.UploadRequest, streamingFromDisk: Swift.Bool, streamFileURL: Foundation.URL?)
+    case failure(any Swift.Error)
+  }
+  public static let `default`: eIDSDK.SessionManager
+  public static let defaultHTTPHeaders: eIDSDK.HTTPHeaders
+  public static let multipartFormDataEncodingMemoryThreshold: Swift.UInt64
+  final public let session: Foundation.URLSession
+  final public let delegate: eIDSDK.LDSessionDelegate
+  open var startRequestsImmediately: Swift.Bool
+  open var adapter: (any eIDSDK.RequestAdapter)?
+  open var retrier: (any eIDSDK.RequestRetrier)? {
+    get
+    set
+  }
+  open var backgroundCompletionHandler: (() -> Swift.Void)?
+  public init(configuration: Foundation.URLSessionConfiguration = URLSessionConfiguration.default, delegate: eIDSDK.LDSessionDelegate = LDSessionDelegate(), serverTrustPolicyManager: eIDSDK.ServerTrustPolicyManager? = nil)
+  public init?(session: Foundation.URLSession, delegate: eIDSDK.LDSessionDelegate, serverTrustPolicyManager: eIDSDK.ServerTrustPolicyManager? = nil)
+  @objc deinit
+  @discardableResult
+  open func request(_ url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod = .get, parameters: eIDSDK.Parameters? = nil, encoding: any eIDSDK.ParameterEncoding = URLEncoding.default, headers: eIDSDK.HTTPHeaders? = nil) -> eIDSDK.DataRequest
+  @discardableResult
+  open func request(_ urlRequest: any eIDSDK.URLRequestConvertible) -> eIDSDK.DataRequest
+  @discardableResult
+  open func download(_ url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod = .get, parameters: eIDSDK.Parameters? = nil, encoding: any eIDSDK.ParameterEncoding = URLEncoding.default, headers: eIDSDK.HTTPHeaders? = nil, to destination: eIDSDK.DownloadRequest.DownloadFileDestination? = nil) -> eIDSDK.DownloadRequest
+  @discardableResult
+  open func download(_ urlRequest: any eIDSDK.URLRequestConvertible, to destination: eIDSDK.DownloadRequest.DownloadFileDestination? = nil) -> eIDSDK.DownloadRequest
+  @discardableResult
+  open func download(resumingWith resumeData: Foundation.Data, to destination: eIDSDK.DownloadRequest.DownloadFileDestination? = nil) -> eIDSDK.DownloadRequest
+  @discardableResult
+  open func upload(_ fileURL: Foundation.URL, to url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod = .post, headers: eIDSDK.HTTPHeaders? = nil) -> eIDSDK.UploadRequest
+  @discardableResult
+  open func upload(_ fileURL: Foundation.URL, with urlRequest: any eIDSDK.URLRequestConvertible) -> eIDSDK.UploadRequest
+  @discardableResult
+  open func upload(_ data: Foundation.Data, to url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod = .post, headers: eIDSDK.HTTPHeaders? = nil) -> eIDSDK.UploadRequest
+  @discardableResult
+  open func upload(_ data: Foundation.Data, with urlRequest: any eIDSDK.URLRequestConvertible) -> eIDSDK.UploadRequest
+  @discardableResult
+  open func upload(_ stream: Foundation.InputStream, to url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod = .post, headers: eIDSDK.HTTPHeaders? = nil) -> eIDSDK.UploadRequest
+  @discardableResult
+  open func upload(_ stream: Foundation.InputStream, with urlRequest: any eIDSDK.URLRequestConvertible) -> eIDSDK.UploadRequest
+  open func upload(multipartFormData: @escaping (eIDSDK.MultipartFormData) -> Swift.Void, usingThreshold encodingMemoryThreshold: Swift.UInt64 = SessionManager.multipartFormDataEncodingMemoryThreshold, to url: any eIDSDK.URLConvertible, method: eIDSDK.HTTPMethod = .post, headers: eIDSDK.HTTPHeaders? = nil, queue: Dispatch.DispatchQueue? = nil, encodingCompletion: ((eIDSDK.SessionManager.MultipartFormDataEncodingResult) -> Swift.Void)?)
+  open func upload(multipartFormData: @escaping (eIDSDK.MultipartFormData) -> Swift.Void, usingThreshold encodingMemoryThreshold: Swift.UInt64 = SessionManager.multipartFormDataEncodingMemoryThreshold, with urlRequest: any eIDSDK.URLRequestConvertible, queue: Dispatch.DispatchQueue? = nil, encodingCompletion: ((eIDSDK.SessionManager.MultipartFormDataEncodingResult) -> Swift.Void)?)
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+  @discardableResult
+  open func stream(withHostName hostName: Swift.String, port: Swift.Int) -> eIDSDK.StreamRequest
+  @available(iOS 9.0, macOS 10.11, tvOS 9.0, *)
+  @discardableResult
+  open func stream(with netService: Foundation.NetService) -> eIDSDK.StreamRequest
+}
+public struct DefaultDataResponse {
+  public let request: Foundation.URLRequest?
+  public let response: Foundation.HTTPURLResponse?
+  public let data: Foundation.Data?
+  public let error: (any Swift.Error)?
+  public let timeline: eIDSDK.Timeline
+  public init(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: (any Swift.Error)?, timeline: eIDSDK.Timeline = Timeline(), metrics: Swift.AnyObject? = nil)
+}
+public struct DataResponse<Value> {
+  public let request: Foundation.URLRequest?
+  public let response: Foundation.HTTPURLResponse?
+  public let data: Foundation.Data?
+  public let result: eIDSDK.AFResult<Value>
+  public let timeline: eIDSDK.Timeline
+  public var value: Value? {
+    get
+  }
+  public var error: (any Swift.Error)? {
+    get
+  }
+  public init(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, result: eIDSDK.AFResult<Value>, timeline: eIDSDK.Timeline = Timeline())
+}
+extension eIDSDK.DataResponse : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension eIDSDK.DataResponse {
+  public func map<T>(_ transform: (Value) -> T) -> eIDSDK.DataResponse<T>
+  public func flatMap<T>(_ transform: (Value) throws -> T) -> eIDSDK.DataResponse<T>
+  public func mapError<E>(_ transform: (any Swift.Error) -> E) -> eIDSDK.DataResponse<Value> where E : Swift.Error
+  public func flatMapError<E>(_ transform: (any Swift.Error) throws -> E) -> eIDSDK.DataResponse<Value> where E : Swift.Error
+}
+public struct DefaultDownloadResponse {
+  public let request: Foundation.URLRequest?
+  public let response: Foundation.HTTPURLResponse?
+  public let temporaryURL: Foundation.URL?
+  public let destinationURL: Foundation.URL?
+  public let resumeData: Foundation.Data?
+  public let error: (any Swift.Error)?
+  public let timeline: eIDSDK.Timeline
+  public init(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, temporaryURL: Foundation.URL?, destinationURL: Foundation.URL?, resumeData: Foundation.Data?, error: (any Swift.Error)?, timeline: eIDSDK.Timeline = Timeline(), metrics: Swift.AnyObject? = nil)
+}
+public struct DownloadResponse<Value> {
+  public let request: Foundation.URLRequest?
+  public let response: Foundation.HTTPURLResponse?
+  public let temporaryURL: Foundation.URL?
+  public let destinationURL: Foundation.URL?
+  public let resumeData: Foundation.Data?
+  public let result: eIDSDK.AFResult<Value>
+  public let timeline: eIDSDK.Timeline
+  public var value: Value? {
+    get
+  }
+  public var error: (any Swift.Error)? {
+    get
+  }
+  public init(request: Foundation.URLRequest?, response: Foundation.HTTPURLResponse?, temporaryURL: Foundation.URL?, destinationURL: Foundation.URL?, resumeData: Foundation.Data?, result: eIDSDK.AFResult<Value>, timeline: eIDSDK.Timeline = Timeline())
+}
+extension eIDSDK.DownloadResponse : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension eIDSDK.DownloadResponse {
+  public func map<T>(_ transform: (Value) -> T) -> eIDSDK.DownloadResponse<T>
+  public func flatMap<T>(_ transform: (Value) throws -> T) -> eIDSDK.DownloadResponse<T>
+  public func mapError<E>(_ transform: (any Swift.Error) -> E) -> eIDSDK.DownloadResponse<Value> where E : Swift.Error
+  public func flatMapError<E>(_ transform: (any Swift.Error) throws -> E) -> eIDSDK.DownloadResponse<Value> where E : Swift.Error
+}
+@available(iOS 10.0, macOS 10.12, tvOS 10.0, *)
+extension eIDSDK.DefaultDataResponse {
+  public var metrics: Foundation.URLSessionTaskMetrics? {
+    get
+  }
+}
+@available(iOS 10.0, macOS 10.12, tvOS 10.0, *)
+extension eIDSDK.DataResponse {
+  public var metrics: Foundation.URLSessionTaskMetrics? {
+    get
+  }
+}
+@available(iOS 10.0, macOS 10.12, tvOS 10.0, *)
+extension eIDSDK.DefaultDownloadResponse {
+  public var metrics: Foundation.URLSessionTaskMetrics? {
+    get
+  }
+}
+@available(iOS 10.0, macOS 10.12, tvOS 10.0, *)
+extension eIDSDK.DownloadResponse {
+  public var metrics: Foundation.URLSessionTaskMetrics? {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, *)
+public class TagReader {
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public class ASN1Item : Swift.CustomDebugStringConvertible {
+  public init(line: Swift.String)
+  public func getChild(_ child: Swift.Int) -> eIDSDK.ASN1Item?
+  public func getNumberOfChildren() -> Swift.Int
+  public var debugDescription: Swift.String {
+    get
+  }
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public class SimpleASN1DumpParser {
+  public init()
+  public func parse(data: Foundation.Data) throws -> eIDSDK.ASN1Item
+  public func test()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup12 : eIDSDK.DataGroup {
+  public var issuingAuthority: Swift.String? {
+    get
+  }
+  public var dateOfIssue: Swift.String? {
+    get
+  }
+  public var otherPersonsDetails: Swift.String? {
+    get
+  }
+  public var endorsementsOrObservations: Swift.String? {
+    get
+  }
+  public var taxOrExitRequirements: Swift.String? {
+    get
+  }
+  public var frontImage: [Swift.UInt8]? {
+    get
+  }
+  public var rearImage: [Swift.UInt8]? {
+    get
+  }
+  public var personalizationTime: Swift.String? {
+    get
+  }
+  public var personalizationDeviceSerialNr: Swift.String? {
+    get
+  }
+  @objc deinit
+}
+public class CheckBackSide : Foundation.NSCoding {
+  public var recapturedResult: Swift.String?
+  public var editedResult: Swift.String?
+  public var checkPhotocopiedResult: Swift.String?
+  public var onFrameProb: Swift.String?
+  public var onFrameResult: Swift.String?
+  public var checkRfpResult: Swift.String?
+  public var checkPhotocopiedProb: Swift.String?
+  public var checkLfpProb: Swift.String?
+  public var checkRedStampProb: Swift.String?
+  public var checkRedStampResult: Swift.String?
+  public var checkGlareProb: Swift.String?
+  public var checkRfpProb: Swift.String?
+  public var checkLfpResult: Swift.String?
+  public var checkGlareResult: Swift.String?
+  convenience public init(object: Any)
+  public init(json: eIDSDK.JSON)
+  public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc required public init(coder aDecoder: Foundation.NSCoder)
+  @objc public func encode(with aCoder: Foundation.NSCoder)
+  @objc deinit
+}
+@IBDesignable extension UIKit.UILabel {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var localizeKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+@IBDesignable extension UIKit.UIButton {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var localizeKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+@IBDesignable extension UIKit.UITextView {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var localizeKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+@IBDesignable extension UIKit.UITextField {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var localizeKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+@IBDesignable extension UIKit.UINavigationItem {
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic public var localizeKey: Swift.String? {
+    @objc get
+    @objc set
+  }
+}
+extension Foundation.NSNotification.Name {
+  public struct Task {
+    public static let DidResume: Foundation.Notification.Name
+    public static let DidSuspend: Foundation.Notification.Name
+    public static let DidCancel: Foundation.Notification.Name
+    public static let DidComplete: Foundation.Notification.Name
+  }
+}
+extension Foundation.Notification {
+  public struct Key {
+    public static let Task: Swift.String
+    public static let ResponseData: Swift.String
+  }
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class SecurityInfo {
+  public func getObjectIdentifier() -> Swift.String
+  public func getProtocolOIDString() -> Swift.String
+  @objc deinit
+}
+public enum PassportAuthenticationStatus {
+  case notDone
+  case success
+  case failed
+  public static func == (a: eIDSDK.PassportAuthenticationStatus, b: eIDSDK.PassportAuthenticationStatus) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 13, macOS 10.15, *)
+public class NFCPassportModel {
+  public var documentType: Swift.String {
+    get
+  }
+  public var documentSubType: Swift.String {
+    get
+  }
+  public var documentNumber: Swift.String {
+    get
+  }
+  public var issuingAuthority: Swift.String {
+    get
+  }
+  public var documentExpiryDate: Swift.String {
+    get
+  }
+  public var dateOfBirth: Swift.String {
+    get
+  }
+  public var gender: Swift.String {
+    get
+  }
+  public var nationality: Swift.String {
+    get
+  }
+  public var lastName: Swift.String {
+    get
+  }
+  public var firstName: Swift.String {
+    get
+  }
+  public var passportMRZ: Swift.String {
+    get
+  }
+  public var placeOfBirth: Swift.String? {
+    get
+  }
+  public var residenceAddress: Swift.String? {
+    get
+  }
+  public var phoneNumber: Swift.String? {
+    get
+  }
+  public var personalNumber: Swift.String? {
+    get
+  }
+  public var documentSigningCertificate: eIDSDK.X509Wrapper? {
+    get
+  }
+  public var countrySigningCertificate: eIDSDK.X509Wrapper? {
+    get
+  }
+  public var LDSVersion: Swift.String {
+    get
+  }
+  public var dataGroupsPresent: [Swift.String] {
+    get
+  }
+  public var dataGroupsAvailable: [eIDSDK.DataGroupId] {
+    get
+  }
+  public var dataGroupsRead: [eIDSDK.DataGroupId : eIDSDK.DataGroup] {
+    get
+  }
+  public var dataGroupHashes: [eIDSDK.DataGroupId : eIDSDK.DataGroupHash] {
+    get
+  }
+  public var cardAccess: eIDSDK.CardAccess? {
+    get
+  }
+  public var BACStatus: eIDSDK.PassportAuthenticationStatus {
+    get
+  }
+  public var PACEStatus: eIDSDK.PassportAuthenticationStatus {
+    get
+  }
+  public var chipAuthenticationStatus: eIDSDK.PassportAuthenticationStatus {
+    get
+  }
+  public var chipActiveData: Foundation.Data {
+    get
+  }
+  public var passportCorrectlySigned: Swift.Bool {
+    get
+  }
+  public var documentSigningCertificateVerified: Swift.Bool {
+    get
+  }
+  public var passportDataNotTampered: Swift.Bool {
+    get
+  }
+  public var activeAuthenticationPassed: Swift.Bool {
+    get
+  }
+  public var activeAuthenticationChallenge: [Swift.UInt8] {
+    get
+  }
+  public var activeAuthenticationSignature: [Swift.UInt8] {
+    get
+  }
+  public var verificationErrors: [any Swift.Error] {
+    get
+  }
+  public var isPACESupported: Swift.Bool {
+    get
+  }
+  public var isChipAuthenticationSupported: Swift.Bool {
+    get
+  }
+  public var passportImage: UIKit.UIImage? {
+    get
+  }
+  public var signatureImage: UIKit.UIImage? {
+    get
+  }
+  public var activeAuthenticationSupported: Swift.Bool {
+    get
+  }
+  public init()
+  public init(from dump: [Swift.String : Swift.String])
+  public func addDataGroup(_ id: eIDSDK.DataGroupId, dataGroup: eIDSDK.DataGroup)
+  public func getDataGroup(_ id: eIDSDK.DataGroupId) -> eIDSDK.DataGroup?
+  public func dumpPassportData(selectedDataGroups: [eIDSDK.DataGroupId], includeActiveAuthenticationData: Swift.Bool = true) -> [Swift.String : Swift.String]
+  public func getTimeReader(selectedDataGroups: [eIDSDK.DataGroupId]) -> [Swift.String : Any]
+  public func getHashesForDatagroups(hashAlgorythm: Swift.String) -> [eIDSDK.DataGroupId : [Swift.UInt8]]
+  public func verifyPassport(masterListURL: Foundation.URL?, useCMSVerification: Swift.Bool = false)
+  public func verifyActiveAuthentication(challenge: [Swift.UInt8], signature: [Swift.UInt8])
+  @objc deinit
+}
+public enum AFResult<Value> {
+  case success(Value)
+  case failure(any Swift.Error)
+  public var isSuccess: Swift.Bool {
+    get
+  }
+  public var isFailure: Swift.Bool {
+    get
+  }
+  public var value: Value? {
+    get
+  }
+  public var error: (any Swift.Error)? {
+    get
+  }
+}
+extension eIDSDK.AFResult : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension eIDSDK.AFResult : Swift.CustomDebugStringConvertible {
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension eIDSDK.AFResult {
+  public init(value: () throws -> Value)
+  public func unwrap() throws -> Value
+  public func map<T>(_ transform: (Value) -> T) -> eIDSDK.AFResult<T>
+  public func flatMap<T>(_ transform: (Value) throws -> T) -> eIDSDK.AFResult<T>
+  public func mapError<T>(_ transform: (any Swift.Error) -> T) -> eIDSDK.AFResult<Value> where T : Swift.Error
+  public func flatMapError<T>(_ transform: (any Swift.Error) throws -> T) -> eIDSDK.AFResult<Value> where T : Swift.Error
+  @discardableResult
+  public func withValue(_ closure: (Value) throws -> Swift.Void) rethrows -> eIDSDK.AFResult<Value>
+  @discardableResult
+  public func withError(_ closure: (any Swift.Error) throws -> Swift.Void) rethrows -> eIDSDK.AFResult<Value>
+  @discardableResult
+  public func ifSuccess(_ closure: () throws -> Swift.Void) rethrows -> eIDSDK.AFResult<Value>
+  @discardableResult
+  public func ifFailure(_ closure: () throws -> Swift.Void) rethrows -> eIDSDK.AFResult<Value>
+}
+public protocol QRScannerViewDelegate : AnyObject {
+  func qrScannerView(_ qrScannerView: eIDSDK.QRScannerView, didFailure error: eIDSDK.QRScannerError)
+  func qrScannerView(_ qrScannerView: eIDSDK.QRScannerView, didSuccess code: Swift.String, qrImage: UIKit.UIImage)
+  func qrScannerView(_ qrScannerView: eIDSDK.QRScannerView, didChangeTorchActive isOn: Swift.Bool)
+  func qrScannerViewDidTapCannotFindQR()
+}
+extension eIDSDK.QRScannerViewDelegate {
+  public func qrScannerView(_ qrScannerView: eIDSDK.QRScannerView, didChangeTorchActive isOn: Swift.Bool)
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class QRScannerView : UIKit.UIView {
+  public struct Input {
+    public static var `default`: eIDSDK.QRScannerView.Input {
+      get
+    }
+    public init(focusImage: UIKit.UIImage? = nil, focusImagePadding: CoreFoundation.CGFloat? = nil, animationDuration: Swift.Double? = nil, isBlurEffectEnabled: Swift.Bool? = nil)
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var focusImage: UIKit.UIImage?
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var focusImagePadding: CoreFoundation.CGFloat
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var animationDuration: Swift.Double
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) public var isBlurEffectEnabled: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public func configure(delegate: any eIDSDK.QRScannerViewDelegate, input: eIDSDK.QRScannerView.Input = .default)
+  @_Concurrency.MainActor(unsafe) public func startRunning()
+  @_Concurrency.MainActor(unsafe) public func stopRunning()
+  @_Concurrency.MainActor(unsafe) public func rescan()
+  @_Concurrency.MainActor(unsafe) public func setTorchActive(isOn: Swift.Bool)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+extension eIDSDK.QRScannerView : AVFoundation.AVCaptureMetadataOutputObjectsDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func metadataOutput(_ output: AVFoundation.AVCaptureMetadataOutput, didOutput metadataObjects: [AVFoundation.AVMetadataObject], from connection: AVFoundation.AVCaptureConnection)
+}
+extension eIDSDK.QRScannerView : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+}
+extension eIDSDK.Request {
+  public enum ValidationResult {
+    case success
+    case failure(any Swift.Error)
+  }
+}
+extension eIDSDK.DataRequest {
+  public typealias Validation = (Foundation.URLRequest?, Foundation.HTTPURLResponse, Foundation.Data?) -> eIDSDK.Request.ValidationResult
+  @discardableResult
+  public func validate(_ validation: @escaping eIDSDK.DataRequest.Validation) -> Self
+  @discardableResult
+  public func validate<S>(statusCode acceptableStatusCodes: S) -> Self where S : Swift.Sequence, S.Element == Swift.Int
+  @discardableResult
+  public func validate<S>(contentType acceptableContentTypes: S) -> Self where S : Swift.Sequence, S.Element == Swift.String
+  @discardableResult
+  public func validate() -> Self
+}
+extension eIDSDK.DownloadRequest {
+  public typealias Validation = (_ request: Foundation.URLRequest?, _ response: Foundation.HTTPURLResponse, _ temporaryURL: Foundation.URL?, _ destinationURL: Foundation.URL?) -> eIDSDK.Request.ValidationResult
+  @discardableResult
+  public func validate(_ validation: @escaping eIDSDK.DownloadRequest.Validation) -> Self
+  @discardableResult
+  public func validate<S>(statusCode acceptableStatusCodes: S) -> Self where S : Swift.Sequence, S.Element == Swift.Int
+  @discardableResult
+  public func validate<S>(contentType acceptableContentTypes: S) -> Self where S : Swift.Sequence, S.Element == Swift.String
+  @discardableResult
+  public func validate() -> Self
+}
+public enum QRScannerError : Swift.Error {
+  case unauthorized(AVFoundation.AVAuthorizationStatus)
+  case deviceFailure(eIDSDK.QRScannerError.DeviceError)
+  case readFailure
+  case unknown
+  public enum DeviceError {
+    case videoUnavailable
+    case inputInvalid
+    case metadataOutputFailure
+    case videoDataOutputFailure
+    public static func == (a: eIDSDK.QRScannerError.DeviceError, b: eIDSDK.QRScannerError.DeviceError) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+public protocol DataResponseSerializerProtocol {
+  associatedtype SerializedObject
+  var serializeResponse: (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.Data?, (any Swift.Error)?) -> eIDSDK.AFResult<Self.SerializedObject> { get }
+}
+public struct DataResponseSerializer<Value> : eIDSDK.DataResponseSerializerProtocol {
+  public typealias SerializedObject = Value
+  public var serializeResponse: (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.Data?, (any Swift.Error)?) -> eIDSDK.AFResult<Value>
+  public init(serializeResponse: @escaping (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.Data?, (any Swift.Error)?) -> eIDSDK.AFResult<Value>)
+}
+public protocol DownloadResponseSerializerProtocol {
+  associatedtype SerializedObject
+  var serializeResponse: (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.URL?, (any Swift.Error)?) -> eIDSDK.AFResult<Self.SerializedObject> { get }
+}
+public struct DownloadResponseSerializer<Value> : eIDSDK.DownloadResponseSerializerProtocol {
+  public typealias SerializedObject = Value
+  public var serializeResponse: (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.URL?, (any Swift.Error)?) -> eIDSDK.AFResult<Value>
+  public init(serializeResponse: @escaping (Foundation.URLRequest?, Foundation.HTTPURLResponse?, Foundation.URL?, (any Swift.Error)?) -> eIDSDK.AFResult<Value>)
+}
+extension eIDSDK.DataRequest {
+  @discardableResult
+  public func response(queue: Dispatch.DispatchQueue? = nil, completionHandler: @escaping (eIDSDK.DefaultDataResponse) -> Swift.Void) -> Self
+  @discardableResult
+  public func response<T>(queue: Dispatch.DispatchQueue? = nil, responseSerializer: T, completionHandler: @escaping (eIDSDK.DataResponse<T.SerializedObject>) -> Swift.Void) -> Self where T : eIDSDK.DataResponseSerializerProtocol
+}
+extension eIDSDK.DownloadRequest {
+  @discardableResult
+  public func response(queue: Dispatch.DispatchQueue? = nil, completionHandler: @escaping (eIDSDK.DefaultDownloadResponse) -> Swift.Void) -> Self
+  @discardableResult
+  public func response<T>(queue: Dispatch.DispatchQueue? = nil, responseSerializer: T, completionHandler: @escaping (eIDSDK.DownloadResponse<T.SerializedObject>) -> Swift.Void) -> Self where T : eIDSDK.DownloadResponseSerializerProtocol
+}
+extension eIDSDK.Request {
+  public static func serializeResponseData(response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: (any Swift.Error)?) -> eIDSDK.AFResult<Foundation.Data>
+}
+extension eIDSDK.DataRequest {
+  public static func dataResponseSerializer() -> eIDSDK.DataResponseSerializer<Foundation.Data>
+  @discardableResult
+  public func responseData(queue: Dispatch.DispatchQueue? = nil, completionHandler: @escaping (eIDSDK.DataResponse<Foundation.Data>) -> Swift.Void) -> Self
+}
+extension eIDSDK.DownloadRequest {
+  public static func dataResponseSerializer() -> eIDSDK.DownloadResponseSerializer<Foundation.Data>
+  @discardableResult
+  public func responseData(queue: Dispatch.DispatchQueue? = nil, completionHandler: @escaping (eIDSDK.DownloadResponse<Foundation.Data>) -> Swift.Void) -> Self
+}
+extension eIDSDK.Request {
+  public static func serializeResponseString(encoding: Swift.String.Encoding?, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: (any Swift.Error)?) -> eIDSDK.AFResult<Swift.String>
+}
+extension eIDSDK.DataRequest {
+  public static func stringResponseSerializer(encoding: Swift.String.Encoding? = nil) -> eIDSDK.DataResponseSerializer<Swift.String>
+  @discardableResult
+  public func responseString(queue: Dispatch.DispatchQueue? = nil, encoding: Swift.String.Encoding? = nil, completionHandler: @escaping (eIDSDK.DataResponse<Swift.String>) -> Swift.Void) -> Self
+}
+extension eIDSDK.DownloadRequest {
+  public static func stringResponseSerializer(encoding: Swift.String.Encoding? = nil) -> eIDSDK.DownloadResponseSerializer<Swift.String>
+  @discardableResult
+  public func responseString(queue: Dispatch.DispatchQueue? = nil, encoding: Swift.String.Encoding? = nil, completionHandler: @escaping (eIDSDK.DownloadResponse<Swift.String>) -> Swift.Void) -> Self
+}
+extension eIDSDK.Request {
+  public static func serializeResponseJSON(options: Foundation.JSONSerialization.ReadingOptions, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: (any Swift.Error)?) -> eIDSDK.AFResult<Any>
+}
+extension eIDSDK.DataRequest {
+  public static func jsonResponseSerializer(options: Foundation.JSONSerialization.ReadingOptions = .allowFragments) -> eIDSDK.DataResponseSerializer<Any>
+  @discardableResult
+  public func responseJSON(queue: Dispatch.DispatchQueue? = nil, options: Foundation.JSONSerialization.ReadingOptions = .allowFragments, completionHandler: @escaping (eIDSDK.DataResponse<Any>) -> Swift.Void) -> Self
+}
+extension eIDSDK.DownloadRequest {
+  public static func jsonResponseSerializer(options: Foundation.JSONSerialization.ReadingOptions = .allowFragments) -> eIDSDK.DownloadResponseSerializer<Any>
+  @discardableResult
+  public func responseJSON(queue: Dispatch.DispatchQueue? = nil, options: Foundation.JSONSerialization.ReadingOptions = .allowFragments, completionHandler: @escaping (eIDSDK.DownloadResponse<Any>) -> Swift.Void) -> Self
+}
+extension eIDSDK.Request {
+  public static func serializeResponsePropertyList(options: Foundation.PropertyListSerialization.ReadOptions, response: Foundation.HTTPURLResponse?, data: Foundation.Data?, error: (any Swift.Error)?) -> eIDSDK.AFResult<Any>
+}
+extension eIDSDK.DataRequest {
+  public static func propertyListResponseSerializer(options: Foundation.PropertyListSerialization.ReadOptions = []) -> eIDSDK.DataResponseSerializer<Any>
+  @discardableResult
+  public func responsePropertyList(queue: Dispatch.DispatchQueue? = nil, options: Foundation.PropertyListSerialization.ReadOptions = [], completionHandler: @escaping (eIDSDK.DataResponse<Any>) -> Swift.Void) -> Self
+}
+extension eIDSDK.DownloadRequest {
+  public static func propertyListResponseSerializer(options: Foundation.PropertyListSerialization.ReadOptions = []) -> eIDSDK.DownloadResponseSerializer<Any>
+  @discardableResult
+  public func responsePropertyList(queue: Dispatch.DispatchQueue? = nil, options: Foundation.PropertyListSerialization.ReadOptions = [], completionHandler: @escaping (eIDSDK.DownloadResponse<Any>) -> Swift.Void) -> Self
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class CardAccess {
+  public var securityInfos: [eIDSDK.SecurityInfo] {
+    get
+  }
+  @objc deinit
+}
+@available(iOS 13, macOS 10.15, *)
+public func AESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func AESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func AESECBEncrypt(key: [Swift.UInt8], message: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func tripleDESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func tripleDESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8]) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func DESEncrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8], options: Swift.UInt32 = 0) -> [Swift.UInt8]
+@available(iOS 13, macOS 10.15, *)
+public func DESDecrypt(key: [Swift.UInt8], message: [Swift.UInt8], iv: [Swift.UInt8], options: Swift.UInt32 = 0) -> [Swift.UInt8]
+@available(iOS 13, *)
+public class PACEHandler {
+  public static let NO_PACE_KEY_REFERENCE: Swift.UInt8
+  public static let MRZ_PACE_KEY_REFERENCE: Swift.UInt8
+  public static let CAN_PACE_KEY_REFERENCE: Swift.UInt8
+  public init(cardAccess: eIDSDK.CardAccess, tagReader: eIDSDK.TagReader) throws
+  public func doPACE(paceKeySeed: Swift.String, paceKeyReference: Swift.UInt8, completed: @escaping (Swift.Bool) -> ())
+  @objc deinit
+}
+@objc public protocol DocumentScanDelegate {
+  @objc func didGetImage(imageString: Swift.String?)
+  @objc func scanComplete(imageList: [UIKit.UIImage])
+  @objc func scanDocumentBackDidTap()
+  @objc func didDocumentScanAuthenFail(error: Swift.String)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class DocumentScanViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var delegate: (any eIDSDK.DocumentScanDelegate)?
+  @_Concurrency.MainActor(unsafe) public var fps: Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @objc @IBAction @_Concurrency.MainActor(unsafe) public func backPress()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension eIDSDK.DocumentScanViewController : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+}
+extension eIDSDK.DocumentScanViewController : AVFoundation.AVCapturePhotoCaptureDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func photoOutput(_ output: AVFoundation.AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVFoundation.AVCapturePhoto, error: (any Swift.Error)?)
+}
+extension eIDSDK.DocumentScanViewController {
+  @_Concurrency.MainActor(unsafe) public func detectSuccess(_ imageCrop: UIKit.UIImage?, imageCropString: Swift.String, imageBase: UIKit.UIImage?, points: [CoreFoundation.CGPoint])
+  @_Concurrency.MainActor(unsafe) public func detectFail(_ error: (any Swift.Error)?)
+}
+extension eIDSDK.DocumentScanViewController : eIDSDK.DocumentScanPreviewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func previewBackPress()
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func takeResum(image: UIKit.UIImage?, imageString: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func donePress(image: UIKit.UIImage?, imageString: Swift.String?)
+}
+public enum SwiftyJSONError : Swift.Int, Swift.Error {
+  case unsupportedType
+  case indexOutOfBounds
+  case elementTooDeep
+  case wrongType
+  case notExist
+  case invalidJSON
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension eIDSDK.SwiftyJSONError : Foundation.CustomNSError {
+  public static var errorDomain: Swift.String {
+    get
+  }
+  public var errorCode: Swift.Int {
+    get
+  }
+  public var errorUserInfo: [Swift.String : Any] {
+    get
+  }
+}
+public enum Type : Swift.Int {
+  case number
+  case string
+  case bool
+  case array
+  case dictionary
+  case null
+  case unknown
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct JSON {
+  public init(data: Foundation.Data, options opt: Foundation.JSONSerialization.ReadingOptions = []) throws
+  public init(_ object: Any)
+  public init(parseJSON jsonString: Swift.String)
+  public mutating func merge(with other: eIDSDK.JSON) throws
+  public func merged(with other: eIDSDK.JSON) throws -> eIDSDK.JSON
+  public var type: eIDSDK.`Type` {
+    get
+  }
+  public var error: eIDSDK.SwiftyJSONError? {
+    get
+  }
+  public var object: Any {
+    get
+    set
+  }
+  @available(*, unavailable, renamed: "null")
+  public static var nullJSON: eIDSDK.JSON {
+    get
+  }
+  public static var null: eIDSDK.JSON {
+    get
+  }
+}
+public enum Index<T> : Swift.Comparable {
+  case array(Swift.Int)
+  case dictionary(Swift.DictionaryIndex<Swift.String, T>)
+  case null
+  public static func == (lhs: eIDSDK.Index<T>, rhs: eIDSDK.Index<T>) -> Swift.Bool
+  public static func < (lhs: eIDSDK.Index<T>, rhs: eIDSDK.Index<T>) -> Swift.Bool
+}
+public typealias JSONIndex = eIDSDK.Index<eIDSDK.JSON>
+public typealias JSONRawIndex = eIDSDK.Index<Any>
+extension eIDSDK.JSON : Swift.Collection {
+  public typealias Index = eIDSDK.JSONRawIndex
+  public var startIndex: eIDSDK.JSON.Index {
+    get
+  }
+  public var endIndex: eIDSDK.JSON.Index {
+    get
+  }
+  public func index(after i: eIDSDK.JSON.Index) -> eIDSDK.JSON.Index
+  public subscript(position: eIDSDK.JSON.Index) -> (Swift.String, eIDSDK.JSON) {
+    get
+  }
+  public typealias Element = (Swift.String, eIDSDK.JSON)
+  public typealias Indices = Swift.DefaultIndices<eIDSDK.JSON>
+  public typealias Iterator = Swift.IndexingIterator<eIDSDK.JSON>
+  public typealias SubSequence = Swift.Slice<eIDSDK.JSON>
+}
+public enum JSONKey {
+  case index(Swift.Int)
+  case key(Swift.String)
+}
+public protocol JSONSubscriptType {
+  var jsonKey: eIDSDK.JSONKey { get }
+}
+extension Swift.Int : eIDSDK.JSONSubscriptType {
+  public var jsonKey: eIDSDK.JSONKey {
+    get
+  }
+}
+extension Swift.String : eIDSDK.JSONSubscriptType {
+  public var jsonKey: eIDSDK.JSONKey {
+    get
+  }
+}
+extension eIDSDK.JSON {
+  public subscript(path: [any eIDSDK.JSONSubscriptType]) -> eIDSDK.JSON {
+    get
+    set
+  }
+  public subscript(path: any eIDSDK.JSONSubscriptType...) -> eIDSDK.JSON {
+    get
+    set
+  }
+}
+extension eIDSDK.JSON : Swift.ExpressibleByStringLiteral {
+  public init(stringLiteral value: Swift.StringLiteralType)
+  public init(extendedGraphemeClusterLiteral value: Swift.StringLiteralType)
+  public init(unicodeScalarLiteral value: Swift.StringLiteralType)
+  public typealias ExtendedGraphemeClusterLiteralType = Swift.StringLiteralType
+  public typealias StringLiteralType = Swift.StringLiteralType
+  public typealias UnicodeScalarLiteralType = Swift.StringLiteralType
+}
+extension eIDSDK.JSON : Swift.ExpressibleByIntegerLiteral {
+  public init(integerLiteral value: Swift.IntegerLiteralType)
+  public typealias IntegerLiteralType = Swift.IntegerLiteralType
+}
+extension eIDSDK.JSON : Swift.ExpressibleByBooleanLiteral {
+  public init(booleanLiteral value: Swift.BooleanLiteralType)
+  public typealias BooleanLiteralType = Swift.BooleanLiteralType
+}
+extension eIDSDK.JSON : Swift.ExpressibleByFloatLiteral {
+  public init(floatLiteral value: Swift.FloatLiteralType)
+  public typealias FloatLiteralType = Swift.FloatLiteralType
+}
+extension eIDSDK.JSON : Swift.ExpressibleByDictionaryLiteral {
+  public init(dictionaryLiteral elements: (Swift.String, Any)...)
+  public typealias Key = Swift.String
+  public typealias Value = Any
+}
+extension eIDSDK.JSON : Swift.ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: Any...)
+  public typealias ArrayLiteralElement = Any
+}
+extension eIDSDK.JSON : Swift.RawRepresentable {
+  public init?(rawValue: Any)
+  public var rawValue: Any {
+    get
+  }
+  public func rawData(options opt: Foundation.JSONSerialization.WritingOptions = JSONSerialization.WritingOptions(rawValue: 0)) throws -> Foundation.Data
+  public func rawString(_ encoding: Swift.String.Encoding = .utf8, options opt: Foundation.JSONSerialization.WritingOptions = .prettyPrinted) -> Swift.String?
+  public func rawString(_ options: [eIDSDK.writingOptionsKeys : Any]) -> Swift.String?
+  public typealias RawValue = Any
+}
+extension eIDSDK.JSON : Swift.CustomStringConvertible, Swift.CustomDebugStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+  public var debugDescription: Swift.String {
+    get
+  }
+}
+extension eIDSDK.JSON {
+  public var array: [eIDSDK.JSON]? {
+    get
+  }
+  public var arrayValue: [eIDSDK.JSON] {
+    get
+  }
+  public var arrayObject: [Any]? {
+    get
+    set
+  }
+}
+extension eIDSDK.JSON {
+  public var dictionary: [Swift.String : eIDSDK.JSON]? {
+    get
+  }
+  public var dictionaryValue: [Swift.String : eIDSDK.JSON] {
+    get
+  }
+  public var dictionaryObject: [Swift.String : Any]? {
+    get
+    set
+  }
+}
+extension eIDSDK.JSON {
+  public var bool: Swift.Bool? {
+    get
+    set
+  }
+  public var boolValue: Swift.Bool {
+    get
+    set
+  }
+}
+extension eIDSDK.JSON {
+  public var string: Swift.String? {
+    get
+    set
+  }
+  public var stringValue: Swift.String {
+    get
+    set
+  }
+}
+extension eIDSDK.JSON {
+  public var number: Foundation.NSNumber? {
+    get
+    set
+  }
+  public var numberValue: Foundation.NSNumber {
+    get
+    set
+  }
+}
+extension eIDSDK.JSON {
+  public var null: Foundation.NSNull? {
+    get
+    set
+  }
+  public func exists() -> Swift.Bool
+}
+extension eIDSDK.JSON {
+  public var url: Foundation.URL? {
+    get
+    set
+  }
+}
+extension eIDSDK.JSON {
+  public var double: Swift.Double? {
+    get
+    set
+  }
+  public var doubleValue: Swift.Double {
+    get
+    set
+  }
+  public var float: Swift.Float? {
+    get
+    set
+  }
+  public var floatValue: Swift.Float {
+    get
+    set
+  }
+  public var int: Swift.Int? {
+    get
+    set
+  }
+  public var intValue: Swift.Int {
+    get
+    set
+  }
+  public var uInt: Swift.UInt? {
+    get
+    set
+  }
+  public var uIntValue: Swift.UInt {
+    get
+    set
+  }
+  public var int8: Swift.Int8? {
+    get
+    set
+  }
+  public var int8Value: Swift.Int8 {
+    get
+    set
+  }
+  public var uInt8: Swift.UInt8? {
+    get
+    set
+  }
+  public var uInt8Value: Swift.UInt8 {
+    get
+    set
+  }
+  public var int16: Swift.Int16? {
+    get
+    set
+  }
+  public var int16Value: Swift.Int16 {
+    get
+    set
+  }
+  public var uInt16: Swift.UInt16? {
+    get
+    set
+  }
+  public var uInt16Value: Swift.UInt16 {
+    get
+    set
+  }
+  public var int32: Swift.Int32? {
+    get
+    set
+  }
+  public var int32Value: Swift.Int32 {
+    get
+    set
+  }
+  public var uInt32: Swift.UInt32? {
+    get
+    set
+  }
+  public var uInt32Value: Swift.UInt32 {
+    get
+    set
+  }
+  public var int64: Swift.Int64? {
+    get
+    set
+  }
+  public var int64Value: Swift.Int64 {
+    get
+    set
+  }
+  public var uInt64: Swift.UInt64? {
+    get
+    set
+  }
+  public var uInt64Value: Swift.UInt64 {
+    get
+    set
+  }
+}
+extension eIDSDK.JSON : Swift.Comparable {
+}
+public func == (lhs: eIDSDK.JSON, rhs: eIDSDK.JSON) -> Swift.Bool
+public func <= (lhs: eIDSDK.JSON, rhs: eIDSDK.JSON) -> Swift.Bool
+public func >= (lhs: eIDSDK.JSON, rhs: eIDSDK.JSON) -> Swift.Bool
+public func > (lhs: eIDSDK.JSON, rhs: eIDSDK.JSON) -> Swift.Bool
+public func < (lhs: eIDSDK.JSON, rhs: eIDSDK.JSON) -> Swift.Bool
+public enum writingOptionsKeys {
+  case jsonSerialization
+  case castNilToNSNull
+  case maxObjextDepth
+  case encoding
+  public static func == (a: eIDSDK.writingOptionsKeys, b: eIDSDK.writingOptionsKeys) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension eIDSDK.JSON : Swift.Codable {
+  public init(from decoder: any Swift.Decoder) throws
+  public func encode(to encoder: any Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers public class QRResponseModel {
+  public var cardNumber: Swift.String?
+  public var oldCardNumber: Swift.String?
+  public var fullname: Swift.String?
+  public var dateOfBirth: Swift.String?
+  public var gender: Swift.String?
+  public var address: Swift.String?
+  public var issueDate: Swift.String?
+  public func toDict() -> [Swift.String : Any]
+  @objc deinit
+}
+@objc @available(iOS 13, *)
+public class PassportReader : ObjectiveC.NSObject {
+  public var passiveAuthenticationUsesOpenSSL: Swift.Bool
+  public init(logLevel: eIDSDK.LogLevel = .info, masterListURL: Foundation.URL? = nil)
+  public func setMasterListURL(_ masterListURL: Foundation.URL)
+  public func overrideNFCDataAmountToRead(amount: Swift.Int)
+  public func readPassport(accessKey: Swift.String, issueDate: Swift.String, paceKeyReference: Swift.UInt8, tags: [eIDSDK.DataGroupId] = [], skipSecureElements: Swift.Bool = true, customDisplayMessage: ((eIDSDK.NFCViewDisplayMessage) -> Swift.String?)? = nil, completed: @escaping (eIDSDK.NFCPassportModel?, eIDSDK.NFCPassportReaderError?) -> ())
+  @objc deinit
+}
+@available(iOS 13, *)
+extension eIDSDK.PassportReader : CoreNFC.NFCTagReaderSessionDelegate {
+  public func tagReaderSessionDidBecomeActive(_ session: CoreNFC.NFCTagReaderSession)
+  public func tagReaderSession(_ session: CoreNFC.NFCTagReaderSession, didInvalidateWithError error: any Swift.Error)
+  public func tagReaderSession(_ session: CoreNFC.NFCTagReaderSession, didDetect tags: [CoreNFC.NFCTag])
+}
+open class ServerTrustPolicyManager {
+  final public let policies: [Swift.String : eIDSDK.ServerTrustPolicy]
+  public init(policies: [Swift.String : eIDSDK.ServerTrustPolicy])
+  open func serverTrustPolicy(forHost host: Swift.String) -> eIDSDK.ServerTrustPolicy?
+  @objc deinit
+}
+public enum ServerTrustPolicy {
+  case performDefaultEvaluation(validateHost: Swift.Bool)
+  case performRevokedEvaluation(validateHost: Swift.Bool, revocationFlags: CoreFoundation.CFOptionFlags)
+  case pinCertificates(certificates: [Security.SecCertificate], validateCertificateChain: Swift.Bool, validateHost: Swift.Bool)
+  case pinPublicKeys(publicKeys: [Security.SecKey], validateCertificateChain: Swift.Bool, validateHost: Swift.Bool)
+  case disableEvaluation
+  case customEvaluation((_ serverTrust: Security.SecTrust, _ host: Swift.String) -> Swift.Bool)
+  public static func certificates(in bundle: Foundation.Bundle = Bundle.main) -> [Security.SecCertificate]
+  public static func publicKeys(in bundle: Foundation.Bundle = Bundle.main) -> [Security.SecKey]
+  public func evaluate(_ serverTrust: Security.SecTrust, forHost host: Swift.String) -> Swift.Bool
+}
+open class MultipartFormData {
+  open var contentType: Swift.String {
+    get
+    set
+  }
+  public var contentLength: Swift.UInt64 {
+    get
+  }
+  public var boundary: Swift.String
+  public init()
+  public func append(_ data: Foundation.Data, withName name: Swift.String)
+  public func append(_ data: Foundation.Data, withName name: Swift.String, mimeType: Swift.String)
+  public func append(_ data: Foundation.Data, withName name: Swift.String, fileName: Swift.String, mimeType: Swift.String)
+  public func append(_ fileURL: Foundation.URL, withName name: Swift.String)
+  public func append(_ fileURL: Foundation.URL, withName name: Swift.String, fileName: Swift.String, mimeType: Swift.String)
+  public func append(_ stream: Foundation.InputStream, withLength length: Swift.UInt64, name: Swift.String, fileName: Swift.String, mimeType: Swift.String)
+  public func append(_ stream: Foundation.InputStream, withLength length: Swift.UInt64, headers: eIDSDK.HTTPHeaders)
+  public func encode() throws -> Foundation.Data
+  public func writeEncodedData(to fileURL: Foundation.URL) throws
+  @objc deinit
+}
+@objc public protocol OCRDelegate {
+  @objc func didGetFrontImage(imageString: Swift.String?)
+  @objc func didGetBackImage(imageString: Swift.String?)
+  @objc func didOCRFail(error: [Swift.String : Any]?)
+  @objc func completeOCRWithResponseJson(response: [Swift.String : Any]?, frontImage: Swift.String, backImage: Swift.String)
+  @objc func didOCRAuthenFail(error: Swift.String)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class OCRViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var delegate: (any eIDSDK.OCRDelegate)?
+  @_Concurrency.MainActor(unsafe) public var fps: Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension eIDSDK.OCRViewController : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+}
+extension eIDSDK.OCRViewController : AVFoundation.AVCapturePhotoCaptureDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func photoOutput(_ output: AVFoundation.AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVFoundation.AVCapturePhoto, error: (any Swift.Error)?)
+}
+extension eIDSDK.OCRViewController {
+  @_Concurrency.MainActor(unsafe) public func detectSuccess(_ result: [eIDSDK.YoloResultsWrapper]?, sampleBuffer: CoreVideo.CVPixelBuffer?, image: UIKit.UIImage?)
+  @_Concurrency.MainActor(unsafe) public func detectFail(_ error: (any Swift.Error)?)
+}
+extension CoreGraphics.CGImage {
+  @available(iOS 11.0, *)
+  public func getCroppingRect(for cards: [Vision.VNRecognizedObjectObservation], margin: CoreFoundation.CGFloat, scale: CoreFoundation.CGFloat = 1, orientation: UIKit.UIImage.Orientation = .up) -> UIKit.UIImage?
+}
+public enum FaceCropResult {
+  case success(CoreGraphics.CGImage)
+  case notFound
+  case failure(any Swift.Error)
+}
+infix operator +| : DefaultPrecedence
+infix operator +- : DefaultPrecedence
+extension Swift.String {
+  public var bytes: Swift.Array<Swift.UInt8> {
+    get
+  }
+}
+public enum DeviceModel : Swift.String {
+  case simulator, iPod1, iPod2, iPod3, iPod4, iPod5, iPod6, iPod7, iPad2, iPad3, iPad4, iPadAir, iPadAir2, iPadAir3, iPadAir4, iPadAir5, iPad5, iPad6, iPad7, iPad8, iPad9, iPad10, iPadMini, iPadMini2, iPadMini3, iPadMini4, iPadMini5, iPadMini6, iPadPro9_7, iPadPro10_5, iPadPro11, iPadPro2_11, iPadPro3_11, iPadPro12_9, iPadPro2_12_9, iPadPro3_12_9, iPadPro4_12_9, iPadPro5_12_9, iPhone4, iPhone4S, iPhone5, iPhone5S, iPhone5C, iPhone6, iPhone6Plus, iPhone6S, iPhone6SPlus, iPhoneSE, iPhone7, iPhone7Plus, iPhone8, iPhone8Plus, iPhoneX, iPhoneXS, iPhoneXSMax, iPhoneXR, iPhone11, iPhone11Pro, iPhone11ProMax, iPhoneSE2, iPhone12Mini, iPhone12, iPhone12Pro, iPhone12ProMax, iPhone13Mini, iPhone13, iPhone13Pro, iPhone13ProMax, iPhoneSE3, iPhone14, iPhone14Plus, iPhone14Pro, iPhone14ProMax, iPhone15, iPhone15Plus, iPhone15Pro, iPhone15ProMax, iPhone16, iPhone16Plus, iPhone16Pro, iPhone16ProMax, AppleWatch1, AppleWatchS1, AppleWatchS2, AppleWatchS3, AppleWatchS4, AppleWatchS5, AppleWatchSE, AppleWatchS6, AppleWatchS7, AppleTV1, AppleTV2, AppleTV3, AppleTV4, AppleTV_4K, AppleTV2_4K, AppleTV3_4K, unrecognized
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension UIKit.UIDevice {
+  @_Concurrency.MainActor(unsafe) public var type: eIDSDK.DeviceModel {
+    get
+  }
+}
+@available(iOS 13, *)
+public struct ResponseAPDU {
+  public var data: [Swift.UInt8]
+  public var sw1: Swift.UInt8
+  public var sw2: Swift.UInt8
+  public var protectData: Foundation.Data?
+  public init(data: [Swift.UInt8], sw1: Swift.UInt8, sw2: Swift.UInt8)
+}
+extension Swift.String {
+  public func LDlocalized(using tableName: Swift.String?) -> Swift.String
+  public func LDlocalizedFormat(arguments: any Swift.CVarArg..., using tableName: Swift.String?) -> Swift.String
+  public func LDlocalizedPlural(argument: any Swift.CVarArg, using tableName: Swift.String?) -> Swift.String
+}
+@_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class ChipAuthenticationInfo : eIDSDK.SecurityInfo {
+  override public func getObjectIdentifier() -> Swift.String
+  override public func getProtocolOIDString() -> Swift.String
+  public func getKeyId() -> Swift.Int
+  public static func toKeyAgreementAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toCipherAlgorithm(oid: Swift.String) throws -> Swift.String
+  public static func toKeyLength(oid: Swift.String) throws -> Swift.Int
+  @objc deinit
+}
+@objc public class BaseResponse : ObjectiveC.NSObject {
+  public var jsonData: eIDSDK.JSON?
+  convenience public init(object: Any)
+  required public init(json: eIDSDK.JSON)
+  public func dictionaryRepresentation() -> [Swift.String : Any]
+  @objc deinit
+}
+extension UIKit.UIFont {
+  public static let loadMyFonts: ()
+}
+public enum SecureMessagingSupportedAlgorithms {
+  case DES
+  case AES
+  public static func == (a: eIDSDK.SecureMessagingSupportedAlgorithms, b: eIDSDK.SecureMessagingSupportedAlgorithms) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@available(iOS 13, *)
+public class SecureMessaging {
+  public init(encryptionAlgorithm: eIDSDK.SecureMessagingSupportedAlgorithms = .DES, ksenc: [Swift.UInt8], ksmac: [Swift.UInt8], ssc: [Swift.UInt8])
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 13, macOS 10.15, *)
+public class DataGroup14 : eIDSDK.DataGroup {
+  public var securityInfos: [eIDSDK.SecurityInfo] {
+    get
+  }
+  @objc deinit
+}
+@objc public protocol LivenessDelegate {
+  @objc func didCaptureImages(images: [Swift.String], video: Swift.String)
+  @objc func didLivenessFail(error: [Swift.String : Any]?)
+  @objc func didLivenessTimeout()
+  @objc func didLivenessComplete(response: [Swift.String : Any]?)
+  @objc func didLivenessAuthenFail(error: Swift.String)
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class LivenessViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public var delegate: (any eIDSDK.LivenessDelegate)?
+  @_Concurrency.MainActor(unsafe) public var anhMatTruoc: Swift.String?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var supportedInterfaceOrientations: UIKit.UIInterfaceOrientationMask {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @objc deinit
+}
+extension eIDSDK.LivenessViewController : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate, AVFoundation.AVCaptureAudioDataOutputSampleBufferDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+}
+extension eIDSDK.LivenessViewController : AVFoundation.AVCapturePhotoCaptureDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func photoOutput(_ output: AVFoundation.AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVFoundation.AVCapturePhoto, error: (any Swift.Error)?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func photoOutput(_ output: AVFoundation.AVCapturePhotoOutput, willCapturePhotoFor resolvedSettings: AVFoundation.AVCaptureResolvedPhotoSettings)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func photoOutput(_ output: AVFoundation.AVCapturePhotoOutput, didCapturePhotoFor resolvedSettings: AVFoundation.AVCaptureResolvedPhotoSettings)
+}
+@available(iOS 13, macOS 10.15, *)
+public enum NFCViewDisplayMessage {
+  case requestPresentPassport
+  case authenticatingWithPassport(Swift.Int)
+  case readingDataGroupProgress(eIDSDK.DataGroupId, Swift.Int)
+  case error(eIDSDK.NFCPassportReaderError)
+  case successfulRead
+}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.NFCViewDisplayMessage {
+  public var description: Swift.String {
+    get
+  }
+}
+extension eIDSDK.FailedCheck : Swift.Equatable {}
+extension eIDSDK.FailedCheck : Swift.Hashable {}
+extension eIDSDK.SwKeyStore.SecError : Swift.Equatable {}
+extension eIDSDK.SwKeyStore.SecError : Swift.Hashable {}
+extension eIDSDK.SwKeyStore.SecError : Swift.RawRepresentable {}
+extension eIDSDK.SwKeyConvert.SwError : Swift.Equatable {}
+extension eIDSDK.SwKeyConvert.SwError : Swift.Hashable {}
+extension eIDSDK.PEM.EncryptedPrivateKey.EncMode : Swift.Equatable {}
+extension eIDSDK.PEM.EncryptedPrivateKey.EncMode : Swift.Hashable {}
+extension eIDSDK.CC.CCError : Swift.Equatable {}
+extension eIDSDK.CC.CCError : Swift.Hashable {}
+extension eIDSDK.CC.CCError : Swift.RawRepresentable {}
+extension eIDSDK.CC.DigestAlgorithm : Swift.Equatable {}
+extension eIDSDK.CC.DigestAlgorithm : Swift.Hashable {}
+extension eIDSDK.CC.DigestAlgorithm : Swift.RawRepresentable {}
+extension eIDSDK.CC.HMACAlg : Swift.Equatable {}
+extension eIDSDK.CC.HMACAlg : Swift.Hashable {}
+extension eIDSDK.CC.HMACAlg : Swift.RawRepresentable {}
+extension eIDSDK.CC.OpMode : Swift.Equatable {}
+extension eIDSDK.CC.OpMode : Swift.Hashable {}
+extension eIDSDK.CC.OpMode : Swift.RawRepresentable {}
+extension eIDSDK.CC.BlockMode : Swift.Equatable {}
+extension eIDSDK.CC.BlockMode : Swift.Hashable {}
+extension eIDSDK.CC.BlockMode : Swift.RawRepresentable {}
+extension eIDSDK.CC.AuthBlockMode : Swift.Equatable {}
+extension eIDSDK.CC.AuthBlockMode : Swift.Hashable {}
+extension eIDSDK.CC.AuthBlockMode : Swift.RawRepresentable {}
+extension eIDSDK.CC.Algorithm : Swift.Equatable {}
+extension eIDSDK.CC.Algorithm : Swift.Hashable {}
+extension eIDSDK.CC.Algorithm : Swift.RawRepresentable {}
+extension eIDSDK.CC.Padding : Swift.Equatable {}
+extension eIDSDK.CC.Padding : Swift.Hashable {}
+extension eIDSDK.CC.Padding : Swift.RawRepresentable {}
+extension eIDSDK.CC.RSA.AsymmetricPadding : Swift.Equatable {}
+extension eIDSDK.CC.RSA.AsymmetricPadding : Swift.Hashable {}
+extension eIDSDK.CC.RSA.AsymmetricPadding : Swift.RawRepresentable {}
+extension eIDSDK.CC.RSA.AsymmetricSAPadding : Swift.Equatable {}
+extension eIDSDK.CC.RSA.AsymmetricSAPadding : Swift.Hashable {}
+extension eIDSDK.CC.RSA.AsymmetricSAPadding : Swift.RawRepresentable {}
+extension eIDSDK.CC.DH.DHParam : Swift.Equatable {}
+extension eIDSDK.CC.DH.DHParam : Swift.Hashable {}
+extension eIDSDK.CC.CRC.Mode : Swift.Equatable {}
+extension eIDSDK.CC.CRC.Mode : Swift.Hashable {}
+extension eIDSDK.CC.CRC.Mode : Swift.RawRepresentable {}
+extension eIDSDK.CC.KeyDerivation.PRFAlg : Swift.Equatable {}
+extension eIDSDK.CC.KeyDerivation.PRFAlg : Swift.Hashable {}
+extension eIDSDK.CC.KeyDerivation.PRFAlg : Swift.RawRepresentable {}
+extension eIDSDK.LogLevel : Swift.Equatable {}
+extension eIDSDK.LogLevel : Swift.Hashable {}
+extension eIDSDK.LogLevel : Swift.RawRepresentable {}
+extension eIDSDK.PACEMappingType : Swift.Equatable {}
+extension eIDSDK.PACEMappingType : Swift.Hashable {}
+extension eIDSDK.HTTPMethod : Swift.Equatable {}
+extension eIDSDK.HTTPMethod : Swift.Hashable {}
+extension eIDSDK.HTTPMethod : Swift.RawRepresentable {}
+extension eIDSDK.URLEncoding.Destination : Swift.Equatable {}
+extension eIDSDK.URLEncoding.Destination : Swift.Hashable {}
+extension eIDSDK.URLEncoding.ArrayEncoding : Swift.Equatable {}
+extension eIDSDK.URLEncoding.ArrayEncoding : Swift.Hashable {}
+extension eIDSDK.URLEncoding.BoolEncoding : Swift.Equatable {}
+extension eIDSDK.URLEncoding.BoolEncoding : Swift.Hashable {}
+extension eIDSDK.CardType : Swift.Equatable {}
+extension eIDSDK.CardType : Swift.Hashable {}
+extension eIDSDK.CardType : Swift.RawRepresentable {}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.DocTypeEnum : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.DocTypeEnum : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.DocTypeEnum : Swift.RawRepresentable {}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.DataGroupId : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.DataGroupId : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.DataGroupId : Swift.RawRepresentable {}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.CertificateType : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.CertificateType : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.CertificateItem : Swift.Equatable {}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.CertificateItem : Swift.Hashable {}
+@available(iOS 13, macOS 10.15, *)
+extension eIDSDK.CertificateItem : Swift.RawRepresentable {}
+extension eIDSDK.NetworkReachabilityManager.ConnectionType : Swift.Equatable {}
+extension eIDSDK.NetworkReachabilityManager.ConnectionType : Swift.Hashable {}
+extension eIDSDK.PassportAuthenticationStatus : Swift.Equatable {}
+extension eIDSDK.PassportAuthenticationStatus : Swift.Hashable {}
+extension eIDSDK.QRScannerError.DeviceError : Swift.Equatable {}
+extension eIDSDK.QRScannerError.DeviceError : Swift.Hashable {}
+extension eIDSDK.SwiftyJSONError : Swift.Equatable {}
+extension eIDSDK.SwiftyJSONError : Swift.Hashable {}
+extension eIDSDK.SwiftyJSONError : Swift.RawRepresentable {}
+extension eIDSDK.`Type` : Swift.Equatable {}
+extension eIDSDK.`Type` : Swift.Hashable {}
+extension eIDSDK.`Type` : Swift.RawRepresentable {}
+extension eIDSDK.writingOptionsKeys : Swift.Equatable {}
+extension eIDSDK.writingOptionsKeys : Swift.Hashable {}
+extension eIDSDK.DeviceModel : Swift.Equatable {}
+extension eIDSDK.DeviceModel : Swift.Hashable {}
+extension eIDSDK.DeviceModel : Swift.RawRepresentable {}
+extension eIDSDK.SecureMessagingSupportedAlgorithms : Swift.Equatable {}
+extension eIDSDK.SecureMessagingSupportedAlgorithms : Swift.Hashable {}
