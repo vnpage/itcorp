@@ -13,7 +13,7 @@ ABC
 LICENSE
   }
   s.author                = { 'TuanDinh' => 'tuandinh.dev@gmail.com' }
-  s.source                = { :http => 'https://github.com/vnpage/itcorp/raw/main/ios/CardAppSDK_20250802.zip' }
+  s.source                = { :http => 'https://github.com/vnpage/itcorp/raw/main/ios/CardAppSDK_SmartPay_20250808.zip' }
   s.documentation_url     = 'https://flutter.dev/docs'
   s.platform              = :ios, '10.0'
   s.vendored_frameworks   = 'CardAppSDK.xcframework', 'EkycSdk.xcframework'
