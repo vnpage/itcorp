@@ -8,6 +8,7 @@ import AudioToolbox
 import CommonCrypto
 import CoreGraphics
 import CoreText
+import CryptoKit
 import Foundation
 import MobileCoreServices
 import ObjectiveC

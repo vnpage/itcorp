@@ -110,7 +110,7 @@
 		</data>
 		<key>CardAppSDKResource.bundle/Assets.car</key>
 		<data>
-		6P3w1CnSJ6W81NrGeo36fEtdPNI=
+		W0kTiec23wTSoNdsSIo9mXDqHyw=
 		</data>
 		<key>CardAppSDKResource.bundle/CardAppCardItemViewCell.nib</key>
 		<data>
@@ -408,11 +408,11 @@
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		vQC+tLRzpyGnNAhdKBcy/HfFGQE=
+		Nf/LX79iires9Y9MbX71aHHjlmo=
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		cguOko28rypKPBg7+LaokMxPpFM=
+		xdfBOc1ObhzWAKGfmZlRCTb8anM=
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -420,19 +420,19 @@
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		cguOko28rypKPBg7+LaokMxPpFM=
+		xdfBOc1ObhzWAKGfmZlRCTb8anM=
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		BKVBa9nyxLRRnvpRvwxD4Uj8frA=
+		0RL/xUdM0RfQeIHtnox3jJKy7E4=
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		vQC+tLRzpyGnNAhdKBcy/HfFGQE=
+		Nf/LX79iires9Y9MbX71aHHjlmo=
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		n6LJOE6lWIxXPmWCBUSHWjYrPa0=
+		4kCm6yMqgEonvHwWCZVuWgx8zv0=
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -440,11 +440,11 @@
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		n6LJOE6lWIxXPmWCBUSHWjYrPa0=
+		4kCm6yMqgEonvHwWCZVuWgx8zv0=
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		HZV8A8FKpcHvxpHmaTExvyW/aUM=
+		RA22b7O4scJmvMfQSJ2+Ku5bBvo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -663,7 +663,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			RFE388uiEb9FExU7iPyJ/6blhRWb6+0hJYRC/795aFU=
+			uoLkDul+WVd6FQhJTvfxWNpItrsYRXy9VRsMJZtUJAY=
 			</data>
 		</dict>
 		<key>CardAppSDKResource.bundle/CardAppCardItemViewCell.nib</key>
@@ -1164,14 +1164,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			LKXD71TB2zrFsjLbnT+3uHgkoumVv9RIZ1ZFHaUcJfQ=
+			43SPpt1/GHlEE5r3oSbKzvhy2D7Q/YkVDztIOiv32UA=
 			</data>
 		</dict>
 		<key>Modules/CardAppSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			9Zr+ASmVBlgfofjpLjg8PWsKyP68/vbrekW/RR8JD8g=
+			nlVpDoA5PWLCqifZOmPs+6594tkKt743S5UJSVmVu30=
 			</data>
 		</dict>
 		<key>Modules/CardAppSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -1185,28 +1185,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9Zr+ASmVBlgfofjpLjg8PWsKyP68/vbrekW/RR8JD8g=
+			nlVpDoA5PWLCqifZOmPs+6594tkKt743S5UJSVmVu30=
 			</data>
 		</dict>
 		<key>Modules/CardAppSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			JIzu+VLo+k4Nv3nKPpJqurgFfyMign4DJ28sH2HbLUs=
+			6kiGlQlLWvPc0EIiuUoL1HWoZVWL2t27EodijfKTVLU=
 			</data>
 		</dict>
 		<key>Modules/CardAppSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			LKXD71TB2zrFsjLbnT+3uHgkoumVv9RIZ1ZFHaUcJfQ=
+			43SPpt1/GHlEE5r3oSbKzvhy2D7Q/YkVDztIOiv32UA=
 			</data>
 		</dict>
 		<key>Modules/CardAppSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			W7wT9ccdmR5ZXIc8uDk/EkD48djxEjDTqak3/0+stQs=
+			PRyqdARecCZd9M8GE/e7ylU//HUZRPeDoD6QrVYzUX4=
 			</data>
 		</dict>
 		<key>Modules/CardAppSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -1220,14 +1220,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			W7wT9ccdmR5ZXIc8uDk/EkD48djxEjDTqak3/0+stQs=
+			PRyqdARecCZd9M8GE/e7ylU//HUZRPeDoD6QrVYzUX4=
 			</data>
 		</dict>
 		<key>Modules/CardAppSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bzlfv3PNRnk8V8aY4pjXMDopBeqfoK0aYZtGO965448=
+			UxfPgsSQwRRV/u7N+DbmpftKmJmO8SR0O29b+ojwL18=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
