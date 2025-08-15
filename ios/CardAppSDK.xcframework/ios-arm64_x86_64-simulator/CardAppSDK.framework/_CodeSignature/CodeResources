@@ -110,7 +110,7 @@
 		</data>
 		<key>CardAppSDKResource.bundle/Assets.car</key>
 		<data>
-		W0kTiec23wTSoNdsSIo9mXDqHyw=
+		6P3w1CnSJ6W81NrGeo36fEtdPNI=
 		</data>
 		<key>CardAppSDKResource.bundle/CardAppCardItemViewCell.nib</key>
 		<data>
@@ -408,7 +408,7 @@
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		Nf/LX79iires9Y9MbX71aHHjlmo=
+		Tf+OzWoyzZTXx3eQDhyReNYqrBM=
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -428,7 +428,7 @@
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		Nf/LX79iires9Y9MbX71aHHjlmo=
+		Tf+OzWoyzZTXx3eQDhyReNYqrBM=
 		</data>
 		<key>Modules/CardAppSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -663,7 +663,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			uoLkDul+WVd6FQhJTvfxWNpItrsYRXy9VRsMJZtUJAY=
+			RFE388uiEb9FExU7iPyJ/6blhRWb6+0hJYRC/795aFU=
 			</data>
 		</dict>
 		<key>CardAppSDKResource.bundle/CardAppCardItemViewCell.nib</key>
@@ -1164,7 +1164,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			43SPpt1/GHlEE5r3oSbKzvhy2D7Q/YkVDztIOiv32UA=
+			InzRq0k2LodqlFkfKNV8Hs4vYhLfpMiI3Ep0a4JVRCE=
 			</data>
 		</dict>
 		<key>Modules/CardAppSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -1199,7 +1199,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			43SPpt1/GHlEE5r3oSbKzvhy2D7Q/YkVDztIOiv32UA=
+			InzRq0k2LodqlFkfKNV8Hs4vYhLfpMiI3Ep0a4JVRCE=
 			</data>
 		</dict>
 		<key>Modules/CardAppSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
